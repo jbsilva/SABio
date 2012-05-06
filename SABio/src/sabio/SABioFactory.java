@@ -1,8 +1,8 @@
 package sabio;
 
-import sabio.impl.Conta;
+import sabio.impl.Treino;
 import sabio.impl.Usuario;
-import sabio.spec.IConta;
+import sabio.spec.ITreino;
 import sabio.spec.IUsuario;
 
 public class SABioFactory {
@@ -19,8 +19,8 @@ public class SABioFactory {
 		return instance;
 	}
 
-	public IConta getAccount() {
-		return new Conta();
+	public ITreino getAccount() {
+		return new Treino();
 	}
 
 	public IUsuario getUser() {

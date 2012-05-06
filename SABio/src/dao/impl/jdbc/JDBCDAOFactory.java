@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import dao.DAOException;
 import dao.DAOFactory;
-import dao.spec.IContaDAO;
+import dao.spec.ITreinoDAO;
 import dao.spec.IUsuarioDAO;
 
 public class JDBCDAOFactory extends DAOFactory {
@@ -19,7 +19,7 @@ public class JDBCDAOFactory extends DAOFactory {
 		return new UsuarioJDBCDAO(this.properties);
 	}
 
-	public IContaDAO getAccountDAO() throws DAOException {
+	public ITreinoDAO getAccountDAO() throws DAOException {
 		return new TreinoJDBCDAO(this.properties);
 	}
 }

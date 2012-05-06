@@ -3,7 +3,7 @@ package vo;
 /**
  * @author Delano
  */
-public class ContaVO extends ObjectVO {
+public class TreinoVO extends ObjectVO {
 
 	private String numero;
 
@@ -11,22 +11,22 @@ public class ContaVO extends ObjectVO {
 
 	private UserVO usuario;
 
-	public ContaVO() {
+	public TreinoVO() {
 		super();
 	}
 
-	public ContaVO(String number, UserVO usuario) {
+	public TreinoVO(String number, UserVO usuario) {
 		this(number, new Double(0.0), usuario);
 	}
 
-	public ContaVO(String numero, Double saldo, UserVO usuario) {
+	public TreinoVO(String numero, Double saldo, UserVO usuario) {
 		super();
 		this.numero = numero;
 		this.saldo = saldo;
 		this.usuario = usuario;
 	}
 
-	public ContaVO(int id, String numero, Double saldo, UserVO usuario) {
+	public TreinoVO(int id, String numero, Double saldo, UserVO usuario) {
 		super(id);
 		this.numero = numero;
 		this.saldo = saldo;

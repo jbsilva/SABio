@@ -2,7 +2,7 @@ package dao;
 
 import util.Configuration;
 import dao.impl.jdbc.JDBCDAOFactory;
-import dao.spec.IContaDAO;
+import dao.spec.ITreinoDAO;
 import dao.spec.IUsuarioDAO;
 
 abstract public class DAOFactory {
@@ -23,5 +23,5 @@ abstract public class DAOFactory {
 
 	public abstract IUsuarioDAO getUserDAO() throws DAOException;
 
-	public abstract IContaDAO getAccountDAO() throws DAOException;
+	public abstract ITreinoDAO getAccountDAO() throws DAOException;
 }

@@ -4,10 +4,10 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
-import vo.ContaVO;
+import vo.TreinoVO;
 import vo.UserVO;
 import sabio.SABioFactory;
-import sabio.spec.IConta;
+import sabio.spec.ITreino;
 import sabio.spec.IUsuario;
 
 public class Client {
@@ -17,11 +17,11 @@ public class Client {
         SABioFactory factory = SABioFactory.getInstance();
 
         IUsuario user = factory.getUser();
-        IConta account = factory.getAccount();
+        ITreino account = factory.getAccount();
         List userList;
         List accountList;
         UserVO userVO;
-        ContaVO accountVO;
+        TreinoVO accountVO;
         Iterator iterator;
 
         userVO = new UserVO("admin", "admin");
@@ -44,7 +44,7 @@ public class Client {
             // Removendo o primeiro
             userVO = (UserVO) userList.get(0);
             int id = userVO.getId();
-            accountVO = account.getContaByUsuario(id);
+            accountVO = account.getTreinoByUsuario(id);
 
             if (accountVO != null) {
                 System.out.println("Deleting " + accountVO);
@@ -62,7 +62,7 @@ public class Client {
         System.out.println("Creating " + userVO);
         user.create(userVO);
 
-        accountVO = new ContaVO("0958-0", new Double(20.6f), userVO);
+        accountVO = new TreinoVO("0958-0", new Double(20.6f), userVO);
         System.out.println("Creating " + accountVO);
         account.create(accountVO);
 
@@ -70,14 +70,14 @@ public class Client {
         iterator = accountList.iterator();
 
         while (iterator.hasNext()) {
-            accountVO = (ContaVO) iterator.next();
+            accountVO = (TreinoVO) iterator.next();
             System.out.println(accountVO);
         }
 
         if (accountList.size() > 1) {
 
-            ContaVO vo1 = (ContaVO) accountList.get(0);
-            ContaVO vo2 = (ContaVO) accountList.get(1);
+            TreinoVO vo1 = (TreinoVO) accountList.get(0);
+            TreinoVO vo2 = (TreinoVO) accountList.get(1);
 
             vo1.setSaldo(vo1.getSaldo() - 100);
             vo2.setSaldo(vo2.getSaldo() + 100);

@@ -17,11 +17,11 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
-import vo.ContaVO;
+import vo.TreinoVO;
 import vo.UserVO;
 import sabio.SABioException;
 import sabio.SABioFactory;
-import sabio.spec.IConta;
+import sabio.spec.ITreino;
 import sabio.spec.IUsuario;
 
 public class Menu extends JFrame {
@@ -147,8 +147,8 @@ public class Menu extends JFrame {
 			String login = Login.getInstance().getLogin();
 			IUsuario user = factory.getUser();
 			UserVO userVO = user.getUsuarioByLogin(login);
-			IConta account = factory.getAccount();
-			ContaVO accountVO = account.getContaByUsuario(userVO.getId());
+			ITreino account = factory.getAccount();
+			TreinoVO accountVO = account.getTreinoByUsuario(userVO.getId());
 			header = new String[2];
 			header[0] = bundle.getString("login");
 			header[1] = bundle.getString("balance");
