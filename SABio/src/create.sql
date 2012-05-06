@@ -188,10 +188,17 @@ INSERT INTO avaliacao_fisica (cpf_cliente, login_cliente, login_instrutor, cpf_i
 VALUES ('37513012911', 'cliente01', 'instrutor01', '48288636489', 'reg01', '1', '2012-01-01', 'Tudo ok');
 
 
-/*
+
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
-VALUES ()
-*/
+VALUES (1, 3 , 5, 'supino', '37513012911','cliente01');
+
+INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
+VALUES (2, 5 , 2, 'flexao', '29642217589','cliente02');
+
+
+INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
+VALUES (3, 4 , 4, 'agachamento', '71224314875','cliente03');
+
 
 INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
 VALUES ('37513012911','cliente01','instrutor01', '48288636489','reg01', 1);
