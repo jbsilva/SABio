@@ -19,10 +19,10 @@ import javax.swing.table.DefaultTableModel;
 
 import vo.ContaVO;
 import vo.UserVO;
-import business.BusinessException;
-import business.BusinessFactory;
-import business.spec.IConta;
-import business.spec.IUsuario;
+import sabio.SABioException;
+import sabio.SABioFactory;
+import sabio.spec.IConta;
+import sabio.spec.IUsuario;
 
 public class Menu extends JFrame {
 
@@ -142,7 +142,7 @@ public class Menu extends JFrame {
 	private void getBalanceActionPerformed(ActionEvent event) {
 		String[] header;
 		String[][] data;
-		BusinessFactory factory = BusinessFactory.getInstance();
+		SABioFactory factory = SABioFactory.getInstance();
 		try {
 			String login = Login.getInstance().getLogin();
 			IUsuario user = factory.getUser();
@@ -156,7 +156,7 @@ public class Menu extends JFrame {
 			data[0][0] = login;
 			data[0][1] = accountVO.getSaldo().toString();
 			table.setModel(new DefaultTableModel(data, header));
-		} catch (BusinessException e) {
+		} catch (SABioException e) {
                     e.printStackTrace();
 			table.setModel(null);
 		}
@@ -168,7 +168,7 @@ public class Menu extends JFrame {
 
 		String[] header;
 		String[][] data;
-		BusinessFactory factory = BusinessFactory.getInstance();
+		SABioFactory factory = SABioFactory.getInstance();
 		try {
 			IUsuario user = factory.getUser();
 			List list = user.getAll();
@@ -184,7 +184,7 @@ public class Menu extends JFrame {
 				data[i][1] = vo.getNome();
 			}
 			table.setModel(new DefaultTableModel(data, header));
-		} catch (BusinessException e) {
+		} catch (SABioException e) {
 			table.setModel(null);
 		}
 		mainPane.setVisible(true);

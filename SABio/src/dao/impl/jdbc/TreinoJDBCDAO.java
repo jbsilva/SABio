@@ -14,9 +14,9 @@ import dao.DAOFactory;
 import dao.spec.IContaDAO;
 import dao.spec.IUsuarioDAO;
 
-class ContaJDBCDAO extends GenericJDBCDAO implements IContaDAO {
+class TreinoJDBCDAO extends GenericJDBCDAO implements IContaDAO {
 
-	public ContaJDBCDAO(Properties properties) throws DAOException {
+	public TreinoJDBCDAO(Properties properties) throws DAOException {
 		super(properties);
 	}
 
@@ -38,7 +38,7 @@ class ContaJDBCDAO extends GenericJDBCDAO implements IContaDAO {
 
 	public void insert(ObjectVO vo) throws DAOException {
 		String sql = "INSERT INTO " + this.getTableName()
-				+ " (NUMERO, SALDO, USUARIO_ID) VALUES (?,?,?)";
+				+ " (LOGIN, SENHA) VALUES (?,?)";
 		try {
 			ContaVO account = (ContaVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
@@ -68,7 +68,7 @@ class ContaJDBCDAO extends GenericJDBCDAO implements IContaDAO {
 	}
 
 	public String getTableName() {
-		return "CONTA";
+		return "treino";
 	}
 
 	protected ObjectVO createVO(ResultSet rs) throws DAOException {

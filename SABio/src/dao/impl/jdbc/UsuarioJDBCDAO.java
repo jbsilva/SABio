@@ -20,13 +20,11 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
     public void update(ObjectVO vo) throws DAOException {
         UserVO user = (UserVO) vo;
         String sql = "UPDATE " + this.getTableName()
-                + " SET LOGIN = ?, PASSWORD = ?, NOME = ? WHERE ID = ?";
+                + " SET LOGIN = ?, SENHA = ?";
         try {
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-            stmt.setInt(4, user.getId());
             stmt.setString(1, user.getLogin());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getNome());
+            stmt.setString(2, user.getSenha());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -35,30 +33,29 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
 
     public void insert(ObjectVO vo) throws DAOException {
         String sql = "INSERT INTO " + this.getTableName()
-                + " (LOGIN, PASSWORD, NOME) VALUES (?,?,?)";
+                + " (LOGIN, SENHA) VALUES (?,?)";
         try {
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
             UserVO user = (UserVO) vo;
             stmt.setString(1, user.getLogin());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getNome());
+            stmt.setString(2, user.getSenha());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
         }
     }
 
-    public boolean checkLoginPassword(String login, String password)
+    public boolean checkLoginSenha(String login, String senha)
             throws DAOException {
         boolean isAuthenticated = false;
-        String sql = "SELECT PASSWORD FROM " + this.getTableName()
+        String sql = "SELECT SENHA FROM " + this.getTableName()
                 + " WHERE LOGIN = '" + login + "'";
         try {
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
-                String result = rs.getString("PASSWORD");
-                isAuthenticated = result.equals(password);
+                String result = rs.getString("SENHA");
+                isAuthenticated = result.equals(senha);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,11 +70,9 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
 
     protected ObjectVO createVO(ResultSet rs) throws DAOException {
         try {
-            int id = rs.getInt("ID");
             String login = rs.getString("LOGIN");
-            String password = rs.getString("PASSWORD");
-            String nome = rs.getString("NOME");
-            return new UserVO(id, login, password, nome);
+            String senha = rs.getString("SENHA");
+            return new UserVO(login, senha);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

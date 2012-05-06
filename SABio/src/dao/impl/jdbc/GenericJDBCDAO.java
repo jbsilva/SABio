@@ -23,12 +23,12 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 			String driver = properties.getProperty("jdbc.driver");
 			String url = properties.getProperty("jdbc.url");
 			String user = properties.getProperty("jdbc.user");
-			String password = properties.getProperty("jdbc.password");
-			if (password == null) {
-				password = "";
+			String senha = properties.getProperty("jdbc.senha");
+			if (senha == null) {
+				senha = "";
 			}
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url, user, password);
+			connection = DriverManager.getConnection(url, user, senha);
 		} catch (Exception e) {
 			throw new DAOException(e);
 		}

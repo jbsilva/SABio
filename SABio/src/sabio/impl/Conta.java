@@ -1,73 +1,73 @@
-package business.impl;
+package sabio.impl;
 
 import java.util.List;
 
 import vo.ContaVO;
-import business.BusinessException;
-import business.spec.IConta;
+import sabio.SABioException;
+import sabio.spec.IConta;
 import dao.DAOFactory;
 import dao.spec.IContaDAO;
 
 public class Conta implements IConta {
 
-	public void create(ContaVO vo) throws BusinessException {
+	public void create(ContaVO vo) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			vo.setId(dao.selectLastID() + 1);
 			dao.insert(vo);
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 
-	public void delete(int id) throws BusinessException {
+	public void delete(int id) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			dao.delete(id);
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 
-	public void update(ContaVO vo) throws BusinessException {
+	public void update(ContaVO vo) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			dao.update(vo);
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 
-	public ContaVO getConta(int id) throws BusinessException {
+	public ContaVO getConta(int id) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			return (ContaVO) dao.selectByID(id);
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 
-	public ContaVO getContaByUsuario(int id) throws BusinessException {
+	public ContaVO getContaByUsuario(int id) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			return dao.selectByUsuario(id);
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 
-	public List getAll() throws BusinessException {
+	public List getAll() throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IContaDAO dao = factory.getAccountDAO();
 			return dao.selectAll();
 		} catch (Exception e) {
-			throw new BusinessException(e);
+			throw new SABioException(e);
 		}
 	}
 

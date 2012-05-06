@@ -25,8 +25,8 @@ import javax.swing.WindowConstants;
 
 import util.Configuration;
 import vo.UserVO;
-import business.BusinessFactory;
-import business.spec.IUsuario;
+import sabio.SABioFactory;
+import sabio.spec.IUsuario;
 
 public class Login extends JFrame {
 
@@ -38,11 +38,11 @@ public class Login extends JFrame {
 
 	private JLabel loginLabel;
 
-	private JLabel passwordLabel;
+	private JLabel senhaLabel;
 
 	private JTextField loginText;
 
-	private JPasswordField passwordText;
+	private JPasswordField senhaText;
 
 	private JMenu menu;
 
@@ -77,8 +77,8 @@ public class Login extends JFrame {
 		loginText = new JTextField();
 		submitButton = new JButton();
 		loginLabel = new JLabel();
-		passwordText = new JPasswordField();
-		passwordLabel = new JLabel();
+		senhaText = new JPasswordField();
+		senhaLabel = new JLabel();
 		quitButton = new JButton();
 		menuBar = new JMenuBar();
 		menu = new JMenu();
@@ -98,8 +98,8 @@ public class Login extends JFrame {
 		loginText.setText("");
 		loginLabel.setText(bundle.getString("login"));
 
-		passwordText.setText("");
-		passwordLabel.setText(bundle.getString("password"));
+		senhaText.setText("");
+		senhaLabel.setText(bundle.getString("senha"));
 
 		submitButton.setText(bundle.getString("submit"));
 		submitButton.addActionListener(new ActionListener() {
@@ -119,8 +119,8 @@ public class Login extends JFrame {
 		p.setLayout(new GridLayout(3, 3));
 		p.add(loginLabel);
 		p.add(loginText);
-		p.add(passwordLabel);
-		p.add(passwordText);
+		p.add(senhaLabel);
+		p.add(senhaText);
 		p.add(submitButton);
 		p.add(quitButton);
 		this.getContentPane().add(BorderLayout.CENTER, p);
@@ -174,8 +174,8 @@ public class Login extends JFrame {
 
 	private void refreshComponents() {
 		loginLabel.setText(bundle.getString("login"));
-		passwordLabel.setText(bundle.getString("password"));
-		passwordText.setText("");
+		senhaLabel.setText(bundle.getString("senha"));
+		senhaText.setText("");
 		submitButton.setText(bundle.getString("submit"));
 		for (int i = 0; i < locales.size(); i++) {
 			((JMenuItem) menu.getMenuComponent(i)).setText(locales.get(i)
@@ -197,11 +197,11 @@ public class Login extends JFrame {
 
 	private boolean authenticate() {
 		String login = loginText.getText();
-		String password = String.copyValueOf(passwordText.getPassword());
+		String senha = String.copyValueOf(senhaText.getPassword());
 
 		boolean isAuthenticated = false;
-		IUsuario user = BusinessFactory.getInstance().getUser();
-		UserVO vo = new UserVO(login, password);
+		IUsuario user = SABioFactory.getInstance().getUser();
+		UserVO vo = new UserVO(login, senha);
 		try {
 			isAuthenticated = user.authenticate(vo);
 		} catch (Exception e) {

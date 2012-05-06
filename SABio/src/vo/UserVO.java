@@ -4,7 +4,7 @@ public class UserVO extends ObjectVO {
 
 	private String login;
 
-	private String password;
+	private String senha;
 
 	private String nome;
 
@@ -14,22 +14,22 @@ public class UserVO extends ObjectVO {
 	public UserVO() {
 	}
 
-	public UserVO(String login, String password) {
+	public UserVO(String login, String senha) {
 		this.login = login;
-		this.password = password;
+		this.senha = senha;
 	}
 
-	public UserVO(String login, String password, String nome) {
+	public UserVO(String login, String senha, String nome) {
 		super();
 		this.login = login;
-		this.password = password;
+		this.senha = senha;
 		this.nome = nome;
 	}
 
-	public UserVO(int id, String login, String password, String nome) {
+	public UserVO(int id, String login, String senha, String nome) {
 		super(id);
 		this.login = login;
-		this.password = password;
+		this.senha = senha;
 		this.nome = nome;
 	}
 
@@ -41,12 +41,12 @@ public class UserVO extends ObjectVO {
 		this.login = login;
 	}
 
-	public String getPassword() {
-		return this.password;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getNome() {

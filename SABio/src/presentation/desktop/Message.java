@@ -56,7 +56,7 @@ public class Message extends JFrame {
 			}
 		});
 
-		messageLabel.setText(bundle.getString("passwordMessage"));
+		messageLabel.setText(bundle.getString("senhaMessage"));
 		quitButton.setText("OK");
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -71,7 +71,7 @@ public class Message extends JFrame {
 
 	private void frameShow(ComponentEvent event) {
 		bundle = ResourceBundle.getBundle("I18n.Resources");
-		messageLabel.setText(bundle.getString("passwordMessage"));
+		messageLabel.setText(bundle.getString("senhaMessage"));
 		this.pack();
 	}
 

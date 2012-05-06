@@ -6,15 +6,15 @@ import java.util.List;
 
 import vo.ContaVO;
 import vo.UserVO;
-import business.BusinessFactory;
-import business.spec.IConta;
-import business.spec.IUsuario;
+import sabio.SABioFactory;
+import sabio.spec.IConta;
+import sabio.spec.IUsuario;
 
 public class Client {
 
     public static void main(String[] args) throws Exception {
 
-        BusinessFactory factory = BusinessFactory.getInstance();
+        SABioFactory factory = SABioFactory.getInstance();
 
         IUsuario user = factory.getUser();
         IConta account = factory.getAccount();

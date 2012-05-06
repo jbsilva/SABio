@@ -20,6 +20,6 @@ public class JDBCDAOFactory extends DAOFactory {
 	}
 
 	public IContaDAO getAccountDAO() throws DAOException {
-		return new ContaJDBCDAO(this.properties);
+		return new TreinoJDBCDAO(this.properties);
 	}
 }

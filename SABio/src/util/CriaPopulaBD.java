@@ -22,9 +22,9 @@ public class CriaPopulaBD {
                 String driver = properties.getProperty("jdbc.driver");
                 String url = properties.getProperty("jdbc.url");
                 String user = properties.getProperty("jdbc.user");
-                String password = properties.getProperty("jdbc.password");
+                String senha = properties.getProperty("jdbc.senha");
                 Class.forName(driver).newInstance();
-                connection = DriverManager.getConnection(url, user, password);
+                connection = DriverManager.getConnection(url, user, senha);
             } catch (Exception e) {
                 e.printStackTrace();
             }
