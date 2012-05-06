@@ -178,9 +178,9 @@ VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', 34210000
 INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
 VALUES('cliente01', 1, '37513012911', 'supino', '2012-01-01', 2, 3, 'supino inclinado', 50, 10);
 INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente01', 2, '37513012911', 'agachamento', '2012-01-01', 1, 4, 'agachamento', 30, 10);
+VALUES('cliente02', 2, '29642217589', 'agachamento', '2012-01-01', 1, 4, 'agachamento', 30, 10);
 INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente02', 3, '29642217589', 'tipo2', '2012-01-01', 2, 3, 'cruxifixo', 10, 10);
+VALUES('cliente03', 3, '71224314875', 'tipo2', '2012-01-01', 2, 3, 'crucifixo', 10, 10);
 
 
 INSERT INTO avaliacao_fisica (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor,
@@ -191,7 +191,13 @@ VALUES ('37513012911', 'cliente01', 'instrutor01', '48288636489', 'reg01', '1', 
 /*
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
 VALUES ()
+*/
 
 INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
-VALUES ()
-*/
+VALUES ('37513012911','cliente01','instrutor01', '48288636489','reg01', 1);
+
+INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
+VALUES ('29642217589','cliente02','instrutor02', '15558633700','reg02', 2);
+ 
+INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
+VALUES ('71224314875','cliente03','instrutor03', '96565461309','reg03', 3);
