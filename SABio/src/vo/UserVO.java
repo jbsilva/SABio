@@ -39,4 +39,12 @@ public class UserVO extends ObjectVO {
 		buffer.append("]");
 		return buffer.toString();
 	}
+
+    public void setName(String atualizado) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public String getNome() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
