@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS supervisiona CASCADE;
 CREATE TABLE usuario
 (
     login VARCHAR(15) CONSTRAINT usuario_login_pk PRIMARY KEY,
-    senha VARCHAR(10) CONSTRAINT usuario_senha_nn NOT NULL
+    senha CHAR(32) CONSTRAINT usuario_senha_nn NOT NULL
 );
 
 
@@ -134,16 +134,16 @@ CREATE TABLE supervisiona
 );
 
 
-INSERT INTO usuario (login, senha) VALUES ('atendente01', 'stuvwx');
-INSERT INTO usuario (login, senha) VALUES ('atendente02', '010203');
-INSERT INTO usuario (login, senha) VALUES ('atendente03', 'yzabcd');
-INSERT INTO usuario (login, senha) VALUES ('cliente01', '012345');
-INSERT INTO usuario (login, senha) VALUES ('cliente02', 'abcdef');
-INSERT INTO usuario (login, senha) VALUES ('cliente03', '654321');
-INSERT INTO usuario (login, senha) VALUES ('instrutor01', 'ghijkl');
-INSERT INTO usuario (login, senha) VALUES ('instrutor02', '123456');
-INSERT INTO usuario (login, senha) VALUES ('instrutor03', 'mnopqr');
-INSERT INTO usuario (login, senha) VALUES ('instrutor04', '678910');
+INSERT INTO usuario (login, senha) VALUES ('atendente01', md5('stuvwx'));
+INSERT INTO usuario (login, senha) VALUES ('atendente02', md5('010203'));
+INSERT INTO usuario (login, senha) VALUES ('atendente03', md5('yzabcd'));
+INSERT INTO usuario (login, senha) VALUES ('cliente01', md5('012345'));
+INSERT INTO usuario (login, senha) VALUES ('cliente02', md5('abcdef'));
+INSERT INTO usuario (login, senha) VALUES ('cliente03', md5('654321'));
+INSERT INTO usuario (login, senha) VALUES ('instrutor01', md5('ghijkl'));
+INSERT INTO usuario (login, senha) VALUES ('instrutor02', md5('123456'));
+INSERT INTO usuario (login, senha) VALUES ('instrutor03', md5('mnopqr'));
+INSERT INTO usuario (login, senha) VALUES ('instrutor04', md5('678910'));
 
 
 
