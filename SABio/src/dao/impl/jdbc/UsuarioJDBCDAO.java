@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import vo.ObjectVO;
-import vo.UserVO;
+import vo.UsuarioVO;
 import dao.DAOException;
 import dao.spec.IUsuarioDAO;
 
@@ -18,7 +18,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
     }
 
     public void update(ObjectVO vo) throws DAOException {
-        UserVO user = (UserVO) vo;
+        UsuarioVO user = (UsuarioVO) vo;
         String sql = "UPDATE " + this.getTableName()
                 + " SET LOGIN = ?, SENHA = ?";
         try {
@@ -36,7 +36,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
                 + " (LOGIN, SENHA) VALUES (?,?)";
         try {
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-            UserVO user = (UserVO) vo;
+            UsuarioVO user = (UsuarioVO) vo;
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getSenha());
             stmt.executeUpdate();
@@ -72,13 +72,13 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         try {
             String login = rs.getString("LOGIN");
             String senha = rs.getString("SENHA");
-            return new UserVO(login, senha);
+            return new UsuarioVO(login, senha);
         } catch (SQLException e) {
             throw new DAOException(e);
         }
     }
 
-    public final UserVO selectByLogin(String login) throws DAOException {
+    public final UsuarioVO selectByLogin(String login) throws DAOException {
         ObjectVO vo = null;
         String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"
                 + login + "'";
@@ -91,6 +91,6 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         } catch (SQLException e) {
             throw new DAOException(e);
         }
-        return (UserVO) vo;
+        return (UsuarioVO) vo;
     }
 }

@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import util.Configuration;
-import vo.UserVO;
+import vo.UsuarioVO;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
 
@@ -201,7 +201,7 @@ public class Login extends JFrame {
 
 		boolean isAuthenticated = false;
 		IUsuario user = SABioFactory.getInstance().getUser();
-		UserVO vo = new UserVO(login, senha);
+		UsuarioVO vo = new UsuarioVO(login, senha);
 		try {
 			isAuthenticated = user.authenticate(vo);
 		} catch (Exception e) {

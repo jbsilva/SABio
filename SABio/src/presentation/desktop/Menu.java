@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 import vo.TreinoVO;
-import vo.UserVO;
+import vo.UsuarioVO;
 import sabio.SABioException;
 import sabio.SABioFactory;
 import sabio.spec.ITreino;
@@ -146,7 +146,7 @@ public class Menu extends JFrame {
 		try {
 			String login = Login.getInstance().getLogin();
 			IUsuario user = factory.getUser();
-			UserVO userVO = user.getUsuarioByLogin(login);
+			UsuarioVO userVO = user.getUsuarioByLogin(login);
 			ITreino account = factory.getAccount();
 			TreinoVO accountVO = account.getTreinoByUsuario(userVO.getId());
 			header = new String[2];
@@ -179,7 +179,7 @@ public class Menu extends JFrame {
 			data = new String[size][2];
 
 			for (int i = 0; i < size; i++) {
-				UserVO vo = (UserVO) list.get(i);
+				UsuarioVO vo = (UsuarioVO) list.get(i);
 				data[i][0] = vo.getLogin();
 				data[i][1] = vo.getNome();
 			}

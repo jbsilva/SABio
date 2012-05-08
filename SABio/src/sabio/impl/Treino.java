@@ -1,12 +1,11 @@
 package sabio.impl;
 
-import java.util.List;
-
-import vo.TreinoVO;
-import sabio.SABioException;
-import sabio.spec.ITreino;
 import dao.DAOFactory;
 import dao.spec.ITreinoDAO;
+import java.util.List;
+import sabio.SABioException;
+import sabio.spec.ITreino;
+import vo.TreinoVO;
 
 public class Treino implements ITreino {
 

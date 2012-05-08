@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import vo.TreinoVO;
-import vo.UserVO;
+import vo.UsuarioVO;
 import sabio.SABioFactory;
 import sabio.spec.ITreino;
 import sabio.spec.IUsuario;
@@ -20,29 +20,29 @@ public class Client {
         ITreino account = factory.getAccount();
         List userList;
         List accountList;
-        UserVO userVO;
+        UsuarioVO userVO;
         TreinoVO accountVO;
         Iterator iterator;
 
-        userVO = new UserVO("admin", "admin");
+        userVO = new UsuarioVO("admin", "admin");
         user.authenticate(userVO);
 
         userList = user.getAll();
         iterator = userList.iterator();
 
         while (iterator.hasNext()) {
-            userVO = (UserVO) iterator.next();
+            userVO = (UsuarioVO) iterator.next();
             System.out.println(userVO);
         }
 
         if (userList.size() > 1) {
             // Atualizando o segundo
-            userVO = (UserVO) userList.get(1);
+            userVO = (UsuarioVO) userList.get(1);
             userVO.setName("Atualizado");
             System.out.println("Updating " + userVO);
             user.update(userVO);
             // Removendo o primeiro
-            userVO = (UserVO) userList.get(0);
+            userVO = (UsuarioVO) userList.get(0);
             int id = userVO.getId();
             accountVO = account.getTreinoByUsuario(id);
 
@@ -56,7 +56,7 @@ public class Client {
         }
 
         // criando um novo
-        userVO = new UserVO("admin"
+        userVO = new UsuarioVO("admin"
                 + Calendar.getInstance().getTime().getTime(), "admin",
                 "Administrador");
         System.out.println("Creating " + userVO);
