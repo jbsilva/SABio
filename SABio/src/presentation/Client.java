@@ -56,14 +56,9 @@ public class Client {
         }
 
         // criando um novo
-<<<<<<< HEAD
         userVO = new UsuarioVO("admin"
                 + Calendar.getInstance().getTime().getTime(), "admin",
                 "Administrador");
-=======
-        userVO = new UserVO("admin"
-                + Calendar.getInstance().getTime().getTime(), "admin");
->>>>>>> origin/master
         System.out.println("Creating " + userVO);
         user.create(userVO);
 
