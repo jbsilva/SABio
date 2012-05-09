@@ -59,6 +59,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 		}
 	}
 
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+  " WHERE ID=? ";
@@ -75,6 +76,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 		}
 	}
         
+    @Override
 	public AvaliacaoFisicaVO SelectByID(String ID) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
