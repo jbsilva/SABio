@@ -11,7 +11,6 @@ public interface IAtendenteDAO extends IGenericDAO {
     @Override
 	void insert(ObjectVO vo) throws DAOException;
 
-    @Override
 	int selectLastID() throws DAOException;
 
 	AtendenteVO SelectByLogin(String Login) throws DAOException;
