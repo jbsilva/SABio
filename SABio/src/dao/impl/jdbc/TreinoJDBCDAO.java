@@ -64,6 +64,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 		}
 	}
 
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+ " WHERE LOGIN =?";
@@ -79,6 +80,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 		}
 	}
         
+    @Override
 	public TreinoVO selectByUsuario(String Usuario) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()

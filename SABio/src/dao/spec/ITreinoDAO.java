@@ -1,10 +1,19 @@
 package dao.spec;
 
-import vo.TreinoVO;
+import java.util.List;
+
+import vo.ObjectVO;
 import dao.DAOException;
+import vo.TreinoVO;
 
-public interface ITreinoDAO extends IGenericDAO {
+public interface ITreinoDAO {
 
-	TreinoVO selectByUsuario(int id) throws DAOException;
+	void insert(ObjectVO vo) throws DAOException;
 
+	void update(ObjectVO vo) throws DAOException;
+
+	void delete(ObjectVO vo) throws DAOException;
+
+	 TreinoVO selectByUsuario(String Usuario) throws DAOException;
+         
 }

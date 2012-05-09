@@ -71,6 +71,7 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 		}
 	}
 
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+ " WHERE LOGIN=? ";
@@ -86,6 +87,7 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 		}
 	}
     
+    @Override
 	public ClienteVO SelectByLogin(String Login) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM  " + this.getTableName()

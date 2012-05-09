@@ -23,7 +23,7 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 			}
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url, user, senha);
-		} catch (Exception e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			throw new DAOException(e);
 		}
 	}
@@ -32,6 +32,7 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 		return connection;
 	}
 
+    @Override
 	public final int selectLastID() throws DAOException {
 		int lastID = 0;
 		String sql = "SELECT MAX(ID) FROM " + this.getTableName();
@@ -47,6 +48,7 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 		return lastID;
 	}
 
+    @Override
 	public final void delete(int id) throws DAOException {
 		try {
 			String sql = "DELETE FROM " + this.getTableName() + " WHERE ID = ?";
@@ -75,9 +77,10 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 		return vo;
 	}
 
+    @Override
 	public final List selectAll() throws DAOException {
 		String sql = "SELECT * FROM " + this.getTableName();
-		List<ObjectVO> list = new ArrayList<ObjectVO>();
+		List<ObjectVO> list = new ArrayList<>();
 		try {
 			Statement stmt = this.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

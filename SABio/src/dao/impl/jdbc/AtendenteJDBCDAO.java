@@ -65,6 +65,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
 		}
 	}
     
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+ " WHERE LOGIN=? ";
@@ -80,6 +81,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
 		}
 	}
     
+    @Override
 	public AtendenteVO SelectByLogin(String Login) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()

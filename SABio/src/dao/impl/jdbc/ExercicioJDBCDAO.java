@@ -56,6 +56,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 		}
 	}
 
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+ " WHERE EXERCICIO =?";
@@ -71,6 +72,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 		}
 	}
         
+    @Override
 	public ExercicioVO selectByExercicio(String exer) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
