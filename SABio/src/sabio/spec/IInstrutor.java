@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.InstrutorVO;
 import sabio.SABioException;
+import vo.InstrutorVO;
 
 public interface IInstrutor {
 

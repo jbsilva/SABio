@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.AvaliacaoFisicaVO;
 import sabio.SABioException;
+import vo.AvaliacaoFisicaVO;
 
 public interface IAvaliacaoFisica {
 

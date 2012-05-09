@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.ClienteVO;
 import sabio.SABioException;
+import vo.ClienteVO;
 
 public interface ICliente {
 

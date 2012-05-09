@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.ExercicioVO;
 import sabio.SABioException;
+import vo.ExercicioVO;
 
 public interface IExercicio {
 

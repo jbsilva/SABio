@@ -1,23 +1,17 @@
 package dao.spec;
 
-import java.util.List;
-
-import vo.ObjectVO;
 import dao.DAOException;
+import java.util.List;
+import vo.ObjectVO;
 
 public interface IGenericDAO {
-
-	void insert(ObjectVO vo) throws DAOException;
-
-<<<<<<< HEAD
+    
+    	List<Object> selectAll() throws DAOException;
+        
 	int selectLastID() throws DAOException;
+	ObjectVO selectByLogin(String login) throws DAOException;
 
-	ObjectVO selectByLogin(String Login) throws DAOException;
-
-=======
->>>>>>> origin/master
-	void delete(int id) throws DAOException;
-
+        void insert(ObjectVO vo) throws DAOException;
+	void delete(ObjectVO vo) throws DAOException;
 	void update(ObjectVO vo) throws DAOException;
-
 }

@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.TreinoVO;
 import sabio.SABioException;
+import vo.TreinoVO;
 
 public interface ITreino {
 

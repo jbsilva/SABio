@@ -15,5 +15,5 @@ public interface ITreinoDAO {
 	void delete(ObjectVO vo) throws DAOException;
 
 	 TreinoVO selectByLogin(String Login) throws DAOException;
-         
+         TreinoVO selectByTreinoId(int treino_id) throws DAOException;       
 }

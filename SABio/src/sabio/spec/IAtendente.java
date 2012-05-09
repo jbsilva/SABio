@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.AtendenteVO;
 import sabio.SABioException;
+import vo.AtendenteVO;
 
 public interface IAtendente {
 

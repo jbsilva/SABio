@@ -1,9 +1,8 @@
 package sabio.spec;
 
 import java.util.List;
-
-import vo.UsuarioVO;
 import sabio.SABioException;
+import vo.UsuarioVO;
 
 public interface IUsuario {
 
