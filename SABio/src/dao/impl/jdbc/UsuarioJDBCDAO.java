@@ -17,21 +17,6 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
     }
 
     @Override
-    public void update(ObjectVO vo) throws DAOException {
-        UsuarioVO user = (UsuarioVO) vo;
-        String sql = "UPDATE " + this.getTableName()
-                + " SET LOGIN = ?, SENHA = ?";
-        try {
-            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-            stmt.setString(1, user.getLogin());
-            stmt.setString(2, user.getSenha());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new DAOException(e);
-        }
-    }
-
-    @Override
     public void insert(ObjectVO vo) throws DAOException {
         String sql = "INSERT INTO " + this.getTableName()
                 + " (LOGIN, SENHA) VALUES (?,?)";
@@ -44,6 +29,56 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         } catch (SQLException e) {
             throw new DAOException(e);
         }
+    }
+    
+    @Override
+    public void update(ObjectVO vo) throws DAOException {
+        UsuarioVO user = (UsuarioVO) vo;
+        String sql = "UPDATE " + this.getTableName()
+                + "SENHA = ? WHERE LOGIN = ?";
+        try {
+            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
+            
+            stmt.setString(1, user.getSenha());
+            stmt.setString(2, user.getLogin());
+            
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+    
+    public void delete(ObjectVO vo) throws DAOException {
+        UsuarioVO user = (UsuarioVO) vo;
+        String sql = "DELETE " + this.getTableName()
+                + "WHERE LOGIN = ?";
+		try {
+                        UsuarioVO usuario = (UsuarioVO) vo;
+			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
+			
+			stmt.setString(1, usuario.getLogin());
+                        
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+    
+    @Override
+    public final UsuarioVO selectByLogin(String login) throws DAOException {
+        ObjectVO vo = null;
+        String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"
+                + login + "'";
+        try {
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                vo = this.createVO(rs);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return (UsuarioVO) vo;
     }
 
     @Override
@@ -81,21 +116,5 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
             throw new DAOException(e);
         }
     }
-
-    @Override
-    public final UsuarioVO selectByLogin(String login) throws DAOException {
-        ObjectVO vo = null;
-        String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"
-                + login + "'";
-        try {
-            Statement stmt = this.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                vo = this.createVO(rs);
-            }
-        } catch (SQLException e) {
-            throw new DAOException(e);
-        }
-        return (UsuarioVO) vo;
-    }
 }
+
