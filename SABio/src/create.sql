@@ -65,22 +65,6 @@ CREATE TABLE cliente
 );
 
 
-CREATE TABLE treino
-(
-    login         VARCHAR(15),
-    treino_id     INTEGER,
-    tipo_treino   VARCHAR(15),
-    data_inicio   DATE,
-    nivel         INTEGER,
-    numero_dias   INTEGER,
-    nome_treino   VARCHAR(20),
-    carga         INTEGER CONSTRAINT treino_carga_nn NOT NULL,
-    numero_series INTEGER CONSTRAINT treino_numero_series_nn NOT NULL,
-    CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
-    CONSTRAINT treino_pk PRIMARY KEY (treino_id)
-);
-
-
 CREATE TABLE avaliacao_fisica
 (
     login_cliente         VARCHAR (15),
@@ -93,6 +77,21 @@ CREATE TABLE avaliacao_fisica
     CONSTRAINT af_id_pk PRIMARY KEY (id)
 );
 
+CREATE TABLE treino
+(
+    login         VARCHAR(15),
+    treino_id     INTEGER,
+    tipo_treino   VARCHAR(15),
+    data_inicio   DATE,
+    nivel         INTEGER,
+    numero_dias   INTEGER,
+    nome_treino   VARCHAR(20),
+    carga         INTEGER CONSTRAINT treino_carga_nn NOT NULL,
+    numero_series INTEGER CONSTRAINT treino_numero_series_nn NOT NULL,
+    CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
+    CONSTRAINT treino_pk PRIMARY KEY (treino_id, login)
+);
+
 
 CREATE TABLE exercicio
 (
@@ -100,29 +99,10 @@ CREATE TABLE exercicio
     carga            INTEGER CONSTRAINT ex_carga_nn NOT NULL,
     numero_de_series INTEGER CONSTRAINT ex_nds_nn NOT NULL,
     exercicio        VARCHAR (20),
-    cpf_cliente      VARCHAR (11),
     login_cliente    VARCHAR (15),
-    CONSTRAINT ex_id_fk FOREIGN KEY (id_ex, cpf_cliente, login_cliente)
-    REFERENCES treino(treino_id, cpf, login),
-    CONSTRAINT ex_exid_pk PRIMARY KEY (exercicio, id_ex, cpf_cliente,
-    login_cliente)
-);
-
-
-CREATE TABLE supervisiona
-(
-    cpf_cliente           VARCHAR (11),
-    login_cliente         VARCHAR (15),
-    login_instrutor       VARCHAR (15),
-    cpf_instrutor         VARCHAR (11),
-    registro_profissional VARCHAR (20),
-    id_super              INTEGER,
-    CONSTRAINT super_rp_fk FOREIGN KEY (registro_profissional, cpf_instrutor,
-    login_instrutor) REFERENCES instrutor(registro_profissional, cpf, login),
-    CONSTRAINT super_id_fk FOREIGN KEY (id_super, cpf_cliente, login_cliente)
-    REFERENCES treino(treino_id, cpf, login),
-    CONSTRAINT super_rpid_pk PRIMARY KEY (registro_profissional, id_super,
-    cpf_cliente, login_cliente, cpf_instrutor, login_instrutor)
+    CONSTRAINT ex_id_fk FOREIGN KEY (id_ex, login_cliente)
+    REFERENCES treino(treino_id, login),
+    CONSTRAINT ex_pk PRIMARY KEY (id_ex, exercicio, login_cliente)
 );
 
 
@@ -167,36 +147,25 @@ VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', 34210000
 
 
 
-INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente01', 1, '37513012911', 'supino', '2012-01-01', 2, 3, 'supino inclinado', 50, 10);
-INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente02', 2, '29642217589', 'agachamento', '2012-01-01', 1, 4, 'agachamento', 30, 10);
-INSERT INTO treino (login, treino_id, cpf, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente03', 3, '71224314875', 'tipo2', '2012-01-01', 2, 3, 'crucifixo', 10, 10);
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
+VALUES('cliente01', 1, 'supino', '2012-01-01', 2, 3, 'supino inclinado', 50, 10);
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
+VALUES('cliente02', 2, 'agachamento', '2012-01-01', 1, 4, 'agachamento', 30, 10);
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
+VALUES('cliente03', 3, 'tipo2', '2012-01-01', 2, 3, 'crucifixo', 10, 10);
 
 
-INSERT INTO avaliacao_fisica (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor,
-    registro_profissional, id, data_realizacao, observacoes)
-VALUES ('37513012911', 'cliente01', 'instrutor01', '48288636489', 'reg01', '1', '2012-01-01', 'Tudo ok');
+INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
+VALUES ('cliente01', 'instrutor01', '1', '2012-01-01', 'Tudo ok');
 
 
 
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
-VALUES (1, 3 , 5, 'supino', '37513012911','cliente01');
+INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+VALUES (1, 3 , 5, 'supino', 'cliente01');
 
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
-VALUES (2, 5 , 2, 'flexao', '29642217589','cliente02');
-
-
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, cpf_cliente, login_cliente)
-VALUES (3, 4 , 4, 'agachamento', '71224314875','cliente03');
+INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+VALUES (2, 5 , 2, 'flexao', 'cliente02');
 
 
-INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
-VALUES ('37513012911','cliente01','instrutor01', '48288636489','reg01', 1);
-
-INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
-VALUES ('29642217589','cliente02','instrutor02', '15558633700','reg02', 2);
- 
-INSERT INTO supervisiona (cpf_cliente, login_cliente, login_instrutor, cpf_instrutor, registro_profissional, id_super)
-VALUES ('71224314875','cliente03','instrutor03', '96565461309','reg03', 3);
+INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+VALUES (3, 4 , 4, 'agachamento', 'cliente03');
