@@ -1,9 +1,7 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
-import dao.DAOFactory;
-import dao.spec.ITreinoDAO;
-import dao.spec.IUsuarioDAO;
+import dao.spec.IAtendenteDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +13,7 @@ import vo.AtendenteVO;
 import vo.ObjectVO;
 
 
-public class AtendenteJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
+public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
 
 	public AtendenteJDBCDAO(Properties properties) throws DAOException {
 		super(properties);
@@ -23,8 +21,8 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 
     @Override
 	public void insert(ObjectVO vo) throws DAOException {
-		String sql = "UPDATE " + this.getTableName()
-				+ " (LOGIN, NOME, CPF, RG, ENDERECO, NUMERO_CARTEIRA_TRABALHO, DATA_CONTRATACAO) = (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO " + this.getTableName()
+				+ " (LOGIN, NOME, CPF, RG, ENDERECO, NUMERO_CARTEIRA_TRABALHO, DATA_CONTRATACAO) VALUES (?,?,?,?,?,?,?)";
 		try {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
@@ -37,6 +35,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
                         stmt.setString(6, atendente.getNumeroCarteiraTrabalho());
                         Date dt = new Date(atendente.getDataContratacao().getTime().getTime());
 			stmt.setDate(7, dt);
+                        
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -46,45 +45,61 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
     @Override
 	public void update(ObjectVO vo) throws DAOException {
 		String sql = "UPDATE " + this.getTableName()
-				+ " (LOGIN, NOME, CPF, RG, ENDERECO, NUMERO_CARTEIRA_TRABALHO, DATA_CONTRATACAO) = (?,?,?,?,?,?,?)";
+				+ " SET NOME=?, CPF=?, RG=?, ENDERECO=?, NUMERO_CARTEIRA_TRABALHO=?, DATA_CONTRATACAO=? WHERE LOGIN=? ";
 		try {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-			
-			stmt.setString(1, atendente.getUsuario());
-			stmt.setString(2, atendente.getNome());
-			stmt.setString(3, atendente.getCPF());
-                        stmt.setString(4, atendente.getRG());
-                        stmt.setString(5, atendente.getEndereco());
-                        stmt.setString(6, atendente.getNumeroCarteiraTrabalho());
+						
+			stmt.setString(1, atendente.getNome());
+			stmt.setString(2, atendente.getCPF());
+                        stmt.setString(3, atendente.getRG());
+                        stmt.setString(4, atendente.getEndereco());
+                        stmt.setString(5, atendente.getNumeroCarteiraTrabalho());
                         Date dt = new Date(atendente.getDataContratacao().getTime().getTime());
-			stmt.setDate(7, dt);
+			stmt.setDate(6, dt);
+                        stmt.setString(7, atendente.getUsuario());
+                        
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 	}
     
-	public void SelectByUsuario(ObjectVO vo) throws DAOException {
-		String sql = "UPDATE " + this.getTableName()
-				+ " (LOGIN, NOME, CPF, RG, ENDERECO, NUMERO_CARTEIRA_TRABALHO, DATA_CONTRATACAO) = (?,?,?,?,?,?,?)";
+	public void delete(ObjectVO vo) throws DAOException {
+		String sql = "DELETE " + this.getTableName()
+				+ " WHERE LOGIN=? ";
 		try {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
 			stmt.setString(1, atendente.getUsuario());
-			stmt.setString(2, atendente.getNome());
-			stmt.setString(3, atendente.getCPF());
-                        stmt.setString(4, atendente.getRG());
-                        stmt.setString(5, atendente.getEndereco());
-                        stmt.setString(6, atendente.getNumeroCarteiraTrabalho());
-                        Date dt = new Date(atendente.getDataContratacao().getTime().getTime());
-			stmt.setDate(7, dt);
+                        
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 	}
+    
+	public AtendenteVO SelectByLogin(String Login) throws DAOException {
+                ObjectVO vo = null;
+		String sql = "SELECT * FROM " + this.getTableName()
+				+ " WHERE LOGIN=? ";
+		try {
+                        AtendenteVO atendente = (AtendenteVO) vo;
+			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
+			
+			stmt.setString(1, atendente.getUsuario());
+
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				return (AtendenteVO) createVO(rs);
+			}
+		} catch (SQLException | DAOException e) {
+			throw new DAOException(e);
+		}
+		return null;
+	}
+
 
     @Override
 	public String getTableName() {
