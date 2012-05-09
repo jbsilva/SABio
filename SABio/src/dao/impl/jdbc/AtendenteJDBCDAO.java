@@ -1,7 +1,9 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
+import dao.DAOFactory;
 import dao.spec.IAtendenteDAO;
+import dao.spec.IUsuarioDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.Properties;
 import vo.AtendenteVO;
 import vo.ObjectVO;
+import vo.UsuarioVO;
 
 
 public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
@@ -27,7 +30,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, atendente.getUsuario());
+			stmt.setString(1, atendente.getUsuario().getLogin());
 			stmt.setString(2, atendente.getNome());
 			stmt.setString(3, atendente.getCPF());
                         stmt.setString(4, atendente.getRG());
@@ -57,7 +60,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
                         stmt.setString(5, atendente.getNumeroCarteiraTrabalho());
                         Date dt = new Date(atendente.getDataContratacao().getTime().getTime());
 			stmt.setDate(6, dt);
-                        stmt.setString(7, atendente.getUsuario());
+                        stmt.setString(7, atendente.getUsuario().getLogin());
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -73,7 +76,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, atendente.getUsuario());
+			stmt.setString(1, atendente.getUsuario().getLogin());
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -90,7 +93,7 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
                         AtendenteVO atendente = (AtendenteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, atendente.getUsuario());
+			stmt.setString(1, atendente.getUsuario().getLogin());
 
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -122,7 +125,10 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
                         Calendar cal = new GregorianCalendar();
 			cal.setTime(dt);
                         
-			return new AtendenteVO(login, nome, cpf, rg, endereco, numero_carteira_trabalho, cal);
+                        IUsuarioDAO userDAO = DAOFactory.getInstance().getUsuarioDAO();
+			UsuarioVO user = (UsuarioVO) userDAO.selectByLogin(login);
+                        
+			return new AtendenteVO(user, nome, cpf, rg, endereco, numero_carteira_trabalho, cal);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
