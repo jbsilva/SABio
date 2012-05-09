@@ -1,85 +1,113 @@
 package dao.impl.jdbc;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Properties;
-
-import vo.TreinoVO;
-import vo.ObjectVO;
-import vo.UsuarioVO;
 import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.ITreinoDAO;
 import dao.spec.IUsuarioDAO;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Properties;
+import vo.ObjectVO;
+import vo.TreinoVO;
 
-class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
+
+public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 
 	public TreinoJDBCDAO(Properties properties) throws DAOException {
 		super(properties);
 	}
 
+    @Override
+	public void insert(ObjectVO vo) throws DAOException {
+		String sql = "UPDATE " + this.getTableName()
+				+ " (LOGIN, TREINO_ID, TIPO_TREINO, DATA_INICIO, NIVEL, NUMERO_DIAS, NOME_TREINO) = (?,?,?,?,?,?,?)";
+		try {
+                        TreinoVO treino = (TreinoVO) vo;
+			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
+			
+			stmt.setString(1, treino.getCliente());
+			stmt.setInt(2, treino.getTreinoId());
+			stmt.setString(3, treino.getTipoTreino());
+                        Date dt = new Date(treino.getDataInicio().getTime().getTime());
+			stmt.setDate(4, dt);
+                        stmt.setInt(5, treino.getNivel());
+                        stmt.setInt(6, treino.getNumeroDias());
+                        stmt.setString(7, treino.getNomeTreino());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+
+    @Override
 	public void update(ObjectVO vo) throws DAOException {
 		String sql = "UPDATE " + this.getTableName()
-				+ " SET NUMERO = ?, SALDO = ?, USUARIO_ID = ? WHERE ID = ?";
+				+ " (LOGIN, TREINO_ID, TIPO_TREINO, DATA_INICIO, NIVEL, NUMERO_DIAS, NOME_TREINO) = (?,?,?,?,?,?,?)";
 		try {
+                        TreinoVO treino = (TreinoVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-			TreinoVO account = (TreinoVO) vo;
-			stmt.setString(1, account.getNumero());
-			stmt.setDouble(2, account.getSaldo());
-			stmt.setInt(3, account.getUsuario().getId());
-			stmt.setInt(4, account.getId());
+			
+			stmt.setString(1, treino.getCliente());
+			stmt.setInt(2, treino.getTreinoId());
+			stmt.setString(3, treino.getTipoTreino());
+                        Date dt = new Date(treino.getDataInicio().getTime().getTime());
+			stmt.setDate(4, dt);
+                        stmt.setInt(5, treino.getNivel());
+                        stmt.setInt(6, treino.getNumeroDias());
+                        stmt.setString(7, treino.getNomeTreino());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 	}
 
-	public void insert(ObjectVO vo) throws DAOException {
-		String sql = "INSERT INTO " + this.getTableName()
-				+ " (LOGIN, SENHA) VALUES (?,?)";
+	public void selectByUsuario(ObjectVO vo) throws DAOException {
+		String sql = "UPDATE " + this.getTableName()
+				+ " (LOGIN, TREINO_ID, TIPO_TREINO, DATA_INICIO, NIVEL, NUMERO_DIAS, NOME_TREINO) = (?,?,?,?,?,?,?)";
 		try {
-			TreinoVO account = (TreinoVO) vo;
+                        TreinoVO treino = (TreinoVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-			stmt.setString(1, account.getNumero());
-			stmt.setDouble(2, account.getSaldo());
-			stmt.setInt(3, account.getUsuario().getId());
+			
+			stmt.setString(1, treino.getCliente());
+			stmt.setInt(2, treino.getTreinoId());
+			stmt.setString(3, treino.getTipoTreino());
+                        Date dt = new Date(treino.getDataInicio().getTime().getTime());
+			stmt.setDate(4, dt);
+                        stmt.setInt(5, treino.getNivel());
+                        stmt.setInt(6, treino.getNumeroDias());
+                        stmt.setString(7, treino.getNomeTreino());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 	}
 
-	public TreinoVO selectByUsuario(int id) throws DAOException {
-		TreinoVO vo = null;
-		String sql = "SELECT * FROM " + this.getTableName()
-				+ " WHERE USUARIO_ID = " + id;
-		try {
-			Statement stmt = this.getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			if (rs.next()) {
-				vo = (TreinoVO) this.createVO(rs);
-			}
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-		return vo;
-	}
 
+    @Override
 	public String getTableName() {
-		return "treino";
+		return "TREINO";
 	}
 
+    @Override
 	protected ObjectVO createVO(ResultSet rs) throws DAOException {
 		try {
-			int id = rs.getInt("ID");
-			String number = rs.getString("NUMERO");
-			float balance = rs.getFloat("SALDO");
-			int userID = rs.getInt("USUARIO_ID");
+			String login = rs.getString("LOGIN");
+			int treino_id = rs.getInt("TREINO_ID");
+			String tipo_treino = rs.getString("SALDO");
+                        Date dt = rs.getDate("DATA_INICIO");
+                        int nivel = rs.getInt("NIVEL");
+			int numero_dias = rs.getInt("NUMERO_DIAS");
+                        String nome_treino = rs.getString("NOME_TREINO");
 			IUsuarioDAO userDAO = DAOFactory.getInstance().getUserDAO();
-			UsuarioVO user = (UsuarioVO) userDAO.selectByID(userID);
-			return new TreinoVO(id, number, new Double(balance), user);
+                        
+                        Calendar cal = new GregorianCalendar();
+			cal.setTime(dt);
+                        
+			return new TreinoVO(login, treino_id, tipo_treino, cal, nivel, numero_dias, nome_treino);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}

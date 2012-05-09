@@ -82,8 +82,6 @@ CREATE TABLE treino
     nivel         INTEGER,
     numero_dias   INTEGER,
     nome_treino   VARCHAR(20),
-    carga         INTEGER CONSTRAINT treino_carga_nn NOT NULL,
-    numero_series INTEGER CONSTRAINT treino_numero_series_nn NOT NULL,
     CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
     CONSTRAINT treino_pk PRIMARY KEY (treino_id, login)
 );

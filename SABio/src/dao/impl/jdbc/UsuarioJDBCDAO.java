@@ -1,15 +1,14 @@
 package dao.impl.jdbc;
 
+import dao.DAOException;
+import dao.spec.IUsuarioDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
 import vo.ObjectVO;
 import vo.UsuarioVO;
-import dao.DAOException;
-import dao.spec.IUsuarioDAO;
 
 public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
 
@@ -17,6 +16,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         super(properties);
     }
 
+    @Override
     public void update(ObjectVO vo) throws DAOException {
         UsuarioVO user = (UsuarioVO) vo;
         String sql = "UPDATE " + this.getTableName()
@@ -31,6 +31,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         }
     }
 
+    @Override
     public void insert(ObjectVO vo) throws DAOException {
         String sql = "INSERT INTO " + this.getTableName()
                 + " (LOGIN, SENHA) VALUES (?,?)";
@@ -45,6 +46,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         }
     }
 
+    @Override
     public boolean checkLoginSenha(String login, String senha)
             throws DAOException {
         boolean isAuthenticated = false;
@@ -64,10 +66,12 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         return isAuthenticated;
     }
 
+    @Override
     public String getTableName() {
         return "USUARIO";
     }
 
+    @Override
     protected ObjectVO createVO(ResultSet rs) throws DAOException {
         try {
             String login = rs.getString("LOGIN");
@@ -78,6 +82,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         }
     }
 
+    @Override
     public final UsuarioVO selectByLogin(String login) throws DAOException {
         ObjectVO vo = null;
         String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"

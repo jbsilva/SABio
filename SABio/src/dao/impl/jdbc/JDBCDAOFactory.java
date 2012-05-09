@@ -1,11 +1,10 @@
 package dao.impl.jdbc;
 
-import java.util.Properties;
-
 import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.ITreinoDAO;
 import dao.spec.IUsuarioDAO;
+import java.util.Properties;
 
 public class JDBCDAOFactory extends DAOFactory {
 
@@ -15,10 +14,12 @@ public class JDBCDAOFactory extends DAOFactory {
 		this.properties = properties;
 	}
 
+    @Override
 	public IUsuarioDAO getUserDAO() throws DAOException {
-		return new UsuarioJDBCDAO(this.properties);
+		return new UsuarioJDBCDAO(this.properties) {};
 	}
 
+    @Override
 	public ITreinoDAO getAccountDAO() throws DAOException {
 		return new TreinoJDBCDAO(this.properties);
 	}

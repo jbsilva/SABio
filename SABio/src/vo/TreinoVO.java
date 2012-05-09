@@ -5,24 +5,22 @@ import java.util.Calendar;
 
 public class TreinoVO extends ObjectVO {
 
-    private ClienteVO cliente;
+    private String cliente;
     private int treino_id;
     private String tipo_treino;
-    Calendar data_inicio;
+    private Calendar data_inicio;
     private int nivel;
     private int numero_dias;
     private String nome_treino;
-    private int carga;
-    private int numero_series;
 
     public TreinoVO()
     {
         super();
     }
 
-    public TreinoVO(ClienteVO cliente, int treino_id, String tipo_treino,
+    public TreinoVO(String cliente, int treino_id, String tipo_treino,
             Calendar data_inicio, int nivel, int numero_dias,
-            String nome_treino, int carga, int numero_series)
+            String nome_treino)
     {
         super();
         this.cliente = cliente;
@@ -32,16 +30,14 @@ public class TreinoVO extends ObjectVO {
         this.nivel = nivel;
         this.numero_dias = numero_dias;
         this.nome_treino = nome_treino;
-        this.carga = carga;
-        this.numero_series = numero_series;
     }
 
     //String ou ClienteVO?
-    public ClienteVO getCliente() {
+    public String getCliente() {
         return this.cliente;
     }
 
-    public void setCliente(ClienteVO cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
@@ -105,26 +101,6 @@ public class TreinoVO extends ObjectVO {
         this.nome_treino = nome_treino;
     }
 
-    public int getCarga()
-    {
-        return this.carga;
-    }
-
-    public void setCarga(int carga)
-    {
-        this.carga = carga;
-    }
-
-    public int getNumeroSeries()
-    {
-        return this.numero_series;
-    }
-
-    public void setNumeroSeries(int numero_series)
-    {
-        this.numero_series = numero_series;
-    }
-
     @Override
     public String toString()
     {
@@ -144,10 +120,6 @@ public class TreinoVO extends ObjectVO {
         buffer.append(this.getNumeroDias());
         buffer.append(", Nome = ");
         buffer.append(this.getNomeTreino());
-        buffer.append(", Carga = ");
-        buffer.append(this.getCarga());
-        buffer.append(", Numero Series = ");
-        buffer.append(this.getNumeroSeries());
         buffer.append("]");
         return buffer.toString();
     }
