@@ -14,7 +14,6 @@ CREATE TABLE usuario
     senha CHAR(32) CONSTRAINT usuario_senha_nn NOT NULL
 );
 
-
 CREATE TABLE instrutor
 (
     login                    VARCHAR(15),
@@ -31,7 +30,6 @@ CREATE TABLE instrutor
     CONSTRAINT instrutor_pk PRIMARY KEY (login)
 );
 
-
 CREATE TABLE atendente
 (
     login                       VARCHAR(15),
@@ -45,7 +43,6 @@ CREATE TABLE atendente
     CONSTRAINT atendente_fk FOREIGN KEY (login) REFERENCES usuario(login),
     CONSTRAINT atendente_pk PRIMARY KEY (login)
 );
-
 
 CREATE TABLE cliente
 (
@@ -63,7 +60,6 @@ CREATE TABLE cliente
     CONSTRAINT cliente_fk FOREIGN KEY (login) REFERENCES usuario(login),
     CONSTRAINT cliente_pk PRIMARY KEY (login)
 );
-
 
 CREATE TABLE avaliacao_fisica
 (
@@ -92,7 +88,6 @@ CREATE TABLE treino
     CONSTRAINT treino_pk PRIMARY KEY (treino_id, login)
 );
 
-
 CREATE TABLE exercicio
 (
     id_ex            INTEGER,
@@ -118,7 +113,6 @@ INSERT INTO usuario (login, senha) VALUES ('instrutor03', md5('mnopqr'));
 INSERT INTO usuario (login, senha) VALUES ('instrutor04', md5('678910'));
 
 
-
 INSERT INTO instrutor (login, nome, cpf, rg, endereco, carga_horaria,numero_carteira_trabalho, registro_profissional, data_contratacao)
 VALUES ('instrutor01', 'ronaldo', '48288636489', '911225341', 'sao carlos', 6, '100', 'reg01', '2007-05-22');
 INSERT INTO instrutor (login, nome, cpf, rg, endereco, carga_horaria, numero_carteira_trabalho, registro_profissional, data_contratacao)
@@ -137,14 +131,12 @@ INSERT INTO atendente (login, nome, cpf, rg, endereco, numero_carteira_trabalho,
 VALUES ('atendente03', 'julio', '88962615703', '403289440', 'sao paulo', '700', '10-07-2000');
 
 
-
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente01', 'andre', '37513012911', '429434121', '2008-07-28', 39210605, 'em dia', '1990-05-10', 'janeiro', True);
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente02', 'tulio', '29642217589', '433279470', '2008-07-28', 34156000, 'em dia', '1989-05-10', 'fevereiro, março', True);
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', 34210000, 'em dia', '1989-05-10', '', False);
-
 
 
 INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
@@ -159,13 +151,9 @@ INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizaca
 VALUES ('cliente01', 'instrutor01', '1', '2012-01-01', 'Tudo ok');
 
 
-
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
 VALUES (1, 3 , 5, 'supino', 'cliente01');
-
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
 VALUES (2, 5 , 2, 'flexao', 'cliente02');
-
-
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
 VALUES (3, 4 , 4, 'agachamento', 'cliente03');
