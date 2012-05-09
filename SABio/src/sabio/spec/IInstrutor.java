@@ -6,16 +6,13 @@ import vo.InstrutorVO;
 
 public interface IInstrutor {
 
-	void create(InstrutorVO inst) throws SABioException;
+	void create(InstrutorVO instrutor) throws SABioException;
 
-	void delete(int id) throws SABioException;
+	void delete(String login) throws SABioException;
 
-	void update(InstrutorVO inst) throws SABioException;
-
-	InstrutorVO getInstrutor(int id) throws SABioException;
+	void update(InstrutorVO instrutor) throws SABioException;
 
 	InstrutorVO getInstrutorByLogin(String Login) throws SABioException;
 
 	List getAll() throws SABioException;
-
 }

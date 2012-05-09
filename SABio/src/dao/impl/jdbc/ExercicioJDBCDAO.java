@@ -73,7 +73,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 	}
         
     @Override
-	public ExercicioVO selectByExercicio(String exer) throws DAOException {
+	public ExercicioVO selectByNome(String nome_ex) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
 				+ " WHERE EXERCICIO =?";
@@ -81,7 +81,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
                         ExercicioVO exercicio = (ExercicioVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, exercicio.getExercicio());
+			stmt.setString(1, nome_ex);
                         
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {

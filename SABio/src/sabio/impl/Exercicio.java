@@ -3,50 +3,50 @@ package sabio.impl;
 import java.util.List;
 
 import dao.DAOFactory;
-import dao.spec.IUsuarioDAO;
+import dao.spec.IExercicioDAO;
 import sabio.SABioException;
-import sabio.spec.IUsuario;
-import vo.UsuarioVO;
+import sabio.spec.IExercicio;
+import vo.ExercicioVO;
 
-public class Exercicio implements IUsuario {
+public class Exercicio implements IExercicio {
 
-    public void delete(String login) throws SABioException {
+    public void delete(String nome_ex) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try
         {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            UsuarioVO user = getUsuario(login);
-            dao.delete(user);
+            IExercicioDAO dao = factory.getExercicioDAO();
+            ExercicioVO exercicio = getExercicioByNome(nome_ex);
+            dao.delete(exercicio);
         } catch (Exception e) {
             throw new SABioException(e);
         }
     }
 
-    public void create(UsuarioVO user) throws SABioException {
+    public void create(ExercicioVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            dao.insert(user);
+            IExercicioDAO dao = factory.getExercicioDAO();
+            dao.insert(vo);
         } catch (Exception e) {
             throw new SABioException(e);
         }
     }
 
-    public void update(UsuarioVO user) throws SABioException {
+    public void update(ExercicioVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            dao.update(user);
+            IExercicioDAO dao = factory.getExercicioDAO();
+            dao.update(vo);
         } catch (Exception e) {
             throw new SABioException(e);
         }
     }
 
-    public UsuarioVO getUsuario(String login) throws SABioException {
+    public ExercicioVO getExercicioByNome(String nome_ex) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            return (UsuarioVO) dao.selectByLogin(login);
+            IExercicioDAO dao = factory.getExercicioDAO();
+            return (ExercicioVO) dao.selectByNome(nome_ex);
         } catch (Exception e) {
             throw new SABioException(e);
         }
@@ -55,30 +55,9 @@ public class Exercicio implements IUsuario {
     public List getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
+            IExercicioDAO dao = factory.getExercicioDAO();
             return dao.selectAll();
         } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
-    public UsuarioVO getUsuarioByLogin(String login) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            return (UsuarioVO) dao.selectByLogin(login);
-        } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
-    public boolean authenticate(UsuarioVO user) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            return dao.checkLoginSenha(user.getLogin(), user.getSenha());
-        } catch (Exception e) {
-            e.printStackTrace();
             throw new SABioException(e);
         }
     }

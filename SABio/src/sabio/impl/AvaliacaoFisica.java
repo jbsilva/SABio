@@ -15,7 +15,7 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
         try
         {
             IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
-            AvaliacaoFisicaVO user = getAvaliacaoFisica(id);
+            AvaliacaoFisicaVO user = getAvaliacaoFisicaById(avaliacao_id);
             dao.delete(user);
         } catch (Exception e) {
             throw new SABioException(e);
@@ -58,27 +58,6 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
             IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
             return dao.selectAll();
         } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
-    public AvaliacaoFisicaVO getAvaliacaoFisicaByLogin(String login) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
-            return (AvaliacaoFisicaVO) dao.selectByLogin(login);
-        } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
-    public boolean authenticate(AvaliacaoFisicaVO user) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
-            return dao.checkLoginSenha(user.getLogin(), user.getSenha());
-        } catch (Exception e) {
-            e.printStackTrace();
             throw new SABioException(e);
         }
     }

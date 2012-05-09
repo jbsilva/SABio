@@ -8,14 +8,11 @@ public interface IExercicio {
 
 	void create(ExercicioVO vo) throws SABioException;
 
-	void delete(int id) throws SABioException;
+	void delete(String nome_ex) throws SABioException;
 
 	void update(ExercicioVO vo) throws SABioException;
 
-	ExercicioVO getExercicio(int id) throws SABioException;
-
-	ExercicioVO getExercicioByID(String Login) throws SABioException;
+	ExercicioVO getExercicioByNome(String nome_ex) throws SABioException;
 
 	List getAll() throws SABioException;
-
 }

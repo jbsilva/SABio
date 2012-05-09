@@ -91,11 +91,11 @@ CREATE TABLE exercicio
     id_ex            INTEGER,
     carga            INTEGER CONSTRAINT ex_carga_nn NOT NULL,
     numero_de_series INTEGER CONSTRAINT ex_nds_nn NOT NULL,
-    exercicio        VARCHAR (20),
+    nome_ex        VARCHAR (20),
     login_cliente    VARCHAR (15),
     CONSTRAINT ex_id_fk FOREIGN KEY (id_ex, login_cliente)
     REFERENCES treino(treino_id, login),
-    CONSTRAINT ex_pk PRIMARY KEY (id_ex, exercicio, login_cliente)
+    CONSTRAINT ex_pk PRIMARY KEY (id_ex, nome_ex, login_cliente)
 );
 
 
@@ -149,9 +149,9 @@ INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizaca
 VALUES ('cliente01', 'instrutor01', 1, '2012-01-01', 'Tudo ok');
 
 
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+INSERT INTO exercicio (id_ex, carga, numero_de_series, nome_ex, login_cliente)
 VALUES (1, 3 , 5, 'supino', 'cliente01');
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+INSERT INTO exercicio (id_ex, carga, numero_de_series, nome_ex, login_cliente)
 VALUES (2, 5 , 2, 'flexao', 'cliente02');
-INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)
+INSERT INTO exercicio (id_ex, carga, numero_de_series, nome_ex, login_cliente)
 VALUES (3, 4 , 4, 'agachamento', 'cliente03');
