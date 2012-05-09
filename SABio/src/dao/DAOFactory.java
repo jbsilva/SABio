@@ -1,9 +1,8 @@
 package dao;
 
-import util.Configuration;
 import dao.impl.jdbc.JDBCDAOFactory;
-import dao.spec.ITreinoDAO;
-import dao.spec.IUsuarioDAO;
+import dao.spec.*;
+import util.Configuration;
 
 abstract public class DAOFactory {
 
