@@ -6,16 +6,13 @@ import vo.AtendenteVO;
 
 public interface IAtendente {
 
-	void create(AtendenteVO vo) throws SABioException;
+    void create(AtendenteVO vo) throws SABioException;
 
-	void delete(int id) throws SABioException;
+    void delete(String login) throws SABioException;
 
-	void update(AtendenteVO vo) throws SABioException;
+    void update(AtendenteVO vo) throws SABioException;
 
-	AtendenteVO getAtendente(int id) throws SABioException;
+    AtendenteVO getAtendenteByLogin(String Login) throws SABioException;
 
-	AtendenteVO getAtendenteByLogin(String Login) throws SABioException;
-
-	List getAll() throws SABioException;
-
+    List getAll() throws SABioException;
 }

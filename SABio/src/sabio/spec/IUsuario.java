@@ -6,18 +6,17 @@ import vo.UsuarioVO;
 
 public interface IUsuario {
 
-	void delete(String Login) throws SABioException;
+    void delete(String Login) throws SABioException;
 
-	void create(UsuarioVO user) throws SABioException;
+    void create(UsuarioVO user) throws SABioException;
 
-	void update(UsuarioVO user) throws SABioException;
+    void update(UsuarioVO user) throws SABioException;
 
-	UsuarioVO getUsuario(String login) throws SABioException;
+    UsuarioVO getUsuario(String login) throws SABioException;
 
-	List getAll() throws SABioException;
+    List getAll() throws SABioException;
 
-	UsuarioVO getUsuarioByLogin(String login) throws SABioException;
+    UsuarioVO getUsuarioByLogin(String login) throws SABioException;
 
-	boolean authenticate(UsuarioVO user) throws SABioException;
-
+    boolean authenticate(UsuarioVO user) throws SABioException;
 }
