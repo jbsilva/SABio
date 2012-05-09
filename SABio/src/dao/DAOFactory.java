@@ -21,7 +21,17 @@ abstract public class DAOFactory {
 		return instance;
 	}
 
-	public abstract IUsuarioDAO getUserDAO() throws DAOException;
+	public abstract IUsuarioDAO getUsuarioDAO() throws DAOException;
 
-	public abstract ITreinoDAO getAccountDAO() throws DAOException;
+	public abstract IAtendenteDAO getAtendenteDAO() throws DAOException;
+
+	public abstract IClienteDAO getClienteDAO() throws DAOException;
+
+	public abstract IExercicioDAO getExercicioDAO() throws DAOException;
+        
+        public abstract IInstrutorDAO getInstrutorDAO() throws DAOException;
+        
+        public abstract ITreinoDAO getTreinoDAO() throws DAOException;
+        
+        public abstract IAvaliacaoFisicaDAO getAvaliacaoFisicaDAO() throws DAOException;
 }
