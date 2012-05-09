@@ -15,7 +15,7 @@ public class Instrutor implements IInstrutor {
         try
         {
             IInstrutorDAO dao = factory.getInstrutorDAO();
-            InstrutorVO instrutor = getInstrutor(login);
+            InstrutorVO instrutor = getInstrutorByLogin(login);
             dao.delete(instrutor);
         } catch (Exception e) {
             throw new SABioException(e);
@@ -26,7 +26,7 @@ public class Instrutor implements IInstrutor {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             IInstrutorDAO dao = factory.getInstrutorDAO();
-            dao.insert(user);
+            dao.insert(instrutor);
         } catch (Exception e) {
             throw new SABioException(e);
         }
