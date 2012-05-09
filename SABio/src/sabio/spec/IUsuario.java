@@ -6,13 +6,13 @@ import vo.UsuarioVO;
 
 public interface IUsuario {
 
-	void delete(int id) throws SABioException;
+	void delete(String Login) throws SABioException;
 
 	void create(UsuarioVO user) throws SABioException;
 
 	void update(UsuarioVO user) throws SABioException;
 
-	UsuarioVO getUsuario(int id) throws SABioException;
+	UsuarioVO getUsuario(String login) throws SABioException;
 
 	List getAll() throws SABioException;
 

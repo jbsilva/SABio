@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation.SuperUsuario;
 
 import presentation.Atendente.*;
@@ -10,10 +6,6 @@ import presentation.cliente.*;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
-/**
- *
- * @author Andre
- */
 public class SuperUsuarioView extends FrameView {
 
     public SuperUsuarioView(SingleFrameApplication app) {

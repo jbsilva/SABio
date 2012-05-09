@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package presentation.desktop;
+package presentation;
 
-/**
- *
- * @author Andre
- */
+import presentation.desktop.*;
+
 public class LoginView extends javax.swing.JFrame {
 
     /**

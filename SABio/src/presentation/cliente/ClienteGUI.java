@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation.cliente;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
-/**
- *
- * @author Andre
- */
 public class ClienteGUI extends SingleFrameApplication {
 
     @Override protected void startup() {

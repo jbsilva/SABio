@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation.Instrutor;
 
 import presentation.cliente.*;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
-/**
- *
- * @author Andre
- */
 public class InstrutorView extends FrameView {
 
     public InstrutorView(SingleFrameApplication app) {

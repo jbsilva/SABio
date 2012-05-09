@@ -8,7 +8,7 @@ import sabio.SABioException;
 import sabio.spec.IUsuario;
 import vo.UsuarioVO;
 
-public class Usuario implements IUsuario {
+public class Exercicio implements IUsuario {
 
     public void delete(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
