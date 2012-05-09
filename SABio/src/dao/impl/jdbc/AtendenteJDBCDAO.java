@@ -133,4 +133,5 @@ public class AtendenteJDBCDAO extends GenericJDBCDAO implements IAtendenteDAO {
 			throw new DAOException(e);
 		}
 	}
+
 }

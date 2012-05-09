@@ -31,8 +31,7 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 	protected Connection getConnection() {
 		return connection;
 	}
-
-    @Override
+        
 	public final int selectLastID() throws DAOException {
 		int lastID = 0;
 		String sql = "SELECT MAX(ID) FROM " + this.getTableName();
@@ -77,7 +76,6 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
 		return vo;
 	}
 
-    @Override
 	public final List selectAll() throws DAOException {
 		String sql = "SELECT * FROM " + this.getTableName();
 		List<ObjectVO> list = new ArrayList<>();

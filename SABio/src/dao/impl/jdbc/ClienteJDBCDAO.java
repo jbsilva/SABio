@@ -1,7 +1,9 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
+import dao.DAOFactory;
 import dao.spec.IClienteDAO;
+import dao.spec.IUsuarioDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.Properties;
 import vo.ClienteVO;
 import vo.ObjectVO;
+import vo.UsuarioVO;
 
 
 public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
@@ -26,7 +29,7 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
                         ClienteVO cliente = (ClienteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, cliente.getUsuario());
+			stmt.setString(1, cliente.getUsuario().getLogin());
 			stmt.setString(2, cliente.getNomeCliente());
 			stmt.setString(3, cliente.getCPF());
                         stmt.setString(4, cliente.getRG());
@@ -63,7 +66,7 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 			stmt.setDate(7, dtn);
                         stmt.setString(8, cliente.getMensalidadesAbertas());
                         stmt.setBoolean(9, cliente. getStatus());
- 			stmt.setString(10, cliente.getUsuario());                       
+ 			stmt.setString(10, cliente.getUsuario().getLogin());                       
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -133,7 +136,10 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
                         Calendar cal2 = new GregorianCalendar();
 			cal2.setTime(dtn);
                         
-			return new ClienteVO(login, nome, cpf, rg, telefone, atestado_medico, cal1, mensalidades_abertas, cal2, status);
+                        IUsuarioDAO userDAO = DAOFactory.getInstance().getUsuarioDAO();
+			UsuarioVO user = (UsuarioVO) userDAO.selectByLogin(login);
+                        
+			return new ClienteVO(user, nome, cpf, rg, telefone, atestado_medico, cal1, mensalidades_abertas, cal2, status);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
