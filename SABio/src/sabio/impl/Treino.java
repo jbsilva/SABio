@@ -63,7 +63,7 @@ public class Treino implements ITreino {
     public List getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
-            ITreinoDAO dao = factory.getAccountDAO();
+            ITreinoDAO dao = factory.getTreinoDAO();
             return dao.selectAll();
         } catch (Exception e) {
             throw new SABioException(e);
