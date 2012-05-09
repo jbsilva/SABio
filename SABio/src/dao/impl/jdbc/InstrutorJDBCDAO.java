@@ -1,8 +1,8 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
-import java.sql.Date;
 import dao.spec.IInstrutorDAO;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,6 +68,7 @@ public class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
 			throw new DAOException(e);
 		}
 	}
+    @Override
 	public void delete(ObjectVO vo) throws DAOException {
 		String sql = "DELETE " + this.getTableName()
 				+ " WHERE LOGIN=? ";
@@ -83,6 +84,7 @@ public class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
 		}
 	}
     
+    @Override
 	public InstrutorVO SelectByLogin(String Login) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
