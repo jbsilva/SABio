@@ -2,7 +2,7 @@ package sabio.impl;
 
 import java.util.List;
 
-import vo.UserVO;
+import vo.UsuarioVO;
 import sabio.SABioException;
 import sabio.spec.IUsuario;
 import dao.DAOFactory;
@@ -20,7 +20,7 @@ public class Usuario implements IUsuario {
 		}
 	}
 
-	public void create(UserVO user) throws SABioException {
+	public void create(UsuarioVO user) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IUsuarioDAO dao = factory.getUserDAO();
@@ -31,7 +31,7 @@ public class Usuario implements IUsuario {
 		}
 	}
 
-	public void update(UserVO user) throws SABioException {
+	public void update(UsuarioVO user) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IUsuarioDAO dao = factory.getUserDAO();
@@ -41,11 +41,11 @@ public class Usuario implements IUsuario {
 		}
 	}
 
-	public UserVO getUsuario(int id) throws SABioException {
+	public UsuarioVO getUsuario(int id) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IUsuarioDAO dao = factory.getUserDAO();
-			return (UserVO) dao.selectByID(id);
+			return (UsuarioVO) dao.selectByID(id);
 		} catch (Exception e) {
 			throw new SABioException(e);
 		}
@@ -61,17 +61,17 @@ public class Usuario implements IUsuario {
 		}
 	}
 
-	public UserVO getUsuarioByLogin(String login) throws SABioException {
+	public UsuarioVO getUsuarioByLogin(String login) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IUsuarioDAO dao = factory.getUserDAO();
-			return (UserVO) dao.selectByLogin(login);
+			return (UsuarioVO) dao.selectByLogin(login);
 		} catch (Exception e) {
 			throw new SABioException(e);
 		}
 	}
 
-	public boolean authenticate(UserVO user) throws SABioException {
+	public boolean authenticate(UsuarioVO user) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			IUsuarioDAO dao = factory.getUserDAO();

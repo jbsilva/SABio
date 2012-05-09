@@ -1,75 +1,154 @@
 package vo;
 
-/**
- * @author Delano
- */
+import java.util.Calendar;
+        
+
 public class TreinoVO extends ObjectVO {
 
-	private String numero;
+    private ClienteVO cliente;
+    private int treino_id;
+    private String tipo_treino;
+    Calendar data_inicio;
+    private int nivel;
+    private int numero_dias;
+    private String nome_treino;
+    private int carga;
+    private int numero_series;
 
-	private Double saldo;
+    public TreinoVO()
+    {
+        super();
+    }
 
-	private UserVO usuario;
+    public TreinoVO(ClienteVO cliente, int treino_id, String tipo_treino,
+            Calendar data_inicio, int nivel, int numero_dias,
+            String nome_treino, int carga, int numero_series)
+    {
+        super();
+        this.cliente = cliente;
+        this.treino_id = treino_id;
+        this.tipo_treino = tipo_treino;
+        this.data_inicio = data_inicio;
+        this.nivel = nivel;
+        this.numero_dias = numero_dias;
+        this.nome_treino = nome_treino;
+        this.carga = carga;
+        this.numero_series = numero_series;
+    }
 
-	public TreinoVO() {
-		super();
-	}
+    //String ou ClienteVO?
+    public ClienteVO getCliente() {
+        return this.cliente;
+    }
 
-	public TreinoVO(String number, UserVO usuario) {
-		this(number, new Double(0.0), usuario);
-	}
+    public void setCliente(ClienteVO cliente) {
+        this.cliente = cliente;
+    }
 
-	public TreinoVO(String numero, Double saldo, UserVO usuario) {
-		super();
-		this.numero = numero;
-		this.saldo = saldo;
-		this.usuario = usuario;
-	}
+    public int getTreinoId()
+    {
+        return this.treino_id;
+    }
 
-	public TreinoVO(int id, String numero, Double saldo, UserVO usuario) {
-		super(id);
-		this.numero = numero;
-		this.saldo = saldo;
-		this.usuario = usuario;
-	}
+    public void setTreinoId(int treino_id)
+    {
+        this.treino_id = treino_id;
+    }
 
-	public String getNumero() {
-		return this.numero;
-	}
+    public String getTipoTreino()
+    {
+        return this.tipo_treino;
+    }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+    public void setTipoTreino(String tipo_treino)
+    {
+        this.tipo_treino = tipo_treino;
+    }
 
-	public Double getSaldo() {
-		return this.saldo;
-	}
+    public Calendar getDataInicio()
+    {
+        return this.data_inicio;
+    }
+    
+    public void setDataInicio(Calendar data_inicio)
+    {
+        this.data_inicio = data_inicio;
+    }
 
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
-	}
+    public int getNivel()
+    {
+        return this.nivel;
+    }
 
-	public UserVO getUsuario() {
-		return this.usuario;
-	}
+    public void setNivel(int nivel)
+    {
+        this.nivel = nivel;
+    }
 
-	public void setUsuario(UserVO usuario) {
-		this.usuario = usuario;
-	}
+    public int getNumeroDias()
+    {
+        return this.numero_dias;
+    }
 
-        @Override
-	public String toString() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("[");
-		buffer.append("id = ");
-		buffer.append(this.getId());
-		buffer.append(", numero = ");
-		buffer.append(this.getNumero());
-		buffer.append(", saldo = ");
-		buffer.append(this.getSaldo());
-		buffer.append(", usuario = ");
-		buffer.append(this.getUsuario());
-		buffer.append("]");
-		return buffer.toString();
-	}
+    public void setNumeroDias(int numero_dias)
+    {
+        this.numero_dias = numero_dias;
+    }
+
+    public String getNomeTreino()
+    {
+        return this.nome_treino;
+    }
+
+    public void setNomeTreino(String nome_treino)
+    {
+        this.nome_treino = nome_treino;
+    }
+
+    public int getCarga()
+    {
+        return this.carga;
+    }
+
+    public void setCarga(int carga)
+    {
+        this.carga = carga;
+    }
+
+    public int getNumeroSeries()
+    {
+        return this.numero_series;
+    }
+
+    public void setNumeroSeries(int numero_series)
+    {
+        this.numero_series = numero_series;
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("[");
+        buffer.append("Id = ");
+        buffer.append(this.getTreinoId());
+        buffer.append(", Tipo = ");
+        buffer.append(this.getTipoTreino());
+        buffer.append(", Inicio = ");
+        buffer.append(this.getDataInicio());
+        buffer.append(", cliente = ");
+        buffer.append(this.getCliente());
+        buffer.append(", Nivel = ");
+        buffer.append(this.getNivel());
+        buffer.append(", Dias = ");
+        buffer.append(this.getNumeroDias());
+        buffer.append(", Nome = ");
+        buffer.append(this.getNomeTreino());
+        buffer.append(", Carga = ");
+        buffer.append(this.getCarga());
+        buffer.append(", Numero Series = ");
+        buffer.append(this.getNumeroSeries());
+        buffer.append("]");
+        return buffer.toString();
+    }
 }

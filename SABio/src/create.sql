@@ -28,7 +28,7 @@ CREATE TABLE instrutor
     registro_profissional    VARCHAR(10),
     data_contratacao         DATE,
     CONSTRAINT instrutor_fk FOREIGN KEY (login) REFERENCES usuario(login),
-    CONSTRAINT instrutor_pk PRIMARY KEY (login, cpf, registro_profissional)
+    CONSTRAINT instrutor_pk PRIMARY KEY (login)
 );
 
 
@@ -43,7 +43,7 @@ CREATE TABLE atendente
     UNIQUE,
     data_contratacao            DATE,
     CONSTRAINT atendente_fk FOREIGN KEY (login) REFERENCES usuario(login),
-    CONSTRAINT atendente_pk PRIMARY KEY (login, cpf)
+    CONSTRAINT atendente_pk PRIMARY KEY (login)
 );
 
 
@@ -61,7 +61,7 @@ CREATE TABLE cliente
     mensalidades_abertas VARCHAR(50),
     status              BOOLEAN CONSTRAINT cliente_status_nn NOT NULL,
     CONSTRAINT cliente_fk FOREIGN KEY (login) REFERENCES usuario(login),
-    CONSTRAINT cliente_pk PRIMARY KEY (cpf, login)
+    CONSTRAINT cliente_pk PRIMARY KEY (login)
 );
 
 
@@ -69,7 +69,6 @@ CREATE TABLE treino
 (
     login         VARCHAR(15),
     treino_id     INTEGER,
-    cpf           VARCHAR(11),
     tipo_treino   VARCHAR(15),
     data_inicio   DATE,
     nivel         INTEGER,
@@ -77,28 +76,21 @@ CREATE TABLE treino
     nome_treino   VARCHAR(20),
     carga         INTEGER CONSTRAINT treino_carga_nn NOT NULL,
     numero_series INTEGER CONSTRAINT treino_numero_series_nn NOT NULL,
-    CONSTRAINT treino_fk FOREIGN KEY (cpf, login) REFERENCES cliente(cpf, login
-    ),
-    CONSTRAINT treino_pk PRIMARY KEY (cpf, treino_id, login)
+    CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
+    CONSTRAINT treino_pk PRIMARY KEY (treino_id)
 );
 
 
 CREATE TABLE avaliacao_fisica
 (
-    cpf_cliente           VARCHAR (11),
     login_cliente         VARCHAR (15),
     login_instrutor       VARCHAR (15),
-    cpf_instrutor         VARCHAR (11),
-    registro_profissional VARCHAR (20),
     id                    VARCHAR (4),
     data_realizacao       DATE,
     observacoes           VARCHAR (100),
-    CONSTRAINT af_cpf_fk FOREIGN KEY (cpf_cliente, login_cliente) REFERENCES
-    cliente(cpf, login),
-    CONSTRAINT af_rp_fk FOREIGN KEY (registro_profissional, cpf_instrutor,
-    login_instrutor) REFERENCES instrutor(registro_profissional, cpf, login),
-    CONSTRAINT af_cpfrpid_pk PRIMARY KEY (cpf_cliente, login_cliente,
-    registro_profissional, id, login_instrutor, cpf_instrutor)
+    CONSTRAINT af_fk FOREIGN KEY (login_cliente) REFERENCES cliente(login),
+    CONSTRAINT af_log_fk FOREIGN KEY (login_instrutor) REFERENCES instrutor(login),
+    CONSTRAINT af_id_pk PRIMARY KEY (id)
 );
 
 

@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import vo.TreinoVO;
 import vo.ObjectVO;
-import vo.UserVO;
+import vo.UsuarioVO;
 import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.ITreinoDAO;
@@ -78,7 +78,7 @@ class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 			float balance = rs.getFloat("SALDO");
 			int userID = rs.getInt("USUARIO_ID");
 			IUsuarioDAO userDAO = DAOFactory.getInstance().getUserDAO();
-			UserVO user = (UserVO) userDAO.selectByID(userID);
+			UsuarioVO user = (UsuarioVO) userDAO.selectByID(userID);
 			return new TreinoVO(id, number, new Double(balance), user);
 		} catch (SQLException e) {
 			throw new DAOException(e);
