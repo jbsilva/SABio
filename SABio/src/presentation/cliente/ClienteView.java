@@ -2,20 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentation;
+package presentation.cliente;
 
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
+import org.jdesktop.application.SingleFrameApplication;
 
 /**
  *
  * @author Andre
  */
-public class Clientview extends FrameView {
+public class ClienteView extends FrameView {
 
-    public Clientview(SingleFrameApplication app) {
+    public ClienteView(SingleFrameApplication app) {
         super(app);
         initComponents();
     }
@@ -122,9 +120,9 @@ public class Clientview extends FrameView {
         Novo.setText("Novo");
 
         Limpar.setText("Limpar");
-        Limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparActionPerformed(evt);
+        Limpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                LimparMousePressed(evt);
             }
         });
 
@@ -255,18 +253,9 @@ public class Clientview extends FrameView {
         // TODO add your handling code here:
     }//GEN-LAST:event_BuscarActionPerformed
 
-    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+    private void LimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimparMousePressed
         // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-    }//GEN-LAST:event_LimparActionPerformed
+    }//GEN-LAST:event_LimparMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atualizar;
