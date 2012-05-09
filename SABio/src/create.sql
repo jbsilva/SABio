@@ -65,7 +65,7 @@ CREATE TABLE avaliacao_fisica
 (
     login_cliente         VARCHAR (15),
     login_instrutor       VARCHAR (15),
-    id                    VARCHAR (4),
+    id                    INTEGER,
     data_realizacao       DATE,
     observacoes           VARCHAR (100),
     CONSTRAINT af_fk FOREIGN KEY (login_cliente) REFERENCES cliente(login),
@@ -146,7 +146,7 @@ VALUES('cliente03', 3, 'tipo2', '2012-01-01', 2, 3, 'crucifixo', 10, 10);
 
 
 INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
-VALUES ('cliente01', 'instrutor01', '1', '2012-01-01', 'Tudo ok');
+VALUES ('cliente01', 'instrutor01', 1, '2012-01-01', 'Tudo ok');
 
 
 INSERT INTO exercicio (id_ex, carga, numero_de_series, exercicio, login_cliente)

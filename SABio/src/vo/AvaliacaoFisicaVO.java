@@ -7,7 +7,7 @@ public class AvaliacaoFisicaVO extends ObjectVO {
     
     private String cliente;
     private String instrutor;
-    private String id;
+    private int id;
     Calendar data_realizacao;
     private String observacoes;
     
@@ -17,7 +17,7 @@ public class AvaliacaoFisicaVO extends ObjectVO {
         super();
     }
 
-    public AvaliacaoFisicaVO(String cliente, String instrutor, String id,
+    public AvaliacaoFisicaVO(String cliente, String instrutor, int id,
             Calendar data_realizacao, String observacoes)
     {
         super();
@@ -45,12 +45,12 @@ public class AvaliacaoFisicaVO extends ObjectVO {
         this.instrutor = instrutor;
     }
 
-    public String getID()
+    public int getID()
     {
         return this.id;
     }
 
-    public void setID(String id)
+    public void setID(int id)
     {
         this.id = id;
     }

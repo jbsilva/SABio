@@ -29,7 +29,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 			
 			stmt.setString(1, avaliacaofisica.getCliente());
 			stmt.setString(2, avaliacaofisica.getInstrutor());
-			stmt.setString(3, avaliacaofisica.getID());
+			stmt.setInt(3, avaliacaofisica.getID());
                         Date dt = new Date(avaliacaofisica.getDataRealizacao().getTime().getTime());
 			stmt.setDate(4, dt);
                         stmt.setString(5, avaliacaofisica.getObservacoes());
@@ -52,7 +52,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
                         Date dt = new Date(avaliacaofisica.getDataRealizacao().getTime().getTime());
 			stmt.setDate(3, dt);
                         stmt.setString(4, avaliacaofisica.getObservacoes());
-                        stmt.setString(5, avaliacaofisica.getID());
+                        stmt.setInt(5, avaliacaofisica.getID());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -68,7 +68,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
 
-                        stmt.setString(1, avaliacaofisica.getID());
+                        stmt.setInt(1, avaliacaofisica.getID());
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -77,7 +77,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 	}
         
     @Override
-	public AvaliacaoFisicaVO SelectByID(String ID) throws DAOException {
+	public AvaliacaoFisicaVO SelectByID(int avaliacao_id) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
 				+  " WHERE ID=? ";
@@ -85,7 +85,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
                         AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, avaliacaofisica.getID());
+			stmt.setInt(1, avaliacaofisica.getID());
 
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -108,7 +108,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 		try {
 			String login_cliente = rs.getString("LOGIN_CLIENTE");
 			String login_instrutor = rs.getString("LOGIN_INSTRUTOR");
-			String id = rs.getString("ID");
+			int id = rs.getInt("ID");
 			String observacoes = rs.getString("OBSERVACOES");
                         Date dt = rs.getDate("DATA_REALIZACAO");
                         

@@ -8,13 +8,11 @@ public interface IAvaliacaoFisica {
 
 	void create(AvaliacaoFisicaVO vo) throws SABioException;
 
-	void delete(int id) throws SABioException;
+	void delete(int avaliacao_id) throws SABioException;
 
 	void update(AvaliacaoFisicaVO vo) throws SABioException;
 
-	AvaliacaoFisicaVO getAvaliacaoFisica(int id) throws SABioException;
-
-	AvaliacaoFisicaVO getAvaliacaoFisicaByLogin(String Login) throws SABioException;
+	AvaliacaoFisicaVO getAvaliacaoFisicaById(int id) throws SABioException;
 
 	List getAll() throws SABioException;
 
