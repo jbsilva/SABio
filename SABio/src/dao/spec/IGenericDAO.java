@@ -13,7 +13,7 @@ public interface IGenericDAO {
 
 	int selectLastID() throws DAOException;
 
-	ObjectVO selectByUsuario(int Usuario) throws DAOException;
+	ObjectVO selectByLogin(String Login) throws DAOException;
 
 	void delete(int id) throws DAOException;
 

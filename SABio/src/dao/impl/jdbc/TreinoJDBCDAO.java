@@ -81,7 +81,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 	}
         
     @Override
-	public TreinoVO selectByUsuario(String Usuario) throws DAOException {
+	public TreinoVO selectByLogin(String Login) throws DAOException {
                 ObjectVO vo = null;
 		String sql = "SELECT * FROM " + this.getTableName()
 				+ " WHERE LOGIN =?";

@@ -50,11 +50,11 @@ public class Treino implements ITreino {
 		}
 	}
 
-	public TreinoVO getTreinoByUsuario(int id) throws SABioException {
+	public TreinoVO getTreinoByLogin(String Login) throws SABioException {
 		DAOFactory factory = DAOFactory.getInstance();
 		try {
 			ITreinoDAO dao = factory.getAccountDAO();
-			return dao.selectByUsuario(id);
+			return dao.selectByLogin(Login);
 		} catch (Exception e) {
 			throw new SABioException(e);
 		}

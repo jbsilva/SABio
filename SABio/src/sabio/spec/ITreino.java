@@ -15,7 +15,7 @@ public interface ITreino {
 
 	TreinoVO getTreino(int id) throws SABioException;
 
-	TreinoVO getTreinoByUsuario(int id) throws SABioException;
+	TreinoVO getTreinoByLogin(String Login) throws SABioException;
 
 	List getAll() throws SABioException;
 
