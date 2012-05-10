@@ -83,7 +83,7 @@ CREATE TABLE treino
     numero_dias   INTEGER,
     nome_treino   VARCHAR(20),
     CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
-    CONSTRAINT treino_pk PRIMARY KEY (treino_id)
+    CONSTRAINT treino_pk PRIMARY KEY (treino_id, login)
 );
 
 CREATE TABLE exercicio
@@ -137,12 +137,12 @@ INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, ates
 VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', '34210000', 'em dia', '1989-05-10', '', False);
 
 
-INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente01', 1, 'supino', '2012-01-01', 2, 3, 'supino inclinado', 50, 10);
-INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente02', 2, 'agachamento', '2012-01-01', 1, 4, 'agachamento', 30, 10);
-INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)
-VALUES('cliente03', 3, 'tipo2', '2012-01-01', 2, 3, 'crucifixo', 10, 10);
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino)
+VALUES('cliente01', 1, 'supino', '2012-01-01', 2, 3, 'supino inclinado');
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino)
+VALUES('cliente02', 2, 'agachamento', '2012-01-01', 1, 4, 'agachamento');
+INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino)
+VALUES('cliente03', 3, 'tipo2', '2012-01-01', 2, 3, 'crucifixo');
 
 
 INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
