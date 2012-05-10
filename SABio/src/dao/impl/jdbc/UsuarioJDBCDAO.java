@@ -48,6 +48,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
         }
     }
     
+    @Override
     public void delete(ObjectVO vo) throws DAOException {
         UsuarioVO user = (UsuarioVO) vo;
         String sql = "DELETE " + this.getTableName()

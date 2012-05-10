@@ -120,6 +120,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
             
             IClienteDAO clienteDAO = DAOFactory.getInstance().getClienteDAO();
             ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login_cliente);
+            
             IInstrutorDAO instrutorDAO = DAOFactory.getInstance().getInstrutorDAO();
             InstrutorVO instrutor = (InstrutorVO) instrutorDAO.SelectByLogin(login_cliente);
                     

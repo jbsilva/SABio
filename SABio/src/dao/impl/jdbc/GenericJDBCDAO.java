@@ -75,6 +75,7 @@ public abstract class GenericJDBCDAO implements IGenericDAO {
         return vo;
     }
 
+    @Override
     public final List selectAll() throws DAOException {
         String sql = "SELECT * FROM " + this.getTableName();
         List<ObjectVO> list = new ArrayList<>();
