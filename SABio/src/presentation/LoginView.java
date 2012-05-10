@@ -36,21 +36,22 @@ public class LoginView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel1.setText("BEM-VINDO");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
+        jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel2.setText("Login:");
+        jLabel2.setText(bundle.getString("LoginView.jLabel2.text")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel3.setText("Senha:");
+        jLabel3.setText(bundle.getString("LoginView.jLabel3.text")); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jButton1.setText("Logar");
+        jButton1.setText(bundle.getString("LoginView.jButton1.text")); // NOI18N
 
         jButton3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jButton3.setText("Cadastrar");
+        jButton3.setText(bundle.getString("LoginView.jButton3.text")); // NOI18N
 
         jPasswordField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
 
@@ -58,7 +59,7 @@ public class LoginView extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente", "Instrutor", "Atendente" }));
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
-        jLabel4.setText("SABio");
+        jLabel4.setText(bundle.getString("LoginView.jLabel4.text")); // NOI18N
 
         jComboBox2.setMaximumRowCount(1);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Português", "Inglês" }));

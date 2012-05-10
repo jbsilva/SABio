@@ -38,7 +38,8 @@ public class ClienteView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        jTabbedPane1.setName("Cliente");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/cliente/Bundle"); // NOI18N
+        jTabbedPane1.setName(bundle.getString("ClienteView.jTabbedPane1.name")); // NOI18N
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +69,7 @@ public class ClienteView extends FrameView {
         });
         jScrollPane7.setViewportView(jTable6);
 
-        jButton1.setText("Avaliações Pessoais");
+        jButton1.setText(bundle.getString("ClienteView.jButton1.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -115,7 +116,7 @@ public class ClienteView extends FrameView {
                     .addGap(0, 9, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Avaliacão Física", jPanel1);
+        jTabbedPane1.addTab(bundle.getString("ClienteView.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,7 +143,7 @@ public class ClienteView extends FrameView {
         });
         jScrollPane6.setViewportView(jTable5);
 
-        jButton2.setText("Treino Atual");
+        jButton2.setText(bundle.getString("ClienteView.jButton2.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -184,7 +185,7 @@ public class ClienteView extends FrameView {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Treino", jPanel2);
+        jTabbedPane1.addTab(bundle.getString("ClienteView.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,7 +214,7 @@ public class ClienteView extends FrameView {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton3.setText("Dados Pessoais");
+        jButton3.setText(bundle.getString("ClienteView.jButton3.text")); // NOI18N
 
         javax.swing.GroupLayout ClienteLayout = new javax.swing.GroupLayout(Cliente);
         Cliente.setLayout(ClienteLayout);
@@ -248,7 +249,7 @@ public class ClienteView extends FrameView {
                     .addGap(0, 154, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Cliente", Cliente);
+        jTabbedPane1.addTab(bundle.getString("ClienteView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -278,7 +279,7 @@ public class ClienteView extends FrameView {
         });
         jScrollPane5.setViewportView(jTable4);
 
-        jButton4.setText("Exercícios Atuais");
+        jButton4.setText(bundle.getString("ClienteView.jButton4.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -305,7 +306,7 @@ public class ClienteView extends FrameView {
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Exercício", jPanel4);
+        jTabbedPane1.addTab(bundle.getString("ClienteView.jPanel4.TabConstraints.tabTitle"), jPanel4); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

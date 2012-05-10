@@ -158,7 +158,8 @@ public class SuperUsuarioView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        jTabbedPane1.setName("Cliente");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Atendente/Bundle"); // NOI18N
+        jTabbedPane1.setName(bundle.getString("AtendenteView.jTabbedPane1.name")); // NOI18N
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,52 +192,52 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        jLabel10.setText("Endereço");
+        jLabel10.setText(bundle.getString("AtendenteView.jLabel10.text")); // NOI18N
 
-        jLabel11.setText("Registro Profissional");
+        jLabel11.setText(bundle.getString("AtendenteView.jLabel11.text")); // NOI18N
 
-        jLabel12.setText("Nome");
+        jLabel12.setText(bundle.getString("AtendenteView.jLabel12.text")); // NOI18N
 
-        jLabel13.setText("Carteira de Trabalho");
+        jLabel13.setText(bundle.getString("AtendenteView.jLabel13.text")); // NOI18N
 
-        jLabel14.setText("Data Contratação");
+        jLabel14.setText(bundle.getString("AtendenteView.jLabel14.text")); // NOI18N
 
-        Buscar1.setText("Buscar");
+        Buscar1.setText(bundle.getString("AtendenteView.Buscar1.text")); // NOI18N
         Buscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar1ActionPerformed(evt);
             }
         });
 
-        Atualizar1.setText("Atualizar");
+        Atualizar1.setText(bundle.getString("AtendenteView.Atualizar1.text")); // NOI18N
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jLabel15.setText("Login");
+        jLabel15.setText(bundle.getString("AtendenteView.jLabel15.text")); // NOI18N
 
-        jLabel16.setText("CPF");
+        jLabel16.setText(bundle.getString("AtendenteView.jLabel16.text")); // NOI18N
 
-        jLabel17.setText("RG");
+        jLabel17.setText(bundle.getString("AtendenteView.jLabel17.text")); // NOI18N
 
-        jLabel18.setText("Carga Horaria");
+        jLabel18.setText(bundle.getString("AtendenteView.jLabel18.text")); // NOI18N
 
         jScrollPane4.setViewportView(campo_carga_horaria_instrutor);
 
-        Buscar5.setText("Criar");
+        Buscar5.setText(bundle.getString("AtendenteView.Buscar5.text")); // NOI18N
         Buscar5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar5ActionPerformed(evt);
             }
         });
 
-        Buscar6.setText("Deletar");
+        Buscar6.setText(bundle.getString("AtendenteView.Buscar6.text")); // NOI18N
         Buscar6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar6ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Listar Todos");
+        jButton1.setText(bundle.getString("AtendenteView.jButton1.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -378,7 +379,7 @@ public class SuperUsuarioView extends FrameView {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Instrutor", Instrutor);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.Instrutor.TabConstraints.tabTitle"), Instrutor); // NOI18N
 
         campo_login_cliente_af.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,11 +393,11 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        jLabel30.setText("ID");
+        jLabel30.setText(bundle.getString("AtendenteView.jLabel30.text")); // NOI18N
 
-        jLabel31.setText("Observações");
+        jLabel31.setText(bundle.getString("AtendenteView.jLabel31.text")); // NOI18N
 
-        jLabel32.setText("Data de Realização");
+        jLabel32.setText(bundle.getString("AtendenteView.jLabel32.text")); // NOI18N
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -429,9 +430,9 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane7.setViewportView(jTable6);
 
-        jLabel34.setText("Login Cliente");
+        jLabel34.setText(bundle.getString("AtendenteView.jLabel34.text")); // NOI18N
 
-        jLabel35.setText("Login Instrutor");
+        jLabel35.setText(bundle.getString("AtendenteView.jLabel35.text")); // NOI18N
 
         campo_data_realizacao_af.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,15 +446,15 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        Novo10.setText("Criar");
+        Novo10.setText(bundle.getString("AtendenteView.Novo10.text")); // NOI18N
 
-        Novo11.setText("Deletar");
+        Novo11.setText(bundle.getString("AtendenteView.Novo11.text")); // NOI18N
 
-        Novo12.setText("Atualizar");
+        Novo12.setText(bundle.getString("AtendenteView.Novo12.text")); // NOI18N
 
-        Novo13.setText("Buscar");
+        Novo13.setText(bundle.getString("AtendenteView.Novo13.text")); // NOI18N
 
-        jButton2.setText("Listar Todos");
+        jButton2.setText(bundle.getString("AtendenteView.jButton2.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -550,7 +551,7 @@ public class SuperUsuarioView extends FrameView {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Avaliacão Física", jPanel1);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
         campo_duracao_treino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -570,11 +571,11 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        jLabel24.setText("ID");
+        jLabel24.setText(bundle.getString("AtendenteView.jLabel24.text")); // NOI18N
 
-        jLabel26.setText("Tipo");
+        jLabel26.setText(bundle.getString("AtendenteView.jLabel26.text")); // NOI18N
 
-        jLabel27.setText("Data de Início");
+        jLabel27.setText(bundle.getString("AtendenteView.jLabel27.text")); // NOI18N
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -607,9 +608,9 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane6.setViewportView(jTable5);
 
-        jLabel28.setText("Login Cliente");
+        jLabel28.setText(bundle.getString("AtendenteView.jLabel28.text")); // NOI18N
 
-        jLabel29.setText("Nível");
+        jLabel29.setText(bundle.getString("AtendenteView.jLabel29.text")); // NOI18N
 
         jTextField26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -623,17 +624,17 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        Novo6.setText("Criar");
+        Novo6.setText(bundle.getString("AtendenteView.Novo6.text")); // NOI18N
 
-        Novo7.setText("Deletar");
+        Novo7.setText(bundle.getString("AtendenteView.Novo7.text")); // NOI18N
 
-        Novo8.setText("Atualizar");
+        Novo8.setText(bundle.getString("AtendenteView.Novo8.text")); // NOI18N
 
-        Novo9.setText("Buscar");
+        Novo9.setText(bundle.getString("AtendenteView.Novo9.text")); // NOI18N
 
-        jLabel36.setText("Duração");
+        jLabel36.setText(bundle.getString("AtendenteView.jLabel36.text")); // NOI18N
 
-        jLabel37.setText("Treino");
+        jLabel37.setText(bundle.getString("AtendenteView.jLabel37.text")); // NOI18N
 
         campo_login_cliente_treino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -641,7 +642,7 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        jButton3.setText("Listar Todos");
+        jButton3.setText(bundle.getString("AtendenteView.jButton3.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -753,7 +754,7 @@ public class SuperUsuarioView extends FrameView {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Treino", jPanel2);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -786,32 +787,32 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel6.setText("Mensalidades Abertas");
+        jLabel6.setText(bundle.getString("AtendenteView.jLabel6.text")); // NOI18N
 
-        jLabel9.setText("Status");
+        jLabel9.setText(bundle.getString("AtendenteView.jLabel9.text")); // NOI18N
 
-        jLabel8.setText("Nome");
+        jLabel8.setText(bundle.getString("AtendenteView.jLabel8.text")); // NOI18N
 
-        jLabel5.setText("Atestado");
+        jLabel5.setText(bundle.getString("AtendenteView.jLabel5.text")); // NOI18N
 
-        jLabel7.setText("Nascimento");
+        jLabel7.setText(bundle.getString("AtendenteView.jLabel7.text")); // NOI18N
 
-        jLabel3.setText("RG");
+        jLabel3.setText(bundle.getString("AtendenteView.jLabel3.text")); // NOI18N
 
-        Buscar.setText("Buscar");
+        Buscar.setText(bundle.getString("AtendenteView.Buscar.text")); // NOI18N
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
             }
         });
 
-        Atualizar.setText("Atualizar");
+        Atualizar.setText(bundle.getString("AtendenteView.Atualizar.text")); // NOI18N
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jLabel1.setText("Login");
+        jLabel1.setText(bundle.getString("AtendenteView.jLabel1.text")); // NOI18N
 
-        jLabel2.setText("CPF");
+        jLabel2.setText(bundle.getString("AtendenteView.jLabel2.text")); // NOI18N
 
         campo_rg_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -819,21 +820,21 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        Buscar7.setText("Criar");
+        Buscar7.setText(bundle.getString("AtendenteView.Buscar7.text")); // NOI18N
         Buscar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar7ActionPerformed(evt);
             }
         });
 
-        Buscar8.setText("Deletar");
+        Buscar8.setText(bundle.getString("AtendenteView.Buscar8.text")); // NOI18N
         Buscar8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar8ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Listar Todos");
+        jButton4.setText(bundle.getString("AtendenteView.jButton4.text")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -952,7 +953,7 @@ public class SuperUsuarioView extends FrameView {
                     .addGap(0, 148, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Cliente", Cliente);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
         campo_carga_exercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -966,13 +967,13 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        jLabel4.setText("ID");
+        jLabel4.setText(bundle.getString("AtendenteView.jLabel4.text")); // NOI18N
 
-        jLabel19.setText("Carga");
+        jLabel19.setText(bundle.getString("AtendenteView.jLabel19.text")); // NOI18N
 
-        jLabel20.setText("Exercício");
+        jLabel20.setText(bundle.getString("AtendenteView.jLabel20.text")); // NOI18N
 
-        jLabel21.setText("Número de Séries");
+        jLabel21.setText(bundle.getString("AtendenteView.jLabel21.text")); // NOI18N
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1005,7 +1006,7 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane5.setViewportView(jTable4);
 
-        jLabel22.setText("Login Cliente");
+        jLabel22.setText(bundle.getString("AtendenteView.jLabel22.text")); // NOI18N
 
         campo_exercicio_exercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1019,20 +1020,20 @@ public class SuperUsuarioView extends FrameView {
             }
         });
 
-        Novo2.setText("Criar");
+        Novo2.setText(bundle.getString("AtendenteView.Novo2.text")); // NOI18N
         Novo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Novo2ActionPerformed(evt);
             }
         });
 
-        Novo3.setText("Deletar");
+        Novo3.setText(bundle.getString("AtendenteView.Novo3.text")); // NOI18N
 
-        Novo4.setText("Atualizar");
+        Novo4.setText(bundle.getString("AtendenteView.Novo4.text")); // NOI18N
 
-        Novo5.setText("Buscar");
+        Novo5.setText(bundle.getString("AtendenteView.Novo5.text")); // NOI18N
 
-        jButton5.setText("Listar Todos");
+        jButton5.setText(bundle.getString("AtendenteView.jButton5.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1109,17 +1110,17 @@ public class SuperUsuarioView extends FrameView {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Exercício", jPanel4);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel4.TabConstraints.tabTitle"), jPanel4); // NOI18N
 
-        jLabel23.setText("Data Contratação");
+        jLabel23.setText(bundle.getString("AtendenteView.jLabel23.text")); // NOI18N
 
-        jLabel25.setText("CPF");
+        jLabel25.setText(bundle.getString("AtendenteView.jLabel25.text")); // NOI18N
 
-        jLabel33.setText("Carteira de Trabalho");
+        jLabel33.setText(bundle.getString("AtendenteView.jLabel33.text")); // NOI18N
 
-        jLabel38.setText("Nome");
+        jLabel38.setText(bundle.getString("AtendenteView.jLabel38.text")); // NOI18N
 
-        jLabel40.setText("Endereço");
+        jLabel40.setText(bundle.getString("AtendenteView.jLabel40.text")); // NOI18N
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1152,34 +1153,34 @@ public class SuperUsuarioView extends FrameView {
         });
         jScrollPane9.setViewportView(jTable7);
 
-        Atualizar2.setText("Atualizar");
+        Atualizar2.setText(bundle.getString("AtendenteView.Atualizar2.text")); // NOI18N
 
-        Buscar2.setText("Buscar");
+        Buscar2.setText(bundle.getString("AtendenteView.Buscar2.text")); // NOI18N
         Buscar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar2ActionPerformed(evt);
             }
         });
 
-        jLabel42.setText("RG");
+        jLabel42.setText(bundle.getString("AtendenteView.jLabel42.text")); // NOI18N
 
-        jLabel43.setText("Login");
+        jLabel43.setText(bundle.getString("AtendenteView.jLabel43.text")); // NOI18N
 
-        Buscar3.setText("Criar");
+        Buscar3.setText(bundle.getString("AtendenteView.Buscar3.text")); // NOI18N
         Buscar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar3ActionPerformed(evt);
             }
         });
 
-        Buscar4.setText("Deletar");
+        Buscar4.setText(bundle.getString("AtendenteView.Buscar4.text")); // NOI18N
         Buscar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar4ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Listar Todos");
+        jButton6.setText(bundle.getString("AtendenteView.jButton6.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1289,7 +1290,7 @@ public class SuperUsuarioView extends FrameView {
                     .addGap(53, 53, 53)))
         );
 
-        jTabbedPane1.addTab("Atendente", jPanel7);
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel7.TabConstraints.tabTitle"), jPanel7); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

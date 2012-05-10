@@ -95,7 +95,8 @@ public class InstrutorView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        jTabbedPane1.setName("Cliente");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Instrutor/Bundle"); // NOI18N
+        jTabbedPane1.setName(bundle.getString("InstrutorView.jTabbedPane1.name")); // NOI18N
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,7 +125,7 @@ public class InstrutorView extends FrameView {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton1.setText("Dados Pessoais");
+        jButton1.setText(bundle.getString("InstrutorView.jButton1.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -181,7 +182,7 @@ public class InstrutorView extends FrameView {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Instrutor", Instrutor);
+        jTabbedPane1.addTab(bundle.getString("InstrutorView.Instrutor.TabConstraints.tabTitle"), Instrutor); // NOI18N
 
         campo_login_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,11 +196,11 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        jLabel30.setText("ID");
+        jLabel30.setText(bundle.getString("InstrutorView.jLabel30.text")); // NOI18N
 
-        jLabel31.setText("Observações");
+        jLabel31.setText(bundle.getString("InstrutorView.jLabel31.text")); // NOI18N
 
-        jLabel32.setText("Data de Realização");
+        jLabel32.setText(bundle.getString("InstrutorView.jLabel32.text")); // NOI18N
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,9 +233,9 @@ public class InstrutorView extends FrameView {
         });
         jScrollPane7.setViewportView(jTable6);
 
-        jLabel34.setText("Login Cliente");
+        jLabel34.setText(bundle.getString("InstrutorView.jLabel34.text")); // NOI18N
 
-        jLabel35.setText("Login Instrutor");
+        jLabel35.setText(bundle.getString("InstrutorView.jLabel35.text")); // NOI18N
 
         campo_data.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,15 +249,15 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        Novo10.setText("Criar");
+        Novo10.setText(bundle.getString("InstrutorView.Novo10.text")); // NOI18N
 
-        Novo11.setText("Deletar");
+        Novo11.setText(bundle.getString("InstrutorView.Novo11.text")); // NOI18N
 
-        Novo12.setText("Atualizar");
+        Novo12.setText(bundle.getString("InstrutorView.Novo12.text")); // NOI18N
 
-        Novo13.setText("Buscar");
+        Novo13.setText(bundle.getString("InstrutorView.Novo13.text")); // NOI18N
 
-        jButton2.setText("Listar Todos");
+        jButton2.setText(bundle.getString("InstrutorView.jButton2.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -353,7 +354,7 @@ public class InstrutorView extends FrameView {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Avaliacão Física", jPanel1);
+        jTabbedPane1.addTab(bundle.getString("InstrutorView.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
         campo_duracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,11 +374,11 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        jLabel24.setText("ID");
+        jLabel24.setText(bundle.getString("InstrutorView.jLabel24.text")); // NOI18N
 
-        jLabel26.setText("Tipo");
+        jLabel26.setText(bundle.getString("InstrutorView.jLabel26.text")); // NOI18N
 
-        jLabel27.setText("Data de Início");
+        jLabel27.setText(bundle.getString("InstrutorView.jLabel27.text")); // NOI18N
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -410,9 +411,9 @@ public class InstrutorView extends FrameView {
         });
         jScrollPane6.setViewportView(jTable5);
 
-        jLabel28.setText("Login Cliente");
+        jLabel28.setText(bundle.getString("InstrutorView.jLabel28.text")); // NOI18N
 
-        jLabel29.setText("Nível");
+        jLabel29.setText(bundle.getString("InstrutorView.jLabel29.text")); // NOI18N
 
         campo_tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,17 +427,17 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        Novo6.setText("Criar");
+        Novo6.setText(bundle.getString("InstrutorView.Novo6.text")); // NOI18N
 
-        Novo7.setText("Deletar");
+        Novo7.setText(bundle.getString("InstrutorView.Novo7.text")); // NOI18N
 
-        Novo8.setText("Atualizar");
+        Novo8.setText(bundle.getString("InstrutorView.Novo8.text")); // NOI18N
 
-        Novo9.setText("Buscar");
+        Novo9.setText(bundle.getString("InstrutorView.Novo9.text")); // NOI18N
 
-        jLabel36.setText("Duração");
+        jLabel36.setText(bundle.getString("InstrutorView.jLabel36.text")); // NOI18N
 
-        jLabel37.setText("Treino");
+        jLabel37.setText(bundle.getString("InstrutorView.jLabel37.text")); // NOI18N
 
         campo_loign_cliente_treino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,7 +445,7 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        jButton3.setText("Listar Todos");
+        jButton3.setText(bundle.getString("InstrutorView.jButton3.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -556,7 +557,7 @@ public class InstrutorView extends FrameView {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Treino", jPanel2);
+        jTabbedPane1.addTab(bundle.getString("InstrutorView.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -586,7 +587,7 @@ public class InstrutorView extends FrameView {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        Buscar.setText("Buscar");
+        Buscar.setText(bundle.getString("InstrutorView.Buscar.text")); // NOI18N
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
@@ -595,9 +596,9 @@ public class InstrutorView extends FrameView {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jLabel1.setText("Login");
+        jLabel1.setText(bundle.getString("InstrutorView.jLabel1.text")); // NOI18N
 
-        jButton4.setText("Listar Todos");
+        jButton4.setText(bundle.getString("InstrutorView.jButton4.text")); // NOI18N
 
         javax.swing.GroupLayout ClienteLayout = new javax.swing.GroupLayout(Cliente);
         Cliente.setLayout(ClienteLayout);
@@ -645,7 +646,7 @@ public class InstrutorView extends FrameView {
                     .addGap(0, 148, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Cliente", Cliente);
+        jTabbedPane1.addTab(bundle.getString("InstrutorView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
         campo_carga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -659,13 +660,13 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        jLabel4.setText("ID");
+        jLabel4.setText(bundle.getString("InstrutorView.jLabel4.text")); // NOI18N
 
-        jLabel19.setText("Carga");
+        jLabel19.setText(bundle.getString("InstrutorView.jLabel19.text")); // NOI18N
 
-        jLabel20.setText("Exercício");
+        jLabel20.setText(bundle.getString("InstrutorView.jLabel20.text")); // NOI18N
 
-        jLabel21.setText("Número de Séries");
+        jLabel21.setText(bundle.getString("InstrutorView.jLabel21.text")); // NOI18N
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -698,7 +699,7 @@ public class InstrutorView extends FrameView {
         });
         jScrollPane5.setViewportView(jTable4);
 
-        jLabel22.setText("Login Cliente");
+        jLabel22.setText(bundle.getString("InstrutorView.jLabel22.text")); // NOI18N
 
         campo_exercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -712,15 +713,15 @@ public class InstrutorView extends FrameView {
             }
         });
 
-        Novo2.setText("Criar");
+        Novo2.setText(bundle.getString("InstrutorView.Novo2.text")); // NOI18N
 
-        Novo3.setText("Deletar");
+        Novo3.setText(bundle.getString("InstrutorView.Novo3.text")); // NOI18N
 
-        Novo4.setText("Atualizar");
+        Novo4.setText(bundle.getString("InstrutorView.Novo4.text")); // NOI18N
 
-        Novo5.setText("Buscar");
+        Novo5.setText(bundle.getString("InstrutorView.Novo5.text")); // NOI18N
 
-        jButton5.setText("Listar Todos");
+        jButton5.setText(bundle.getString("InstrutorView.jButton5.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -818,7 +819,7 @@ public class InstrutorView extends FrameView {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Exercício", jPanel7);
+        jTabbedPane1.addTab(bundle.getString("InstrutorView.jPanel7.TabConstraints.tabTitle"), jPanel7); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
