@@ -1,16 +1,35 @@
 
  package presentation;
-/*
+
+import java.util.List;
+import vo.ClienteVO;
+import vo.UsuarioVO;
 
 
-import org.jdesktop.application.FrameView;
-import org.jdesktop.application.SingleFrameApplication;
 
-public class ClienteView extends FrameView {
 
-    public ClienteView(SingleFrameApplication app) {
-        super(app);
+public class ClienteView extends javax.swing.JFrame {
+
+     private static ClienteView clienteview;
+    private List<ClienteVO> clientes;
+    
+    public ClienteView() {
+        super();
         initComponents();
+        this.setVisible(true);
+    }
+    
+    public static ClienteView getInstance() {
+        if (clienteview == null) {
+            clienteview = new ClienteView();
+        }
+        return clienteview;
+    }
+
+        
+        
+    public static void destroyInstance() {
+        clienteview = null;
     }
     
     @SuppressWarnings("unchecked")
@@ -355,4 +374,4 @@ public class ClienteView extends FrameView {
     private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }
-*/
+

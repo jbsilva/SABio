@@ -1,13 +1,32 @@
 package presentation;
-/*
-import org.jdesktop.application.FrameView;
-import org.jdesktop.application.SingleFrameApplication;
 
-public class InstrutorView extends FrameView {
+import java.util.List;
+import vo.InstrutorVO;
+import vo.UsuarioVO;
 
-    public InstrutorView(SingleFrameApplication app) {
-        super(app);
+
+public class InstrutorView extends javax.swing.JFrame {
+
+     private static InstrutorView instrutorview;
+    private List<InstrutorVO> instrutors;
+    
+    public InstrutorView() {
+        super();
         initComponents();
+        this.setVisible(true);
+    }
+    
+    public static InstrutorView getInstance() {
+        if (instrutorview == null) {
+            instrutorview = new InstrutorView();
+        }
+        return instrutorview;
+    }
+
+        
+        
+    public static void destroyInstance() {
+        instrutorview = null;
     }
     
     @SuppressWarnings("unchecked")
@@ -980,4 +999,3 @@ public class InstrutorView extends FrameView {
     private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }
-*/

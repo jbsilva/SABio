@@ -1296,7 +1296,8 @@ public class AtendenteView extends javax.swing.JFrame{
     }//GEN-LAST:event_Buscar8ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        atendentes.get((this.jTable3.getSelectedRow()));
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void Novo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Novo2ActionPerformed
