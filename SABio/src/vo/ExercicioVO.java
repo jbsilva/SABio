@@ -2,7 +2,7 @@ package vo;
 
 public class ExercicioVO extends ObjectVO {
   
-    private String cliente;
+    private ClienteVO cliente;
     private int carga;
     private String exercicio;
     private int numero_de_series;
@@ -15,7 +15,7 @@ public class ExercicioVO extends ObjectVO {
     }
 
     public ExercicioVO(int treino_id, int carga, String exercicio,
-            int numero_de_series, String cliente)
+            int numero_de_series, ClienteVO cliente)
     {
         super();
         this.treino_id = treino_id;
@@ -26,11 +26,11 @@ public class ExercicioVO extends ObjectVO {
     }
 
     //String ou TreinoVO?
-    public String getCliente() {
+    public ClienteVO getCliente() {
         return this.cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(ClienteVO cliente) {
         this.cliente = cliente;
     }
     public int getTreino() {

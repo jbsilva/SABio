@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class InstrutorVO extends ObjectVO
 {
-    private String usuario;
+    private UsuarioVO usuario;
     private String nome;
     private String cpf;
     Calendar data_contratacao;
@@ -20,7 +20,7 @@ public class InstrutorVO extends ObjectVO
         super();
     }
 
-    public InstrutorVO(String usuario, String nome, String cpf,
+    public InstrutorVO(UsuarioVO usuario, String nome, String cpf,
             Calendar data_contratacao, String rg, String endereco, 
             String registro_profissional, String numero_carteira_trabalho,
             int carga_horaria)
@@ -39,11 +39,11 @@ public class InstrutorVO extends ObjectVO
     }
 
     //String ou UsuarioVO?
-    public String getUsuario() {
+    public UsuarioVO getUsuario() {
         return this.usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(UsuarioVO usuario) {
         this.usuario = usuario;
     }
 

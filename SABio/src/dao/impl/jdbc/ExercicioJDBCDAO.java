@@ -28,7 +28,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 			stmt.setInt(2, exercicio.getCarga());
 			stmt.setInt(3, exercicio.getNumeroDeSeries());
                         stmt.setString(4, exercicio.getExercicio());
-                        stmt.setString(5, exercicio.getCliente());
+                        stmt.setString(5, getCliente().getUsuario().getLogin());
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
                         ExercicioVO exercicio = (ExercicioVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, exercicio.getCliente());
+			stmt.setString(1, exercicio.getCliente().getUsuario().getLogin());
 			stmt.setInt(2, exercicio.getCarga());
 			stmt.setInt(3, exercicio.getNumeroDeSeries());
                         stmt.setInt(4, exercicio.getTreino());
