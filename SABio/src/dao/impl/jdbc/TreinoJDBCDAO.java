@@ -1,6 +1,8 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
+import dao.DAOFactory;
+import dao.spec.IClienteDAO;
 import dao.spec.ITreinoDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -9,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
+import vo.ClienteVO;
 import vo.ObjectVO;
 import vo.TreinoVO;
 
@@ -26,7 +29,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
             TreinoVO treino = (TreinoVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
-            stmt.setString(1, treino.getCliente());
+            stmt.setString(1, treino.getCliente().getUsuario().getLogin());
             stmt.setInt(2, treino.getTreinoId());
             stmt.setString(3, treino.getTipoTreino());
             Date dt = new Date(treino.getDataInicio().getTime().getTime());
@@ -55,7 +58,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
             stmt.setInt(4, treino.getNivel());
             stmt.setInt(5, treino.getNumeroDias());
             stmt.setString(6, treino.getNomeTreino());
-            stmt.setString(7, treino.getCliente());
+            stmt.setString(7, treino.getCliente().getUsuario().getLogin());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -88,7 +91,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
             TreinoVO treino = (TreinoVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
-            stmt.setString(1, treino.getCliente());
+            stmt.setString(1, treino.getCliente().getUsuario().getLogin());
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -112,7 +115,7 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
             if (rs.next()) {
                 return (TreinoVO) this.createVO(rs);
             }
-        } catch (Exception e) {
+        } catch (SQLException | DAOException e) {
             throw new DAOException(e);
         }
         return null;
@@ -136,8 +139,11 @@ public class TreinoJDBCDAO extends GenericJDBCDAO implements ITreinoDAO {
 
             Calendar cal = new GregorianCalendar();
             cal.setTime(dt);
-
-            return new TreinoVO(login, treino_id, tipo_treino, cal, nivel, numero_dias, nome_treino);
+            
+            IClienteDAO clienteDAO = DAOFactory.getInstance().getClienteDAO();
+            ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login);
+            
+            return new TreinoVO(cliente, treino_id, tipo_treino, cal, nivel, numero_dias, nome_treino);
         } catch (SQLException e) {
             throw new DAOException(e);
         }
