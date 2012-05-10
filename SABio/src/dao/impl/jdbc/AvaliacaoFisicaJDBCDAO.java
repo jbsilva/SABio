@@ -1,7 +1,10 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
+import dao.DAOFactory;
 import dao.spec.IAvaliacaoFisicaDAO;
+import dao.spec.IClienteDAO;
+import dao.spec.IInstrutorDAO;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +13,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import vo.AvaliacaoFisicaVO;
+import vo.ClienteVO;
+import vo.InstrutorVO;
 import vo.ObjectVO;
 
 public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacaoFisicaDAO {
@@ -26,8 +31,8 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
             AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
-            stmt.setString(1, avaliacaofisica.getCliente());
-            stmt.setString(2, avaliacaofisica.getInstrutor());
+            stmt.setString(1, avaliacaofisica.getCliente().getUsuario().getLogin());
+            stmt.setString(2, avaliacaofisica.getInstrutor().getUsuario().getLogin());
             stmt.setInt(3, avaliacaofisica.getID());
             Date dt = new Date(avaliacaofisica.getDataRealizacao().getTime().getTime());
             stmt.setDate(4, dt);
@@ -46,8 +51,8 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
             AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
-            stmt.setString(1, avaliacaofisica.getCliente());
-            stmt.setString(2, avaliacaofisica.getInstrutor());
+            stmt.setString(1, avaliacaofisica.getCliente().getUsuario().getLogin());
+            stmt.setString(2, avaliacaofisica.getInstrutor().getUsuario().getLogin());
             Date dt = new Date(avaliacaofisica.getDataRealizacao().getTime().getTime());
             stmt.setDate(3, dt);
             stmt.setString(4, avaliacaofisica.getObservacoes());
@@ -112,8 +117,14 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 
             Calendar cal = new GregorianCalendar();
             cal.setTime(dt);
-
-            return new AvaliacaoFisicaVO(login_cliente, login_instrutor, id,
+            
+            IClienteDAO clienteDAO = DAOFactory.getInstance().getClienteDAO();
+            ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login_cliente);
+            IInstrutorDAO instrutorDAO = DAOFactory.getInstance().getInstrutorDAO();
+            InstrutorVO instrutor = (InstrutorVO) instrutorDAO.SelectByLogin(login_cliente);
+                    
+            
+            return new AvaliacaoFisicaVO(cliente, instrutor, id,
                     cal, observacoes);
         } catch (SQLException e) {
             throw new DAOException(e);
