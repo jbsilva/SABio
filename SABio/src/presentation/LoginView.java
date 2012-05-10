@@ -1,16 +1,13 @@
 package presentation;
 
-import java.awt.event.ItemEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sabio.SABioException;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import javax.swing.JOptionPane;
 import vo.UsuarioVO;
 
 public class LoginView extends javax.swing.JFrame {
@@ -68,7 +65,8 @@ public class LoginView extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         campo_senha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,11 +104,19 @@ public class LoginView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel4.setText(bundle.getString("LoginView.jLabel4.text")); // NOI18N
 
-        jComboBox2.setMaximumRowCount(1);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Português", "Inglês" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButton1.setSelected(true);
+        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
+        jRadioButton1.setText(bundle1.getString("LoginView.jRadioButton1.text")); // NOI18N
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton3.setText(bundle1.getString("LoginView.jRadioButton3.text")); // NOI18N
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
             }
         });
 
@@ -149,8 +155,10 @@ public class LoginView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(59, 59, 59)
+                        .addComponent(jRadioButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton3)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,8 +166,9 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton3))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -184,14 +193,6 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        Locale locale = new Locale("en", "US");
-        Locale.setDefault(locale);
-        JOptionPane.showMessageDialog(null,"Language Changed", "Success!", JOptionPane.INFORMATION_MESSAGE);
-        bundle = ResourceBundle.getBundle("I18n/Bundle");
-        atualiza();
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void botao_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_loginActionPerformed
         try {
             String login = campo_login.getText();
@@ -212,12 +213,20 @@ public class LoginView extends javax.swing.JFrame {
                 AtendenteView.getInstance().setFocusableWindowState(true);
                 destroyInstance();
             } else {
-                this.setVisible(false);
-                AtendenteView.getInstance().setFocusableWindowState(true);
-                destroyInstance();
+                
+            Locale locale = Locale.getDefault();
+            
+            if (locale.getLanguage().equals("pt"))
+            {
+                JOptionPane.showMessageDialog(null,"Senha ou Login Incorreto", "Erro!", JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"Wrong Login or Password", "Error!", JOptionPane.WARNING_MESSAGE);
+            }
+            
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_botao_loginActionPerformed
 
@@ -250,6 +259,23 @@ public class LoginView extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_botao_cadastrarActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        Locale locale = new Locale("en", "US");
+        Locale.setDefault(locale);
+        JOptionPane.showMessageDialog(null, "Language Changed", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        bundle = ResourceBundle.getBundle("I18n/Bundle");
+  
+        atualiza();
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        Locale locale = new Locale("pt", "BR");
+        Locale.setDefault(locale);
+        JOptionPane.showMessageDialog(null, "Idioma Alterado", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        bundle = ResourceBundle.getBundle("I18n/Bundle");
+        atualiza();    
+}//GEN-LAST:event_jRadioButton1ActionPerformed
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -306,30 +332,21 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
         });
     }
     
-    private void updateComponents(){
-            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("View/Bundle");
-            jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
-            jLabel2.setText(bundle.getString("LoginView.jLabel2.text"));
-            jLabel3.setText(bundle.getString("LoginView.jLabel3.text"));
-            botao_cadastrar.setText(bundle.getString("LoginView.botao_cadastrar.text"));
-            botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
-            
-            this.validate();
-            this.repaint();
-          
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cadastrar;
     private javax.swing.JButton botao_login;
     private javax.swing.JTextField campo_login;
     private javax.swing.JPasswordField campo_senha;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
+
 }
+

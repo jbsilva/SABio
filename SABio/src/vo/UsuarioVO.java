@@ -36,6 +36,8 @@ public class UsuarioVO extends ObjectVO {
         buffer.append("[");
         buffer.append(", login = ");
         buffer.append(this.getLogin());
+        buffer.append(", senha = ");
+        buffer.append(this.getSenha());
         buffer.append("]");
         return buffer.toString();
     }

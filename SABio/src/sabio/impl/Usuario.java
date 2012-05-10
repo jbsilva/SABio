@@ -1,15 +1,16 @@
 package sabio.impl;
 
-import java.util.List;
-
+import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IUsuarioDAO;
+import java.util.List;
 import sabio.SABioException;
 import sabio.spec.IUsuario;
 import vo.UsuarioVO;
 
 public class Usuario implements IUsuario {
 
+    @Override
     public void delete(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try
@@ -17,11 +18,12 @@ public class Usuario implements IUsuario {
             IUsuarioDAO dao = factory.getUsuarioDAO();
             UsuarioVO user = getUsuarioByLogin(login);
             dao.delete(user);
-        } catch (Exception e) {
+        } catch (DAOException | SABioException e) {
             throw new SABioException(e);
         }
     }
 
+    @Override
     public void create(UsuarioVO user) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -32,6 +34,7 @@ public class Usuario implements IUsuario {
         }
     }
 
+    @Override
     public void update(UsuarioVO user) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -42,6 +45,7 @@ public class Usuario implements IUsuario {
         }
     }
 
+    @Override
     public List getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -52,6 +56,7 @@ public class Usuario implements IUsuario {
         }
     }
 
+    @Override
     public UsuarioVO getUsuarioByLogin(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -62,13 +67,13 @@ public class Usuario implements IUsuario {
         }
     }
 
+    @Override
     public boolean authenticate(UsuarioVO user) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             IUsuarioDAO dao = factory.getUsuarioDAO();
             return dao.checkLoginSenha(user.getLogin(), user.getSenha());
         } catch (Exception e) {
-            e.printStackTrace();
             throw new SABioException(e);
         }
     }
