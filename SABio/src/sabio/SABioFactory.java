@@ -19,11 +19,7 @@ public class SABioFactory {
         return instance;
     }
 
-    public ITreino getAccount() {
-        return new Treino();
-    }
-
-    public IUsuario getUser() {
+    public IUsuario getUsuario() {
         return new Usuario();
     }
 }

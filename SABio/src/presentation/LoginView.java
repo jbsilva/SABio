@@ -1,14 +1,33 @@
 package presentation;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import presentation.desktop.*;
+import sabio.SABioFactory;
+import sabio.spec.IUsuario;
+import vo.UsuarioVO;
 
 public class LoginView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginView
-     */
+    private static LoginView loginview;
+    private ResourceBundle bundle;
+
     public LoginView() {
+        super("Login");
         initComponents();
+        this.setVisible(true);
+    }
+
+    public static LoginView getInstance() {
+        if (loginview == null) {
+            loginview = new LoginView();
+        }
+        return loginview;
+    }
+
+    public static void destroyInstance() {
+        loginview = null;
     }
 
     /**
@@ -24,11 +43,11 @@ public class LoginView extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        campo_login = new javax.swing.JTextField();
+        botao_login = new javax.swing.JButton();
+        botao_cadastrar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        campo_senha = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
@@ -45,15 +64,20 @@ public class LoginView extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel3.setText(bundle.getString("LoginView.jLabel3.text")); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        campo_login.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jButton1.setText(bundle.getString("LoginView.jButton1.text")); // NOI18N
+        botao_login.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
+        botao_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_loginActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jButton3.setText(bundle.getString("LoginView.jButton3.text")); // NOI18N
+        botao_cadastrar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botao_cadastrar.setText(bundle.getString("LoginView.botao_cadastrar.text")); // NOI18N
 
-        jPasswordField1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        campo_senha.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
 
         jComboBox1.setMaximumRowCount(2);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente", "Instrutor", "Atendente" }));
@@ -63,6 +87,11 @@ public class LoginView extends javax.swing.JFrame {
 
         jComboBox2.setMaximumRowCount(1);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Português", "Inglês" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,19 +103,19 @@ public class LoginView extends javax.swing.JFrame {
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(botao_cadastrar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(botao_login))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPasswordField1)))
+                                        .addComponent(campo_senha)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -118,16 +147,16 @@ public class LoginView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campo_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
+                    .addComponent(botao_cadastrar)
+                    .addComponent(botao_login))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,6 +166,38 @@ public class LoginView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void botao_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_loginActionPerformed
+        try {
+            String login = campo_login.getText();
+            String senha = String.copyValueOf(campo_senha.getPassword());
+
+            boolean autenticado = false;
+            IUsuario user = SABioFactory.getInstance().getUsuario();
+            UsuarioVO vo = new UsuarioVO(login, senha);
+
+            try {
+                autenticado = user.authenticate(vo);
+            } catch (Exception e) {
+                autenticado = false;
+            }
+
+            if (autenticado) {
+                Desktop.getInstance().authenticateUser(vo);
+            } else {
+                JOptionPane.showMessageDialog(Desktop.getInstance(),
+                        bundle.getString("JPLogin.Messages.LoginError"),
+                        bundle.getString("JPLogin.Messages.LoginError.Title"),
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botao_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,17 +241,17 @@ public class LoginView extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botao_cadastrar;
+    private javax.swing.JButton botao_login;
+    private javax.swing.JTextField campo_login;
+    private javax.swing.JPasswordField campo_senha;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

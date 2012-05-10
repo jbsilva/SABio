@@ -85,7 +85,7 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
     @Override
     public boolean checkLoginSenha(String login, String senha)
             throws DAOException {
-        boolean isAuthenticated = false;
+        boolean autenticado = false;
         String sql = "SELECT SENHA FROM " + this.getTableName()
                 + " WHERE LOGIN = '" + login + "'";
         try {
@@ -93,13 +93,13 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
                 String result = rs.getString("SENHA");
-                isAuthenticated = result.equals(senha);
+                autenticado = result.equals(senha);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DAOException(e);
         }
-        return isAuthenticated;
+        return autenticado;
     }
 
     @Override

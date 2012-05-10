@@ -1,12 +1,10 @@
 package presentation;
-
-import presentation.Atendente.*;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
-public class SuperUsuarioView extends FrameView {
+public class AtendenteView extends FrameView {
 
-    public SuperUsuarioView(SingleFrameApplication app) {
+    public AtendenteView(SingleFrameApplication app) {
         super(app);
         initComponents();
     }
