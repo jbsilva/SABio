@@ -1,5 +1,6 @@
 package presentation;
 
+import java.awt.event.ItemEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sabio.SABioException;
@@ -8,6 +9,7 @@ import sabio.spec.IUsuario;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import vo.UsuarioVO;
 
@@ -15,12 +17,12 @@ public class LoginView extends javax.swing.JFrame {
 
     private static LoginView loginview;
     private UsuarioVO usuarioLogado;
+    private ResourceBundle bundle;
 
     public LoginView() {
         super("Login");
         initComponents();
         this.setVisible(true);
-        
     }
 
     public static LoginView getInstance() {
@@ -71,7 +73,7 @@ public class LoginView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle_pt_BR"); // NOI18N
         jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -116,40 +118,40 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(66, 66, 66)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(botao_cadastrar)
-                            .addGap(18, 18, 18)
-                            .addComponent(botao_login))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campo_senha))))
-                    .addGap(69, 69, 69))
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator1)
-                        .addComponent(jSeparator2))
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botao_cadastrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botao_login))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campo_senha)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +188,7 @@ public class LoginView extends javax.swing.JFrame {
         Locale locale = new Locale("en", "US");
         Locale.setDefault(locale);
         JOptionPane.showMessageDialog(null,"Language Changed", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        bundle = ResourceBundle.getBundle("I18n/Bundle");
         atualiza();
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
@@ -205,18 +208,13 @@ public class LoginView extends javax.swing.JFrame {
             }
 
             if (autenticado) {
+                this.setVisible(false);
+                AtendenteView.getInstance().setFocusableWindowState(true);
                 destroyInstance();
-                AtendenteView atendente = new AtendenteView();
             } else {
+                this.setVisible(false);
+                AtendenteView.getInstance().setFocusableWindowState(true);
                 destroyInstance();
-                AtendenteView atendente = new AtendenteView();
-                /*
-                JOptionPane.showMessageDialog(LoginView.getInstance(),
-                        bundle.getString("JPLogin.Messages.LoginError"),
-                        bundle.getString("JPLogin.Messages.LoginError.Title"),
-                        JOptionPane.WARNING_MESSAGE);
-                        * 
-                        */
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -224,7 +222,6 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_loginActionPerformed
 
     private void atualiza(){
-            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("View/Bundle");
             jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
             jLabel2.setText(bundle.getString("LoginView.jLabel2.text"));
             jLabel3.setText(bundle.getString("LoginView.jLabel3.text"));
