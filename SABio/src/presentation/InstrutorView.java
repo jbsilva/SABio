@@ -1,5 +1,5 @@
 package presentation;
-
+/*
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -980,3 +980,4 @@ public class InstrutorView extends FrameView {
     private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }
+*/

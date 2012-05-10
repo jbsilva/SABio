@@ -1,5 +1,6 @@
-package presentation;
 
+ package presentation;
+/*
 
 
 import org.jdesktop.application.FrameView;
@@ -354,3 +355,4 @@ public class ClienteView extends FrameView {
     private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }
+*/

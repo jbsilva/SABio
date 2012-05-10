@@ -1,13 +1,28 @@
 package presentation;
-import org.jdesktop.application.FrameView;
-import org.jdesktop.application.SingleFrameApplication;
 
-public class AtendenteView extends FrameView {
 
-    public AtendenteView(SingleFrameApplication app) {
-        super(app);
+public class AtendenteView extends javax.swing.JFrame{
+
+    private static AtendenteView atendenteview;
+    
+    public AtendenteView() {
+        
+        super("Atendente");
         initComponents();
+        this.setVisible(true);
     }
+    
+        public static AtendenteView getInstance() {
+        if (atendenteview == null) {
+            atendenteview = new AtendenteView();
+        }
+        return atendenteview;
+    }
+
+    public static void destroyInstance() {
+        atendenteview = null;
+    }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -377,18 +392,6 @@ public class AtendenteView extends FrameView {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.Instrutor.TabConstraints.tabTitle"), Instrutor); // NOI18N
 
-        campo_login_cliente_af.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_login_cliente_afActionPerformed(evt);
-            }
-        });
-
-        campo_login_instrutor_af.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_login_instrutor_afActionPerformed(evt);
-            }
-        });
-
         jLabel30.setText(bundle.getString("AtendenteView.jLabel30.text")); // NOI18N
 
         jLabel31.setText(bundle.getString("AtendenteView.jLabel31.text")); // NOI18N
@@ -429,18 +432,6 @@ public class AtendenteView extends FrameView {
         jLabel34.setText(bundle.getString("AtendenteView.jLabel34.text")); // NOI18N
 
         jLabel35.setText(bundle.getString("AtendenteView.jLabel35.text")); // NOI18N
-
-        campo_data_realizacao_af.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_data_realizacao_afActionPerformed(evt);
-            }
-        });
-
-        campo_id_af.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_id_afActionPerformed(evt);
-            }
-        });
 
         Novo10.setText(bundle.getString("AtendenteView.Novo10.text")); // NOI18N
 
@@ -549,24 +540,6 @@ public class AtendenteView extends FrameView {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
-        campo_duracao_treino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_duracao_treinoActionPerformed(evt);
-            }
-        });
-
-        campo_data_inicio_treino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_data_inicio_treinoActionPerformed(evt);
-            }
-        });
-
-        campo_nivel_treino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_nivel_treinoActionPerformed(evt);
-            }
-        });
-
         jLabel24.setText(bundle.getString("AtendenteView.jLabel24.text")); // NOI18N
 
         jLabel26.setText(bundle.getString("AtendenteView.jLabel26.text")); // NOI18N
@@ -608,18 +581,6 @@ public class AtendenteView extends FrameView {
 
         jLabel29.setText(bundle.getString("AtendenteView.jLabel29.text")); // NOI18N
 
-        jTextField26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField26ActionPerformed(evt);
-            }
-        });
-
-        campo_id_treino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_id_treinoActionPerformed(evt);
-            }
-        });
-
         Novo6.setText(bundle.getString("AtendenteView.Novo6.text")); // NOI18N
 
         Novo7.setText(bundle.getString("AtendenteView.Novo7.text")); // NOI18N
@@ -631,12 +592,6 @@ public class AtendenteView extends FrameView {
         jLabel36.setText(bundle.getString("AtendenteView.jLabel36.text")); // NOI18N
 
         jLabel37.setText(bundle.getString("AtendenteView.jLabel37.text")); // NOI18N
-
-        campo_login_cliente_treino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_login_cliente_treinoActionPerformed(evt);
-            }
-        });
 
         jButton3.setText(bundle.getString("AtendenteView.jButton3.text")); // NOI18N
 
@@ -810,12 +765,6 @@ public class AtendenteView extends FrameView {
 
         jLabel2.setText(bundle.getString("AtendenteView.jLabel2.text")); // NOI18N
 
-        campo_rg_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_rg_clienteActionPerformed(evt);
-            }
-        });
-
         Buscar7.setText(bundle.getString("AtendenteView.Buscar7.text")); // NOI18N
         Buscar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -901,9 +850,9 @@ public class AtendenteView extends FrameView {
                 .addContainerGap())
             .addGroup(ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ClienteLayout.createSequentialGroup()
-                    .addGap(0, 366, Short.MAX_VALUE)
+                    .addGap(0, 365, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 363, Short.MAX_VALUE)))
+                    .addGap(0, 364, Short.MAX_VALUE)))
         );
         ClienteLayout.setVerticalGroup(
             ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -951,18 +900,6 @@ public class AtendenteView extends FrameView {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
-        campo_carga_exercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_carga_exercicioActionPerformed(evt);
-            }
-        });
-
-        campo_numero_series_exercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_numero_series_exercicioActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText(bundle.getString("AtendenteView.jLabel4.text")); // NOI18N
 
         jLabel19.setText(bundle.getString("AtendenteView.jLabel19.text")); // NOI18N
@@ -1003,18 +940,6 @@ public class AtendenteView extends FrameView {
         jScrollPane5.setViewportView(jTable4);
 
         jLabel22.setText(bundle.getString("AtendenteView.jLabel22.text")); // NOI18N
-
-        campo_exercicio_exercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_exercicio_exercicioActionPerformed(evt);
-            }
-        });
-
-        campo_id_exercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_id_exercicioActionPerformed(evt);
-            }
-        });
 
         Novo2.setText(bundle.getString("AtendenteView.Novo2.text")); // NOI18N
         Novo2.addActionListener(new java.awt.event.ActionListener() {
@@ -1201,11 +1126,11 @@ public class AtendenteView extends FrameView {
                                     .addComponent(jLabel42))))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campo_login_atendente, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(campo_login_atendente)
                             .addComponent(campo_rg_atendente)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(campo_cpf_atendente, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 29, Short.MAX_VALUE))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(Atualizar2)
                         .addGap(35, 35, 35)
@@ -1252,10 +1177,10 @@ public class AtendenteView extends FrameView {
                             .addComponent(campo_login_atendente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel43))
                         .addGap(28, 28, 28)))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(campo_cpf_atendente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campo_cpf_atendente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Buscar3)
                     .addComponent(Buscar4)
@@ -1309,69 +1234,9 @@ public class AtendenteView extends FrameView {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campo_id_exercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_id_exercicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_id_exercicioActionPerformed
-
-    private void campo_exercicio_exercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_exercicio_exercicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_exercicio_exercicioActionPerformed
-
-    private void campo_numero_series_exercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_numero_series_exercicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_numero_series_exercicioActionPerformed
-
-    private void campo_carga_exercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_carga_exercicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_carga_exercicioActionPerformed
-
-    private void campo_rg_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_rg_clienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_rg_clienteActionPerformed
-
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BuscarActionPerformed
-
-    private void campo_login_cliente_treinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_login_cliente_treinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_login_cliente_treinoActionPerformed
-
-    private void campo_id_treinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_id_treinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_id_treinoActionPerformed
-
-    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField26ActionPerformed
-
-    private void campo_nivel_treinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nivel_treinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nivel_treinoActionPerformed
-
-    private void campo_data_inicio_treinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_data_inicio_treinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_data_inicio_treinoActionPerformed
-
-    private void campo_duracao_treinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_duracao_treinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_duracao_treinoActionPerformed
-
-    private void campo_id_afActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_id_afActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_id_afActionPerformed
-
-    private void campo_data_realizacao_afActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_data_realizacao_afActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_data_realizacao_afActionPerformed
-
-    private void campo_login_instrutor_afActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_login_instrutor_afActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_login_instrutor_afActionPerformed
-
-    private void campo_login_cliente_afActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_login_cliente_afActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_login_cliente_afActionPerformed
 
     private void Buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar1ActionPerformed
         // TODO add your handling code here:

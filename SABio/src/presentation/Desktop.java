@@ -4,10 +4,6 @@
  */
 package presentation;
 
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import sabio.SABioException;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
@@ -21,6 +17,7 @@ public class Desktop extends javax.swing.JFrame {
 
     public Desktop() {
         initComponents();
+        LoginView login = new LoginView(); 
 
         this.setVisible(true);
     }
@@ -168,6 +165,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new Desktop().setVisible(true);
             }
