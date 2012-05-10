@@ -23,7 +23,7 @@ public class Treino implements ITreino {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             ITreinoDAO dao = factory.getTreinoDAO();
-            TreinoVO treino = getTreino(treino_id);
+            TreinoVO treino = getTreinoById(treino_id);
             dao.delete(treino);
         } catch (Exception e) {
             throw new SABioException(e);
@@ -40,21 +40,11 @@ public class Treino implements ITreino {
         }
     }
 
-    public TreinoVO getTreino(int treino_id) throws SABioException {
+    public TreinoVO getTreinoById(int treino_id) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             ITreinoDAO dao = factory.getTreinoDAO();
             return (TreinoVO) dao.selectByTreinoId(treino_id);
-        } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
-    public TreinoVO getTreinoByLogin(String Login) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            ITreinoDAO dao = factory.getTreinoDAO();
-            return dao.selectByLogin(Login);
         } catch (Exception e) {
             throw new SABioException(e);
         }

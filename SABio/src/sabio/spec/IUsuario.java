@@ -12,8 +12,6 @@ public interface IUsuario {
 
     void update(UsuarioVO user) throws SABioException;
 
-    UsuarioVO getUsuario(String login) throws SABioException;
-
     List getAll() throws SABioException;
 
     UsuarioVO getUsuarioByLogin(String login) throws SABioException;

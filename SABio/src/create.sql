@@ -51,7 +51,7 @@ CREATE TABLE cliente
     cpf                 VARCHAR(11),
     rg                  VARCHAR(9) CONSTRAINT cliente_rg_nn NOT NULL,
     data_ingresso       DATE,
-    telefone            INTEGER,
+    telefone            VARCHAR(15),
     atestado_medico     VARCHAR(20) CONSTRAINT cliente_atestado_medico_nn NOT
     NULL,
     data_nascimento     DATE,
@@ -83,7 +83,7 @@ CREATE TABLE treino
     numero_dias   INTEGER,
     nome_treino   VARCHAR(20),
     CONSTRAINT treino_fk FOREIGN KEY (login) REFERENCES cliente(login),
-    CONSTRAINT treino_pk PRIMARY KEY (treino_id, login)
+    CONSTRAINT treino_pk PRIMARY KEY (treino_id)
 );
 
 CREATE TABLE exercicio
@@ -130,11 +130,11 @@ VALUES ('atendente03', 'julio', '88962615703', '403289440', 'sao paulo', '700', 
 
 
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
-VALUES ('cliente01', 'andre', '37513012911', '429434121', '2008-07-28', 39210605, 'em dia', '1990-05-10', 'janeiro', True);
+VALUES ('cliente01', 'andre', '37513012911', '429434121', '2008-07-28', '39210605', 'em dia', '1990-05-10', 'janeiro', True);
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
-VALUES ('cliente02', 'tulio', '29642217589', '433279470', '2008-07-28', 34156000, 'em dia', '1989-05-10', 'fevereiro, março', True);
+VALUES ('cliente02', 'tulio', '29642217589', '433279470', '2008-07-28', '34156000', 'em dia', '1989-05-10', 'fevereiro, março', True);
 INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
-VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', 34210000, 'em dia', '1989-05-10', '', False);
+VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', '34210000', 'em dia', '1989-05-10', '', False);
 
 
 INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino, carga, numero_series)

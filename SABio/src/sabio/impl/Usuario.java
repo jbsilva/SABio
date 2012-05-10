@@ -42,16 +42,6 @@ public class Usuario implements IUsuario {
         }
     }
 
-    public UsuarioVO getUsuario(String login) throws SABioException {
-        DAOFactory factory = DAOFactory.getInstance();
-        try {
-            IUsuarioDAO dao = factory.getUsuarioDAO();
-            return (UsuarioVO) dao.selectByLogin(login);
-        } catch (Exception e) {
-            throw new SABioException(e);
-        }
-    }
-
     public List getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
