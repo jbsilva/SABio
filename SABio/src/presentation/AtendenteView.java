@@ -1,8 +1,6 @@
-package presentation.SuperUsuario;
+package presentation;
 
 import presentation.Atendente.*;
-import presentation.Instrutor.*;
-import presentation.cliente.*;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -158,7 +156,7 @@ public class SuperUsuarioView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Atendente/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
         jTabbedPane1.setName(bundle.getString("AtendenteView.jTabbedPane1.name")); // NOI18N
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(

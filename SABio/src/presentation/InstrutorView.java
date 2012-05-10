@@ -1,6 +1,5 @@
-package presentation.Instrutor;
+package presentation;
 
-import presentation.cliente.*;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -95,7 +94,7 @@ public class InstrutorView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Instrutor/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
         jTabbedPane1.setName(bundle.getString("InstrutorView.jTabbedPane1.name")); // NOI18N
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(

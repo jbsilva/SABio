@@ -1,4 +1,6 @@
-package presentation.cliente;
+package presentation;
+
+
 
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
@@ -38,7 +40,7 @@ public class ClienteView extends FrameView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/cliente/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
         jTabbedPane1.setName(bundle.getString("ClienteView.jTabbedPane1.name")); // NOI18N
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
