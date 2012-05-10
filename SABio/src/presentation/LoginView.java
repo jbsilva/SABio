@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
+import sabio.SABioException;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
 import vo.UsuarioVO;
@@ -10,6 +11,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private static LoginView loginview;
     private ResourceBundle bundle;
+    private UsuarioVO usuarioLogado;
 
     public LoginView() {
         super("Login");
@@ -26,6 +28,19 @@ public class LoginView extends javax.swing.JFrame {
 
     public static void destroyInstance() {
         loginview = null;
+    }
+    
+    public void authenticateUser(UsuarioVO usuario) {
+        IUsuario user = SABioFactory.getInstance().getUsuario();
+        try {
+            if (user.authenticate(usuario)) {
+                this.usuarioLogado = user.getUsuarioByLogin(usuario.getLogin());
+            } else {
+                this.usuarioLogado = null;
+            }
+
+        } catch (SABioException ex) {
+        }
     }
 
     /**
@@ -197,10 +212,6 @@ public class LoginView extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_botao_loginActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -216,10 +227,32 @@ public class LoginView extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Desktop.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Desktop.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Desktop.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Desktop.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -230,10 +263,11 @@ public class LoginView extends javax.swing.JFrame {
 
             @Override
             public void run() {
-                new LoginView().setVisible(true);
+                new Desktop().setVisible(true);
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cadastrar;
     private javax.swing.JButton botao_login;

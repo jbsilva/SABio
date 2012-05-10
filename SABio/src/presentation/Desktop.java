@@ -116,6 +116,7 @@ public void authenticateUser(UsuarioVO usuario) {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -163,6 +164,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
         /*
          * Create and display the form
          */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             @Override
