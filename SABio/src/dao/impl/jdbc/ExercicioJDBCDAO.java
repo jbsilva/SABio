@@ -1,11 +1,14 @@
 package dao.impl.jdbc;
 
 import dao.DAOException;
+import dao.DAOFactory;
+import dao.spec.IClienteDAO;
 import dao.spec.IExercicioDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import vo.ClienteVO;
 import vo.ExercicioVO;
 import vo.ObjectVO;
 
@@ -28,7 +31,7 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 			stmt.setInt(2, exercicio.getCarga());
 			stmt.setInt(3, exercicio.getNumeroDeSeries());
                         stmt.setString(4, exercicio.getExercicio());
-                        stmt.setString(5, getCliente().getUsuario().getLogin());
+                        stmt.setString(5, exercicio.getCliente().getUsuario().getLogin());
                         
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -108,8 +111,11 @@ public class ExercicioJDBCDAO extends GenericJDBCDAO implements IExercicioDAO {
 			int num_series = rs.getInt("NUM_DE_SERIES");
                         String exercicio = rs.getString("EXERCICIO");
                         int treino_id = rs.getInt("TREINO_ID");
-
-			return new ExercicioVO(treino_id, carga, exercicio, num_series, login_cliente);
+                        
+                        IClienteDAO clienteDAO = DAOFactory.getInstance().getClienteDAO();
+			ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login_cliente);
+                        
+			return new ExercicioVO(treino_id, carga, exercicio, num_series, cliente);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
