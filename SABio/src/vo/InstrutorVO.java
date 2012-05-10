@@ -38,7 +38,6 @@ public class InstrutorVO extends ObjectVO
         
     }
 
-    //String ou UsuarioVO?
     public UsuarioVO getUsuario() {
         return this.usuario;
     }
