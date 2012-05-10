@@ -1,22 +1,26 @@
 package presentation;
 
-import java.util.ResourceBundle;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sabio.SABioException;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import vo.UsuarioVO;
 
 public class LoginView extends javax.swing.JFrame {
 
     private static LoginView loginview;
-    private ResourceBundle bundle;
     private UsuarioVO usuarioLogado;
 
     public LoginView() {
         super("Login");
         initComponents();
         this.setVisible(true);
+        
     }
 
     public static LoginView getInstance() {
@@ -61,7 +65,6 @@ public class LoginView extends javax.swing.JFrame {
         botao_cadastrar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         campo_senha = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
 
@@ -78,6 +81,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel3.setText(bundle.getString("LoginView.jLabel3.text")); // NOI18N
 
         campo_login.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        campo_login.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         botao_login.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
@@ -89,11 +93,13 @@ public class LoginView extends javax.swing.JFrame {
 
         botao_cadastrar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botao_cadastrar.setText(bundle.getString("LoginView.botao_cadastrar.text")); // NOI18N
+        botao_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_cadastrarActionPerformed(evt);
+            }
+        });
 
         campo_senha.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-
-        jComboBox1.setMaximumRowCount(2);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente", "Instrutor", "Atendente" }));
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel4.setText(bundle.getString("LoginView.jLabel4.text")); // NOI18N
@@ -110,33 +116,30 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(66, 66, 66)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(botao_cadastrar)
+                            .addGap(18, 18, 18)
+                            .addComponent(botao_login))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(botao_cadastrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(botao_login))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campo_senha)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addComponent(jSeparator2))))
-                .addContainerGap())
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campo_senha))))
+                    .addGap(69, 69, 69))
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator1)
+                        .addComponent(jSeparator2))
+                    .addContainerGap()))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,8 +163,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campo_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campo_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -174,14 +176,17 @@ public class LoginView extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        Locale locale = new Locale("en", "US");
+        Locale.setDefault(locale);
+        JOptionPane.showMessageDialog(null,"Language Changed", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        atualiza();
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void botao_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_loginActionPerformed
@@ -201,17 +206,53 @@ public class LoginView extends javax.swing.JFrame {
 
             if (autenticado) {
                 destroyInstance();
-                AtendenteView cliente = new AtendenteView();
+                AtendenteView atendente = new AtendenteView();
             } else {
-                JOptionPane.showMessageDialog(Desktop.getInstance(),
+                destroyInstance();
+                AtendenteView atendente = new AtendenteView();
+                /*
+                JOptionPane.showMessageDialog(LoginView.getInstance(),
                         bundle.getString("JPLogin.Messages.LoginError"),
                         bundle.getString("JPLogin.Messages.LoginError.Title"),
                         JOptionPane.WARNING_MESSAGE);
+                        * 
+                        */
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_botao_loginActionPerformed
+
+    private void atualiza(){
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("View/Bundle");
+            jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
+            jLabel2.setText(bundle.getString("LoginView.jLabel2.text"));
+            jLabel3.setText(bundle.getString("LoginView.jLabel3.text"));
+            botao_cadastrar.setText(bundle.getString("LoginView.botao_cadastrar.text"));
+            botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
+            
+            this.validate();
+            this.repaint();
+          
+    }
+    
+    private void botao_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cadastrarActionPerformed
+        
+        String login = campo_login.getText();
+        String senha = String.copyValueOf(campo_senha.getPassword());
+    
+        SABioFactory factory = SABioFactory.getInstance();
+        UsuarioVO user = new UsuarioVO(); 
+        user.setLogin(login);
+        user.setSenha(senha);
+        
+        try {
+            factory.getUsuario().create(user);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }//GEN-LAST:event_botao_cadastrarActionPerformed
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -232,25 +273,25 @@ public class LoginView extends javax.swing.JFrame {
 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Desktop.class  
+            java.util.logging.Logger.getLogger(LoginView.class  
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
 
 catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Desktop.class  
+            java.util.logging.Logger.getLogger(LoginView.class  
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
 
 catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Desktop.class  
+            java.util.logging.Logger.getLogger(LoginView.class  
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
 
 catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Desktop.class  
+            java.util.logging.Logger.getLogger(LoginView.class  
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -263,17 +304,29 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
 
             @Override
             public void run() {
-                new Desktop().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }
-
+    
+    private void updateComponents(){
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("View/Bundle");
+            jLabel1.setText(bundle.getString("LoginView.jLabel1.text")); // NOI18N
+            jLabel2.setText(bundle.getString("LoginView.jLabel2.text"));
+            jLabel3.setText(bundle.getString("LoginView.jLabel3.text"));
+            botao_cadastrar.setText(bundle.getString("LoginView.botao_cadastrar.text"));
+            botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
+            
+            this.validate();
+            this.repaint();
+          
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cadastrar;
     private javax.swing.JButton botao_login;
     private javax.swing.JTextField campo_login;
     private javax.swing.JPasswordField campo_senha;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
