@@ -15,7 +15,7 @@ public class Usuario implements IUsuario {
         try
         {
             IUsuarioDAO dao = factory.getUsuarioDAO();
-            UsuarioVO user = getUsuario(login);
+            UsuarioVO user = getUsuarioByLogin(login);
             dao.delete(user);
         } catch (Exception e) {
             throw new SABioException(e);
