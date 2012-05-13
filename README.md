@@ -21,12 +21,10 @@ utilizados para o desenvolvimento deste sitema:
 
 1. Instale o PostgreSQL:
 
-   * Ubuntu:
-       sudo apt-get install postgresql postgresql-client postgresql-contrib
-
-   * Arch Linux:
-       sudo pacman -S -pgsql postgresql
-
+    * Ubuntu:
+        sudo apt-get install postgresql postgresql-client postgresql-contrib
+    * Arch Linux:
+        sudo pacman -S -pgsql postgresql
 
 2. Pelo pqsl, crie o usuário *sabio* com a senha *sabio*:
 
@@ -37,15 +35,15 @@ utilizados para o desenvolvimento deste sitema:
         CREATE DATABASE saibiodb WITH OWNER = sabio ENCODING = 'UTF8';
 
 4. Conecte o NetBeans ao BD (Services -> Databases -> New connection...):
-* Driver: PostgreSQL
-* Driver File(s): /usr/share/netbeans/ide/modules/ext/postgresql-9.1-902.jdbc4.jar
-* Driver Name: PostgreSQL
-* Host: localhost
-* Port: 5432
-* Database: sabiodb
-* User Name: sabio
-* Password: sabio
-* JDBC URL: jdbc:postgresql://localhost:5432/sabiodb
+    * Driver: PostgreSQL
+    * Driver File(s): /usr/share/netbeans/ide/modules/ext/postgresql-9.1-902.jdbc4.jar
+    * Driver Name: PostgreSQL
+    * Host: localhost
+    * Port: 5432
+    * Database: sabiodb
+    * User Name: sabio
+    * Password: sabio
+    * JDBC URL: jdbc:postgresql://localhost:5432/sabiodb
 
 5. Execute o script *create.sql* para criar as tabelas e preenchê-las com
 exemplos.
