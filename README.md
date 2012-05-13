@@ -20,7 +20,6 @@ utilizados para o desenvolvimento deste sitema:
 
 
 1. Instale o PostgreSQL:
-
     * Ubuntu:
         sudo apt-get install postgresql postgresql-client postgresql-contrib
     * Arch Linux:
