@@ -1,8 +1,15 @@
 package presentation;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import sabio.SABioFactory;
+import sabio.spec.IUsuario;
 import vo.AtendenteVO;
 import vo.UsuarioVO;
+import java.util.GregorianCalendar;
+import sabio.spec.IInstrutor;
+import vo.InstrutorVO;
 
 
 public class AtendenteView extends javax.swing.JFrame{
@@ -156,6 +163,11 @@ public class AtendenteView extends javax.swing.JFrame{
         jButton7.setText(bundle.getString("AtendenteView.jButton7.text")); // NOI18N
 
         jButton8.setText(bundle.getString("AtendenteView.jButton8.text")); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -451,12 +463,11 @@ public class AtendenteView extends javax.swing.JFrame{
                                     .addGap(20, 20, 20))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(jLabel27)
-                                    .addGap(18, 18, 18)))
+                                    .addComponent(jLabel27)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -727,6 +738,23 @@ public class AtendenteView extends javax.swing.JFrame{
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+            
+            String login = campo_login_instrutor.getText();
+            String nome = campo_nome_instrutor.getText();
+            String rg = campo_rg_instrutor.getText();
+            String cpf = campo_cpf_instrutor.getText();
+            SimpleDateFormat data = new SimpleDateFormat("DD-MM-AAAA");  
+            String hora =  data.format( new java.util.Date() );
+            campo_data_contratacao_instrutor.setText(hora);
+            
+            
+
+            boolean autenticado = false;
+            IInstrutor instrutor = SABioFactory.getInstance().getInstrutor();
+            InstrutorVO vo = new InstrutorVO();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar10;
