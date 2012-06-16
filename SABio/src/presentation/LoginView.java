@@ -55,6 +55,7 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -104,6 +105,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel4.setText(bundle.getString("LoginView.jLabel4.text")); // NOI18N
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
         jRadioButton1.setText(bundle1.getString("LoginView.jRadioButton1.text")); // NOI18N
@@ -113,6 +115,7 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText(bundle1.getString("LoginView.jRadioButton3.text")); // NOI18N
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,6 +339,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cadastrar;
     private javax.swing.JButton botao_login;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField campo_login;
     private javax.swing.JPasswordField campo_senha;
     private javax.swing.JLabel jLabel1;
