@@ -2,6 +2,7 @@ package presentation;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
@@ -179,50 +180,52 @@ public class AtendenteView extends javax.swing.JFrame{
                         .addGap(832, 832, 832)
                         .addComponent(Buscar6))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel15))
-                                .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(campo_rg_instrutor)
-                                    .addComponent(campo_login_instrutor)
-                                    .addComponent(campo_cpf_instrutor)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                                .addGap(219, 219, 219)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(99, 99, 99)
+                                        .addGap(95, 95, 95)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel14)))
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel16)
+                                            .addComponent(jLabel15))
+                                        .addGap(20, 20, 20))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addGap(101, 101, 101)
+                                        .addContainerGap()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                            .addComponent(campo_endereco_instrutor))
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(campo_rg_instrutor)
+                                            .addComponent(campo_login_instrutor)
+                                            .addComponent(campo_cpf_instrutor)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(99, 99, 99)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel13)
+                                                    .addComponent(jLabel14)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                                .addGap(101, 101, 101)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addComponent(campo_endereco_instrutor))))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campo_nome_instrutor, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                             .addComponent(campo_registro_instrutor)
                             .addComponent(campo_carteira_trabalho_instrutor)
-                            .addComponent(campo_data_contratacao_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(campo_data_contratacao_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -296,7 +299,7 @@ public class AtendenteView extends javax.swing.JFrame{
             InstrutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InstrutorLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         InstrutorLayout.setVerticalGroup(
             InstrutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +343,7 @@ public class AtendenteView extends javax.swing.JFrame{
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -356,7 +359,7 @@ public class AtendenteView extends javax.swing.JFrame{
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +396,7 @@ public class AtendenteView extends javax.swing.JFrame{
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 2, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -487,7 +490,7 @@ public class AtendenteView extends javax.swing.JFrame{
                             .addComponent(campo_endereco_instrutor1))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campo_nome_instrutor1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(campo_nome_instrutor1)
                             .addComponent(campo_registro_instrutor1)
                             .addComponent(campo_carteira_trabalho_instrutor1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -580,7 +583,7 @@ public class AtendenteView extends javax.swing.JFrame{
             ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienteLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         ClienteLayout.setVerticalGroup(
             ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -682,7 +685,7 @@ public class AtendenteView extends javax.swing.JFrame{
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Cliente1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         Cliente1Layout.setVerticalGroup(
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,9 +701,8 @@ public class AtendenteView extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 60, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -742,17 +744,22 @@ public class AtendenteView extends javax.swing.JFrame{
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
             
             String login = campo_login_instrutor.getText();
+            String senha = "mudeme";
+
             String nome = campo_nome_instrutor.getText();
             String rg = campo_rg_instrutor.getText();
             String cpf = campo_cpf_instrutor.getText();
-            SimpleDateFormat data = new SimpleDateFormat("DD-MM-AAAA");  
-            String hora =  data.format( new java.util.Date() );
-            campo_data_contratacao_instrutor.setText(hora);
-            
-            
 
-            boolean autenticado = false;
-            IInstrutor instrutor = SABioFactory.getInstance().getInstrutor();
+            SimpleDateFormat data = new SimpleDateFormat("DD-MM-AAAA");  
+            campo_data_contratacao_instrutor.setText(data);
+            
+            UsuarioVO usuario = new UsuarioVO(login, senha);
+
+            InstrutorVO instrutor = new InstrutorVO (usuario, nome, cpf,
+                    data_contratacao, rg, endereco, registro_profissional,
+                    numero_carteira_trabalho, carga_horaria)
+            Calendar agora = Calendar.getInstance().
+            
             InstrutorVO vo = new InstrutorVO();
     }//GEN-LAST:event_jButton8ActionPerformed
 

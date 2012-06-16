@@ -20,9 +20,14 @@ public class InstrutorVO extends ObjectVO
         super();
     }
 
-    public InstrutorVO(UsuarioVO usuario, String nome, String cpf,
-            Calendar data_contratacao, String rg, String endereco, 
-            String registro_profissional, String numero_carteira_trabalho,
+    public InstrutorVO(UsuarioVO usuario,
+            String nome,
+            String cpf,
+            Calendar data_contratacao,
+            String rg,
+            String endereco,
+            String registro_profissional,
+            String numero_carteira_trabalho,
             int carga_horaria)
     {
         super();
