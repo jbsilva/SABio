@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS supervisiona CASCADE;
 CREATE TABLE usuario
 (
     login VARCHAR(15) CONSTRAINT usuario_login_pk PRIMARY KEY,
-    senha CHAR(32) CONSTRAINT usuario_senha_nn NOT NULL
+    senha VARCHAR(32) CONSTRAINT usuario_senha_nn NOT NULL
 );
 
 CREATE TABLE instrutor
