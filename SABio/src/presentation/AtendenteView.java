@@ -195,18 +195,14 @@ public class AtendenteView extends javax.swing.JFrame {
                                     .addComponent(campo_nome_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campo_registro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campo_carteira_trabalho_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campo_senha_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(campo_endereco_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(354, 354, 354))))
+                                    .addComponent(campo_senha_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(campo_endereco_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(201, 201, 201)
                         .addComponent(cancela_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
-                        .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(185, 185, 185)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 389, Short.MAX_VALUE)
@@ -223,11 +219,12 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(campo_nome_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(campo_registro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo_rg_instrutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campo_rg_instrutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)
+                        .addComponent(campo_registro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
@@ -323,7 +320,7 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -489,7 +486,7 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(confirma_cadastrar_cliente)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(0, 389, Short.MAX_VALUE)
@@ -621,6 +618,11 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title0")); // NOI18N
+        jTable1.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title1")); // NOI18N
+        jTable1.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title2")); // NOI18N
+        jTable1.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title3")); // NOI18N
+        jTable1.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title4")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -674,7 +676,7 @@ public class AtendenteView extends javax.swing.JFrame {
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Cliente1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 69, Short.MAX_VALUE))
         );
         Cliente1Layout.setVerticalGroup(
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

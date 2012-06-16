@@ -8,7 +8,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Cursor Default"/>
+      <Color id="Default Cursor"/>
     </Property>
     <Property name="focusableWindowState" type="boolean" value="false"/>
   </Properties>
@@ -133,12 +133,8 @@
                                               <Component id="campo_carteira_trabalho_instrutor" min="-2" pref="189" max="-2" attributes="0"/>
                                               <Component id="campo_senha_instrutor" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="campo_endereco_instrutor" min="-2" pref="204" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="campo_endereco_instrutor" min="-2" pref="204" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -146,10 +142,9 @@
                                   <Component id="cancela_cadastro_instrutor" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="confirma_cadastro_instrutor" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="51" max="32767" attributes="0"/>
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -171,11 +166,13 @@
                               <Component id="campo_nome_instrutor" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel17" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_registro_instrutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="campo_rg_instrutor" alignment="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel17" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campo_registro_instrutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -398,7 +395,7 @@
                                       <Component id="campo_id_af" min="-2" pref="108" max="-2" attributes="0"/>
                                       <Component id="campo_login_cliente_af" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="94" max="32767" attributes="0"/>
+                                  <EmptySpace pref="141" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel32" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -620,7 +617,7 @@
                                   <Component id="confirma_cadastrar_cliente" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="101" max="32767" attributes="0"/>
+                          <EmptySpace pref="148" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -893,7 +890,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel5" min="-2" pref="713" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1031,7 +1028,52 @@
                             <Column editable="true" title="Observa&#xe7;&#xf5;es" type="java.lang.String"/>
                           </Table>
                         </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jTable1.columnModel.title0" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jTable1.columnModel.title1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jTable1.columnModel.title2" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jTable1.columnModel.title3" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jTable1.columnModel.title4" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="AtendenteView_jTable1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
