@@ -106,7 +106,6 @@ public class LoginView extends javax.swing.JFrame {
         jLabel4.setText(bundle.getString("LoginView.jLabel4.text")); // NOI18N
 
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
         java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
         jRadioButton1.setText(bundle1.getString("LoginView.jRadioButton1.text")); // NOI18N
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
