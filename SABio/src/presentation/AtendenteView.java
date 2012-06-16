@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.TreeSet;
 import sabio.SABioFactory;
 import vo.AtendenteVO;
 import vo.UsuarioVO;
@@ -10,6 +11,10 @@ import vo.InstrutorVO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sabio.SABioException;
+import sabio.impl.Cliente;
+import sabio.impl.Instrutor;
+import sabio.spec.ICliente;
+import sabio.spec.IInstrutor;
 import vo.*;
 
 public class AtendenteView extends javax.swing.JFrame {
@@ -17,6 +22,8 @@ public class AtendenteView extends javax.swing.JFrame {
     private static AtendenteView atendenteview;
     private List<AtendenteVO> atendentes;
     private boolean cliente_status = false;
+    private ClienteVO cliente;
+    private InstrutorVO instrutor;
 
     public AtendenteView() {
 
@@ -36,7 +43,6 @@ public class AtendenteView extends javax.swing.JFrame {
         atendenteview = null;
     }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -827,10 +833,23 @@ public class AtendenteView extends javax.swing.JFrame {
 
         Calendar data_realizacao = Calendar.getInstance();
         
-        ClienteVO cliente = new ClienteVO();
+        ICliente cli = SABioFactory.getInstance().getCliente();
         
-        InstrutorVO instrutor = new InstrutorVO();
+        try {
+            cliente = cli.getClienteByLogin(login_cliente);
+            System.out.println(cliente.getNomeCliente());
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        IInstrutor inst = SABioFactory.getInstance().getInstrutor();
+        
+        try {
+            instrutor = inst.getInstrutorByLogin(login_instrutor);
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             
         AvaliacaoFisicaVO avaliacao = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
 
         // Cria cliente no bd

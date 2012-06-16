@@ -4,13 +4,11 @@ import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IInstrutorDAO;
 import dao.spec.IUsuarioDAO;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
+import vo.ClienteVO;
 import vo.InstrutorVO;
 import vo.ObjectVO;
 import vo.UsuarioVO;
@@ -88,24 +86,20 @@ public class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
     }
 
     @Override
-    public InstrutorVO SelectByLogin(String Login) throws DAOException {
-        ObjectVO vo = null;
-        String sql = "SELECT * FROM " + this.getTableName()
-                + " WHERE LOGIN=? ";
+    public InstrutorVO SelectByLogin(String login) throws DAOException {
+       ObjectVO vo = null;
+        String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"
+                + login + "'";
         try {
-            InstrutorVO instrutor = (InstrutorVO) vo;
-            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-
-            stmt.setString(1, instrutor.getUsuario().getLogin());
-
-            ResultSet rs = stmt.executeQuery();
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
-                return (InstrutorVO) createVO(rs);
+                vo = this.createVO(rs);
             }
-        } catch (SQLException | DAOException e) {
+        } catch (SQLException e) {
             throw new DAOException(e);
         }
-        return null;
+        return (InstrutorVO) vo;
     }
 
     @Override

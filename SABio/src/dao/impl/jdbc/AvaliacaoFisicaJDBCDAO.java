@@ -26,7 +26,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
     @Override
     public void insert(ObjectVO vo) throws DAOException {
         String sql = "INSERT INTO " + this.getTableName()
-                + " (LOGIN_CLIENTE, LOGIN_INSTRUTOR, ID, DATA_REALIZACAO, OBSERVACOES) VALUES (?,?,?,?,?,)";
+                + " (LOGIN_CLIENTE, LOGIN_INSTRUTOR, ID, DATA_REALIZACAO, OBSERVACOES) VALUES (?,?,?,?,?)";
         try {
             AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);

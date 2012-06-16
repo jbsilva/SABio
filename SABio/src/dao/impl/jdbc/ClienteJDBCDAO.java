@@ -4,10 +4,7 @@ import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IClienteDAO;
 import dao.spec.IUsuarioDAO;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -91,24 +88,20 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 	}
     
     @Override
-	public ClienteVO SelectByLogin(String Login) throws DAOException {
-                ObjectVO vo = null;
-		String sql = "SELECT * FROM  " + this.getTableName()
-				+ " WHERE LOGIN=? ";
-		try {
-                        ClienteVO cliente = (ClienteVO) vo;
-			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-			
-			stmt.setString(1, cliente.getNomeCliente());
-
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				return (ClienteVO) createVO(rs);
-			}
-		} catch (SQLException | DAOException e) {
-			throw new DAOException(e);
-		}
-		return null;
+	public ClienteVO SelectByLogin(String login) throws DAOException {
+       ObjectVO vo = null;
+        String sql = "SELECT * FROM " + this.getTableName() + " WHERE LOGIN = '"
+                + login + "'";
+        try {
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                vo = this.createVO(rs);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return (ClienteVO) vo;
 	}
 
     @Override
