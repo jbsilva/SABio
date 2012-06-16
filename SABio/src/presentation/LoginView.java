@@ -82,7 +82,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel3.setText(bundle.getString("LoginView.jLabel3.text")); // NOI18N
 
         campo_login.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        campo_login.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campo_login.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         botao_login.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botao_login.setText(bundle.getString("LoginView.botao_login.text")); // NOI18N
@@ -134,7 +134,7 @@ public class LoginView extends javax.swing.JFrame {
                     .addComponent(jSeparator2))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 177, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
@@ -158,11 +158,11 @@ public class LoginView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
+                        .addGap(33, 33, 33)
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton3)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,10 +222,15 @@ public class LoginView extends javax.swing.JFrame {
             if (locale.getLanguage().equals("pt"))
             {
                 JOptionPane.showMessageDialog(null,"Senha ou Login Incorreto", "Erro!", JOptionPane.WARNING_MESSAGE);
+                campo_login.setText("");
+                campo_senha.setText("");
+                
             }
             else
             {
                 JOptionPane.showMessageDialog(null,"Wrong Login or Password", "Error!", JOptionPane.WARNING_MESSAGE);
+                campo_login.setText("");
+                campo_senha.setText("");
             }
             
             }
@@ -257,6 +262,8 @@ public class LoginView extends javax.swing.JFrame {
         
         try {
             factory.getUsuario().create(user);
+            campo_login.setText("");
+            campo_senha.setText("");
         } catch (SABioException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
