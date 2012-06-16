@@ -124,33 +124,62 @@ public class AtendenteView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusableWindowState(false);
-
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("presentation/Bundle"); // NOI18N
+        setName(bundle.getString("AtendenteView.name")); // NOI18N
+
         jTabbedPane1.setName(bundle.getString("AtendenteView.jTabbedPane1.name")); // NOI18N
 
+        Instrutor.setName(bundle.getString("AtendenteView.Instrutor.name")); // NOI18N
+
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel3.setName(bundle.getString("AtendenteView.jPanel3.name")); // NOI18N
 
         jLabel10.setText(bundle.getString("AtendenteView.jLabel10.text")); // NOI18N
+        jLabel10.setName(bundle.getString("AtendenteView.jLabel10.name")); // NOI18N
 
         jLabel11.setText(bundle.getString("AtendenteView.jLabel11.text")); // NOI18N
+        jLabel11.setName(bundle.getString("AtendenteView.jLabel11.name")); // NOI18N
 
         jLabel12.setText(bundle.getString("AtendenteView.jLabel12.text")); // NOI18N
+        jLabel12.setName(bundle.getString("AtendenteView.jLabel12.name")); // NOI18N
 
         jLabel13.setText(bundle.getString("AtendenteView.jLabel13.text")); // NOI18N
+        jLabel13.setName(bundle.getString("AtendenteView.jLabel13.name")); // NOI18N
 
         jLabel14.setText(bundle.getString("AtendenteView.jLabel14.text")); // NOI18N
+        jLabel14.setName(bundle.getString("AtendenteView.jLabel14.name")); // NOI18N
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator2.setName(bundle.getString("AtendenteView.jSeparator2.name")); // NOI18N
 
         jLabel15.setText(bundle.getString("AtendenteView.jLabel15.text")); // NOI18N
+        jLabel15.setName(bundle.getString("AtendenteView.jLabel15.name")); // NOI18N
 
         jLabel16.setText(bundle.getString("AtendenteView.jLabel16.text")); // NOI18N
+        jLabel16.setName(bundle.getString("AtendenteView.jLabel16.name")); // NOI18N
+
+        campo_carteira_trabalho_instrutor.setName(bundle.getString("AtendenteView.campo_carteira_trabalho_instrutor.name")); // NOI18N
+
+        campo_login_instrutor.setName(bundle.getString("AtendenteView.campo_login_instrutor.name")); // NOI18N
+
+        campo_cpf_instrutor.setName(bundle.getString("AtendenteView.campo_cpf_instrutor.name")); // NOI18N
+
+        campo_endereco_instrutor.setName(bundle.getString("AtendenteView.campo_endereco_instrutor.name")); // NOI18N
+
+        campo_registro_instrutor.setName(bundle.getString("AtendenteView.campo_registro_instrutor.name")); // NOI18N
 
         jLabel17.setText(bundle.getString("AtendenteView.jLabel17.text")); // NOI18N
+        jLabel17.setName(bundle.getString("AtendenteView.jLabel17.name")); // NOI18N
 
         jLabel18.setText(bundle.getString("AtendenteView.jLabel18.text")); // NOI18N
+        jLabel18.setName(bundle.getString("AtendenteView.jLabel18.name")); // NOI18N
+
+        campo_rg_instrutor.setName(bundle.getString("AtendenteView.campo_rg_instrutor.name")); // NOI18N
+
+        campo_nome_instrutor.setName(bundle.getString("AtendenteView.campo_nome_instrutor.name")); // NOI18N
 
         cancela_cadastro_instrutor.setText(bundle.getString("AtendenteView.cancela_cadastro_instrutor.text")); // NOI18N
+        cancela_cadastro_instrutor.setName(bundle.getString("AtendenteView.cancela_cadastro_instrutor.name")); // NOI18N
         cancela_cadastro_instrutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancela_cadastro_instrutorActionPerformed(evt);
@@ -158,6 +187,7 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         confirma_cadastro_instrutor.setText(bundle.getString("AtendenteView.confirma_cadastro_instrutor.text")); // NOI18N
+        confirma_cadastro_instrutor.setName(bundle.getString("AtendenteView.confirma_cadastro_instrutor.name")); // NOI18N
         confirma_cadastro_instrutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirma_cadastro_instrutorActionPerformed(evt);
@@ -165,8 +195,10 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         campo_carga_horaria_instrutor.setText(bundle.getString("AtendenteView.campo_carga_horaria_instrutor.text")); // NOI18N
+        campo_carga_horaria_instrutor.setName(bundle.getString("AtendenteView.campo_carga_horaria_instrutor.name")); // NOI18N
 
         campo_senha_instrutor.setText(bundle.getString("AtendenteView.campo_senha_instrutor.text")); // NOI18N
+        campo_senha_instrutor.setName(bundle.getString("AtendenteView.campo_senha_instrutor.name")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -278,18 +310,37 @@ public class AtendenteView extends javax.swing.JFrame {
         jTabbedPane1.addTab(bundle.getString("AtendenteView.Instrutor.TabConstraints.tabTitle"), Instrutor); // NOI18N
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setName(bundle.getString("AtendenteView.jPanel1.name")); // NOI18N
+
+        jPanel6.setName(bundle.getString("AtendenteView.jPanel6.name")); // NOI18N
+
+        campo_login_cliente_af.setName(bundle.getString("AtendenteView.campo_login_cliente_af.name")); // NOI18N
+
+        campo_observacoes_af.setName(bundle.getString("AtendenteView.campo_observacoes_af.name")); // NOI18N
+
+        campo_login_instrutor_af.setName(bundle.getString("AtendenteView.campo_login_instrutor_af.name")); // NOI18N
 
         jLabel30.setText(bundle.getString("AtendenteView.jLabel30.text")); // NOI18N
+        jLabel30.setName(bundle.getString("AtendenteView.jLabel30.name")); // NOI18N
 
         jLabel31.setText(bundle.getString("AtendenteView.jLabel31.text")); // NOI18N
+        jLabel31.setName(bundle.getString("AtendenteView.jLabel31.name")); // NOI18N
 
         jLabel32.setText(bundle.getString("AtendenteView.jLabel32.text")); // NOI18N
+        jLabel32.setName(bundle.getString("AtendenteView.jLabel32.name")); // NOI18N
 
         jLabel34.setText(bundle.getString("AtendenteView.jLabel34.text")); // NOI18N
+        jLabel34.setName(bundle.getString("AtendenteView.jLabel34.name")); // NOI18N
 
         jLabel35.setText(bundle.getString("AtendenteView.jLabel35.text")); // NOI18N
+        jLabel35.setName(bundle.getString("AtendenteView.jLabel35.name")); // NOI18N
+
+        campo_data_realizacao_af.setName(bundle.getString("AtendenteView.campo_data_realizacao_af.name")); // NOI18N
+
+        campo_id_af.setName(bundle.getString("AtendenteView.campo_id_af.name")); // NOI18N
 
         jButton11.setText(bundle.getString("AtendenteView.jButton11.text")); // NOI18N
+        jButton11.setName(bundle.getString("AtendenteView.jButton11.name")); // NOI18N
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -297,6 +348,7 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         jButton12.setText(bundle.getString("AtendenteView.jButton12.text")); // NOI18N
+        jButton12.setName(bundle.getString("AtendenteView.jButton12.name")); // NOI18N
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -380,29 +432,57 @@ public class AtendenteView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
+        Cliente.setName(bundle.getString("AtendenteView.Cliente.name")); // NOI18N
+
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel4.setName(bundle.getString("AtendenteView.jPanel4.name")); // NOI18N
 
         jLabel19.setText(bundle.getString("AtendenteView.jLabel19.text")); // NOI18N
+        jLabel19.setName(bundle.getString("AtendenteView.jLabel19.name")); // NOI18N
 
         jLabel20.setText(bundle.getString("AtendenteView.jLabel20.text")); // NOI18N
+        jLabel20.setName(bundle.getString("AtendenteView.jLabel20.name")); // NOI18N
 
         jLabel21.setText(bundle.getString("AtendenteView.jLabel21.text")); // NOI18N
+        jLabel21.setName(bundle.getString("AtendenteView.jLabel21.name")); // NOI18N
 
         jLabel22.setText(bundle.getString("AtendenteView.jLabel22.text")); // NOI18N
+        jLabel22.setName(bundle.getString("AtendenteView.jLabel22.name")); // NOI18N
 
         jLabel23.setText(bundle.getString("AtendenteView.jLabel23.text")); // NOI18N
+        jLabel23.setName(bundle.getString("AtendenteView.jLabel23.name")); // NOI18N
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator3.setName(bundle.getString("AtendenteView.jSeparator3.name")); // NOI18N
 
         jLabel24.setText(bundle.getString("AtendenteView.jLabel24.text")); // NOI18N
+        jLabel24.setName(bundle.getString("AtendenteView.jLabel24.name")); // NOI18N
 
         jLabel25.setText(bundle.getString("AtendenteView.jLabel25.text")); // NOI18N
+        jLabel25.setName(bundle.getString("AtendenteView.jLabel25.name")); // NOI18N
+
+        campo_login_cliente.setName(bundle.getString("AtendenteView.campo_login_cliente.name")); // NOI18N
+
+        campo_cpf_cliente.setName(bundle.getString("AtendenteView.campo_cpf_cliente.name")); // NOI18N
+
+        campo_mensalidades_aberto_cliente.setName(bundle.getString("AtendenteView.campo_mensalidades_aberto_cliente.name")); // NOI18N
+
+        campo_data_nascimento_cliente.setName(bundle.getString("AtendenteView.campo_data_nascimento_cliente.name")); // NOI18N
+
+        campo_telefone_cliente.setName(bundle.getString("AtendenteView.campo_telefone_cliente.name")); // NOI18N
 
         jLabel26.setText(bundle.getString("AtendenteView.jLabel26.text")); // NOI18N
+        jLabel26.setName(bundle.getString("AtendenteView.jLabel26.name")); // NOI18N
 
         jLabel27.setText(bundle.getString("AtendenteView.jLabel27.text")); // NOI18N
+        jLabel27.setName(bundle.getString("AtendenteView.jLabel27.name")); // NOI18N
+
+        campo_rg_cliente.setName(bundle.getString("AtendenteView.campo_rg_cliente.name")); // NOI18N
+
+        campo_nome_cliente.setName(bundle.getString("AtendenteView.campo_nome_cliente.name")); // NOI18N
 
         cancela_cadastrar_cliente.setText(bundle.getString("AtendenteView.cancela_cadastrar_cliente.text")); // NOI18N
+        cancela_cadastrar_cliente.setName(bundle.getString("AtendenteView.cancela_cadastrar_cliente.name")); // NOI18N
         cancela_cadastrar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancela_cadastrar_clienteActionPerformed(evt);
@@ -410,6 +490,7 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         confirma_cadastrar_cliente.setText(bundle.getString("AtendenteView.confirma_cadastrar_cliente.text")); // NOI18N
+        confirma_cadastrar_cliente.setName(bundle.getString("AtendenteView.confirma_cadastrar_cliente.name")); // NOI18N
         confirma_cadastrar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirma_cadastrar_clienteActionPerformed(evt);
@@ -417,13 +498,17 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         jLabel4.setText(bundle.getString("AtendenteView.jLabel4.text")); // NOI18N
+        jLabel4.setName(bundle.getString("AtendenteView.jLabel4.name")); // NOI18N
 
         campo_atestado_cliente.setText(bundle.getString("AtendenteView.campo_atestado_cliente.text")); // NOI18N
+        campo_atestado_cliente.setName(bundle.getString("AtendenteView.campo_atestado_cliente.name")); // NOI18N
 
         campo_senha_cliente.setText(bundle.getString("AtendenteView.campo_senha_cliente.text")); // NOI18N
+        campo_senha_cliente.setName(bundle.getString("AtendenteView.campo_senha_cliente.name")); // NOI18N
 
         buttonGroup1.add(campo_ativo_cliente);
         campo_ativo_cliente.setText(bundle.getString("AtendenteView.campo_ativo_cliente.text")); // NOI18N
+        campo_ativo_cliente.setName(bundle.getString("AtendenteView.campo_ativo_cliente.name")); // NOI18N
         campo_ativo_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_ativo_clienteActionPerformed(evt);
@@ -432,6 +517,7 @@ public class AtendenteView extends javax.swing.JFrame {
 
         buttonGroup1.add(campo_inativo_cliente);
         campo_inativo_cliente.setText(bundle.getString("AtendenteView.campo_inativo_cliente.text")); // NOI18N
+        campo_inativo_cliente.setName(bundle.getString("AtendenteView.campo_inativo_cliente.name")); // NOI18N
         campo_inativo_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_inativo_clienteActionPerformed(evt);
@@ -579,11 +665,16 @@ public class AtendenteView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
+        Cliente1.setName(bundle.getString("AtendenteView.Cliente1.name")); // NOI18N
+
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel5.setName(bundle.getString("AtendenteView.jPanel5.name")); // NOI18N
 
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator4.setName(bundle.getString("AtendenteView.jSeparator4.name")); // NOI18N
 
         Buscar10.setText(bundle.getString("AtendenteView.Buscar10.text")); // NOI18N
+        Buscar10.setName(bundle.getString("AtendenteView.Buscar10.name")); // NOI18N
         Buscar10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Buscar10ActionPerformed(evt);
@@ -591,6 +682,7 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         jButton13.setText(bundle.getString("AtendenteView.jButton13.text")); // NOI18N
+        jButton13.setName(bundle.getString("AtendenteView.jButton13.name")); // NOI18N
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -598,11 +690,14 @@ public class AtendenteView extends javax.swing.JFrame {
         });
 
         jButton14.setText(bundle.getString("AtendenteView.jButton14.text")); // NOI18N
+        jButton14.setName(bundle.getString("AtendenteView.jButton14.name")); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setName(bundle.getString("AtendenteView.jScrollPane1.name")); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -623,6 +718,7 @@ public class AtendenteView extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setName(bundle.getString("AtendenteView.jTable1.name")); // NOI18N
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title0")); // NOI18N
         jTable1.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("AtendenteView.jTable1.columnModel.title1")); // NOI18N
