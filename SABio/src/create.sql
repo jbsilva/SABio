@@ -47,7 +47,7 @@ CREATE TABLE atendente
 CREATE TABLE cliente
 (
     login               VARCHAR(15),
-    nome_cliente        VARCHAR(50) CONSTRAINT cliente_nome_nn NOT NULL,
+    nome                VARCHAR(50) CONSTRAINT cliente_nome_nn NOT NULL,
     cpf                 VARCHAR(11),
     rg                  VARCHAR(9) CONSTRAINT cliente_rg_nn NOT NULL,
     data_ingresso       DATE,
@@ -129,11 +129,11 @@ INSERT INTO atendente (login, nome, cpf, rg, endereco, numero_carteira_trabalho,
 VALUES ('atendente03', 'julio', '88962615703', '403289440', 'sao paulo', '700', '10-07-2000');
 
 
-INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente01', 'andre', '37513012911', '429434121', '2008-07-28', '39210605', 'em dia', '1990-05-10', 'janeiro', True);
-INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente02', 'tulio', '29642217589', '433279470', '2008-07-28', '34156000', 'em dia', '1989-05-10', 'fevereiro, março', True);
-INSERT INTO cliente (login, nome_cliente, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', '34210000', 'em dia', '1989-05-10', '', False);
 
 
