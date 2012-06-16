@@ -1,13 +1,7 @@
 package sabio;
 
-import sabio.impl.Cliente;
-import sabio.impl.Instrutor;
-import sabio.impl.Treino;
-import sabio.impl.Usuario;
-import sabio.spec.ICliente;
-import sabio.spec.IInstrutor;
-import sabio.spec.ITreino;
-import sabio.spec.IUsuario;
+import sabio.impl.*;
+import sabio.spec.*;
 
 public class SABioFactory {
 
@@ -33,5 +27,9 @@ public class SABioFactory {
         
     public ICliente getCliente() {
         return new Cliente();
+    }
+    
+    public IAvaliacaoFisica getAvaliacaoFisica() {
+        return new AvaliacaoFisica();
     }
 }

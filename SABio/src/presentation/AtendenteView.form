@@ -502,6 +502,9 @@
                       <ResourceString bundle="presentation/Bundle.properties" key="AtendenteView.jButton11.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton12">
                   <Properties>
@@ -641,7 +644,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel26" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="campo_rg_cliente" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="campo_rg_cliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">

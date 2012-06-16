@@ -5,11 +5,12 @@ import java.util.List;
 import sabio.SABioFactory;
 import vo.AtendenteVO;
 import vo.UsuarioVO;
+import vo.ClienteVO;
+import vo.InstrutorVO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sabio.SABioException;
-import vo.ClienteVO;
-import vo.InstrutorVO;
+import vo.*;
 
 public class AtendenteView extends javax.swing.JFrame {
 
@@ -34,6 +35,7 @@ public class AtendenteView extends javax.swing.JFrame {
     public static void destroyInstance() {
         atendenteview = null;
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -285,6 +287,11 @@ public class AtendenteView extends javax.swing.JFrame {
         jLabel35.setText(bundle.getString("AtendenteView.jLabel35.text")); // NOI18N
 
         jButton11.setText(bundle.getString("AtendenteView.jButton11.text")); // NOI18N
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText(bundle.getString("AtendenteView.jButton12.text")); // NOI18N
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -501,7 +508,7 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campo_rg_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campo_rg_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
@@ -807,6 +814,30 @@ public class AtendenteView extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        SABioFactory factory = SABioFactory.getInstance();
+
+        int id = Integer.parseInt(campo_id_af.getText());
+        String login_cliente = campo_login_cliente_af.getText();
+        String login_instrutor = campo_login_instrutor_af.getText();
+        String observacao = campo_observacoes_af.getText();
+
+        Calendar data_realizacao = Calendar.getInstance();
+        
+        ClienteVO cliente = new ClienteVO();
+        
+        InstrutorVO instrutor = new InstrutorVO();
+        
+        AvaliacaoFisicaVO avaliacao = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
+
+        // Cria cliente no bd
+        try {
+            factory.getAvaliacaoFisica().create(avaliacao);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar10;
