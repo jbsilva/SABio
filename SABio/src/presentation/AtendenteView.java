@@ -9,36 +9,35 @@ import sabio.spec.IUsuario;
 import vo.AtendenteVO;
 import vo.UsuarioVO;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sabio.SABioException;
 import sabio.spec.IInstrutor;
 import vo.InstrutorVO;
 
-
-public class AtendenteView extends javax.swing.JFrame{
+public class AtendenteView extends javax.swing.JFrame {
 
     private static AtendenteView atendenteview;
     private List<AtendenteVO> atendentes;
-    
+
     public AtendenteView() {
-        
+
         super("Atendente");
         initComponents();
         this.setVisible(true);
     }
-    
-        public static AtendenteView getInstance() {
+
+    public static AtendenteView getInstance() {
         if (atendenteview == null) {
             atendenteview = new AtendenteView();
         }
         return atendenteview;
     }
 
-        
-        
     public static void destroyInstance() {
         atendenteview = null;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -742,27 +741,43 @@ public class AtendenteView extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-            
-            String login = campo_login_instrutor.getText();
-            String senha = "mudeme";
 
-            String nome = campo_nome_instrutor.getText();
-            String rg = campo_rg_instrutor.getText();
-            String cpf = campo_cpf_instrutor.getText();
+        SABioFactory factory = SABioFactory.getInstance();
+        
+        String login = campo_login_instrutor.getText();
+        String senha = "mudeme";
 
-            SimpleDateFormat data = new SimpleDateFormat("DD-MM-AAAA");  
-            campo_data_contratacao_instrutor.setText(data);
-            
-            UsuarioVO usuario = new UsuarioVO(login, senha);
+        String nome = campo_nome_instrutor.getText();
+        String rg = campo_rg_instrutor.getText();
+        String cpf = campo_cpf_instrutor.getText();
+        String endereco = campo_cpf_instrutor.getText();
+        String registro_profissional = campo_cpf_instrutor.getText();
+        String numero_carteira_trabalho = campo_cpf_instrutor.getText();
+        int carga_horaria = 10;
 
-            InstrutorVO instrutor = new InstrutorVO (usuario, nome, cpf,
-                    data_contratacao, rg, endereco, registro_profissional,
-                    numero_carteira_trabalho, carga_horaria)
-            Calendar agora = Calendar.getInstance().
-            
-            InstrutorVO vo = new InstrutorVO();
+        UsuarioVO usuario = new UsuarioVO(login, senha);
+
+        Calendar data_contratacao = Calendar.getInstance();
+
+        InstrutorVO instrutor = new InstrutorVO(usuario, nome, cpf,
+                data_contratacao, rg, endereco, registro_profissional,
+                numero_carteira_trabalho, carga_horaria);
+
+        // Cria usuario no bd
+        try {
+            factory.getUsuario().create(usuario);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        // Cria instrutor no bd
+        try {
+            factory.getInstrutor().create(instrutor);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_jButton8ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar10;
     private javax.swing.JButton Buscar6;
