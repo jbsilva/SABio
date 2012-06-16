@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import sabio.SABioException;
 import sabio.spec.IInstrutor;
+import vo.ClienteVO;
 import vo.InstrutorVO;
 
 public class AtendenteView extends javax.swing.JFrame {
@@ -91,22 +92,22 @@ public class AtendenteView extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        campo_carteira_trabalho_cliente = new javax.swing.JTextField();
-        campo_login_instrutor1 = new javax.swing.JTextField();
-        campo_cpf_instrutor1 = new javax.swing.JTextField();
-        campo_endereco_instrutor1 = new javax.swing.JTextField();
-        campo_data_contratacao_cliente = new javax.swing.JTextField();
-        campo_registro_instrutor1 = new javax.swing.JTextField();
+        campo_login_cliente = new javax.swing.JTextField();
+        campo_cpf_cliente = new javax.swing.JTextField();
+        campo_mensalidades_aberto_cliente = new javax.swing.JTextField();
+        campo_data_nascimento_cliente = new javax.swing.JTextField();
+        campo_telefone_cliente = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         Buscar9 = new javax.swing.JButton();
-        campo_rg_instrutor1 = new javax.swing.JTextField();
-        campo_nome_instrutor1 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        campo_status_cliente = new javax.swing.JTextField();
+        campo_rg_cliente = new javax.swing.JTextField();
+        campo_nome_cliente = new javax.swing.JTextField();
+        cancela_cadastrar_cliente = new javax.swing.JButton();
+        confirma_cadastrar_cliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campo_atestado_cliente = new javax.swing.JTextField();
+        campo_senha_cliente = new javax.swing.JPasswordField();
+        campo_status_cliente = new javax.swing.JToggleButton();
         Cliente1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -423,26 +424,38 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         });
 
-        campo_nome_instrutor1.addActionListener(new java.awt.event.ActionListener() {
+        campo_nome_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_nome_instrutor1ActionPerformed(evt);
+                campo_nome_clienteActionPerformed(evt);
             }
         });
 
-        jButton9.setText(bundle.getString("AtendenteView.jButton9.text")); // NOI18N
+        cancela_cadastrar_cliente.setText(bundle.getString("AtendenteView.cancela_cadastrar_cliente.text")); // NOI18N
 
-        jButton10.setText(bundle.getString("AtendenteView.jButton10.text")); // NOI18N
-
-        campo_status_cliente.setText(bundle.getString("AtendenteView.campo_status_cliente.text")); // NOI18N
+        confirma_cadastrar_cliente.setText(bundle.getString("AtendenteView.confirma_cadastrar_cliente.text")); // NOI18N
+        confirma_cadastrar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirma_cadastrar_clienteActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText(bundle.getString("AtendenteView.jLabel4.text")); // NOI18N
 
-        jTextField2.setText(bundle.getString("AtendenteView.jTextField2.text")); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        campo_atestado_cliente.setText(bundle.getString("AtendenteView.campo_atestado_cliente.text")); // NOI18N
+        campo_atestado_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                campo_atestado_clienteActionPerformed(evt);
             }
         });
+
+        campo_senha_cliente.setText(bundle.getString("AtendenteView.campo_senha_cliente.text")); // NOI18N
+        campo_senha_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_senha_clienteActionPerformed(evt);
+            }
+        });
+
+        campo_status_cliente.setText(bundle.getString("AtendenteView.campo_status_cliente.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -455,54 +468,63 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addComponent(Buscar9))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(95, 95, 95)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel26)
-                                        .addComponent(jLabel25)
-                                        .addComponent(jLabel24))
-                                    .addGap(20, 20, 20))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel27)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel19)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(95, 95, 95)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel26)
+                                            .addComponent(jLabel25)
+                                            .addComponent(jLabel24))
+                                        .addGap(20, 20, 20))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel27)))
+                                .addGap(59, 59, 59))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(campo_cpf_instrutor1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                    .addGap(118, 118, 118))
-                                .addComponent(campo_endereco_instrutor1)
+                                    .addComponent(campo_cpf_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                    .addGap(130, 130, 130))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(campo_login_instrutor1)
-                                        .addComponent(campo_rg_instrutor1))
-                                    .addGap(111, 111, 111)))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel21)
-                                .addComponent(jLabel20)
-                                .addComponent(jLabel22))
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(28, 28, 28)
+                                        .addComponent(campo_login_cliente)
+                                        .addComponent(campo_rg_cliente))
+                                    .addGap(123, 123, 123)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campo_atestado_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campo_mensalidades_aberto_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campo_nome_instrutor1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                .addComponent(campo_registro_instrutor1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(campo_carteira_trabalho_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(campo_data_contratacao_cliente)
-                            .addComponent(campo_status_cliente)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel22))
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campo_telefone_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campo_nome_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campo_data_nascimento_cliente)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(campo_status_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(219, 219, 219)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cancela_cadastrar_cliente)
+                        .addGap(69, 69, 69)
+                        .addComponent(confirma_cadastrar_cliente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -518,53 +540,58 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(campo_nome_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(campo_nome_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(campo_telefone_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campo_login_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campo_login_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campo_rg_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20)
-                            .addComponent(campo_registro_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(campo_rg_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20))))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campo_carteira_trabalho_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campo_cpf_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(campo_data_contratacao_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel22)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(campo_cpf_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel25))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel27)
+                                    .addComponent(campo_atestado_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel23)
+                                    .addComponent(campo_data_nascimento_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(campo_status_cliente))))))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campo_status_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(127, 127, 127)
-                            .addComponent(Buscar9))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel19)
-                                .addComponent(campo_endereco_instrutor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(32, 32, 32))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(campo_mensalidades_aberto_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(98, 98, 98)
+                        .addComponent(Buscar9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cancela_cadastrar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirma_cadastrar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -577,9 +604,7 @@ public class AtendenteView extends javax.swing.JFrame {
         Cliente.setLayout(ClienteLayout);
         ClienteLayout.setHorizontalGroup(
             ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
         );
         ClienteLayout.setVerticalGroup(
             ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,9 +751,9 @@ public class AtendenteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar9ActionPerformed
 
-    private void campo_nome_instrutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nome_instrutor1ActionPerformed
+    private void campo_nome_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nome_clienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nome_instrutor1ActionPerformed
+    }//GEN-LAST:event_campo_nome_clienteActionPerformed
 
     private void Buscar10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar10ActionPerformed
         // TODO add your handling code here:
@@ -741,7 +766,7 @@ public class AtendenteView extends javax.swing.JFrame {
     private void confirma_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastro_instrutorActionPerformed
 
         SABioFactory factory = SABioFactory.getInstance();
-        
+
         String login = campo_login_instrutor.getText();
         String senha = String.copyValueOf(campo_senha_instrutor.getPassword());
         String nome = campo_nome_instrutor.getText();
@@ -765,15 +790,15 @@ public class AtendenteView extends javax.swing.JFrame {
             factory.getUsuario().create(usuario);
         } catch (SABioException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+        }
+
         // Cria instrutor no bd
         try {
             factory.getInstrutor().create(instrutor);
         } catch (SABioException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+        }
+
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void campo_senha_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_senha_instrutorActionPerformed
@@ -788,10 +813,51 @@ public class AtendenteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancela_cadastro_instrutorActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void campo_atestado_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_atestado_clienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_campo_atestado_clienteActionPerformed
 
+    private void confirma_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastrar_clienteActionPerformed
+        SABioFactory factory = SABioFactory.getInstance();
+
+        String login = campo_login_cliente.getText();
+        String senha = String.copyValueOf(campo_senha_cliente.getPassword());
+        String nome = campo_nome_cliente.getText();
+        String rg = campo_rg_cliente.getText();
+        String cpf = campo_cpf_cliente.getText();
+        String atestado_medico = campo_atestado_cliente.getText();
+        String mensalidades_abertas = campo_mensalidades_aberto_cliente.getText();
+        String telefone = campo_telefone_cliente.getText();
+        Boolean status = false;
+
+        UsuarioVO usuario = new UsuarioVO(login, senha);
+
+        Calendar data_nascimento = Calendar.getInstance();
+        Calendar data_ingresso = Calendar.getInstance();
+
+        ClienteVO cliente = new ClienteVO(usuario, nome, cpf, rg, telefone,
+                atestado_medico, data_ingresso, mensalidades_abertas,
+                data_nascimento, status);
+
+
+        // Cria usuario no bd
+        try {
+            factory.getUsuario().create(usuario);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Cria cliente no bd
+        try {
+            factory.getCliente().create(cliente);
+        } catch (SABioException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_confirma_cadastrar_clienteActionPerformed
+
+    private void campo_senha_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_senha_clienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_senha_clienteActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar10;
     private javax.swing.JButton Buscar6;
@@ -799,37 +865,38 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JPanel Cliente;
     private javax.swing.JPanel Cliente1;
     private javax.swing.JPanel Instrutor;
+    private javax.swing.JTextField campo_atestado_cliente;
     private javax.swing.JTextField campo_carga_horaria_instrutor;
-    private javax.swing.JTextField campo_carteira_trabalho_cliente;
     private javax.swing.JTextField campo_carteira_trabalho_instrutor;
+    private javax.swing.JTextField campo_cpf_cliente;
     private javax.swing.JTextField campo_cpf_instrutor;
-    private javax.swing.JTextField campo_cpf_instrutor1;
-    private javax.swing.JTextField campo_data_contratacao_cliente;
+    private javax.swing.JTextField campo_data_nascimento_cliente;
     private javax.swing.JTextField campo_data_realizacao_af;
     private javax.swing.JTextField campo_endereco_instrutor;
-    private javax.swing.JTextField campo_endereco_instrutor1;
     private javax.swing.JTextField campo_id_af;
+    private javax.swing.JTextField campo_login_cliente;
     private javax.swing.JTextField campo_login_cliente_af;
     private javax.swing.JTextField campo_login_instrutor;
-    private javax.swing.JTextField campo_login_instrutor1;
     private javax.swing.JTextField campo_login_instrutor_af;
+    private javax.swing.JTextField campo_mensalidades_aberto_cliente;
+    private javax.swing.JTextField campo_nome_cliente;
     private javax.swing.JTextField campo_nome_instrutor;
-    private javax.swing.JTextField campo_nome_instrutor1;
     private javax.swing.JTextField campo_observacoes_af;
     private javax.swing.JTextField campo_registro_instrutor;
-    private javax.swing.JTextField campo_registro_instrutor1;
+    private javax.swing.JTextField campo_rg_cliente;
     private javax.swing.JTextField campo_rg_instrutor;
-    private javax.swing.JTextField campo_rg_instrutor1;
+    private javax.swing.JPasswordField campo_senha_cliente;
     private javax.swing.JPasswordField campo_senha_instrutor;
-    private javax.swing.JTextField campo_status_cliente;
+    private javax.swing.JToggleButton campo_status_cliente;
+    private javax.swing.JTextField campo_telefone_cliente;
+    private javax.swing.JButton cancela_cadastrar_cliente;
     private javax.swing.JButton cancela_cadastro_instrutor;
+    private javax.swing.JButton confirma_cadastrar_cliente;
     private javax.swing.JButton confirma_cadastro_instrutor;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -865,6 +932,5 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

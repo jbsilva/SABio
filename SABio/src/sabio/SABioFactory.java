@@ -1,8 +1,10 @@
 package sabio;
 
+import sabio.impl.Cliente;
 import sabio.impl.Instrutor;
 import sabio.impl.Treino;
 import sabio.impl.Usuario;
+import sabio.spec.ICliente;
 import sabio.spec.IInstrutor;
 import sabio.spec.ITreino;
 import sabio.spec.IUsuario;
@@ -27,5 +29,9 @@ public class SABioFactory {
     
     public IInstrutor getInstrutor() {
         return new Instrutor();
+    }
+        
+    public ICliente getCliente() {
+        return new Cliente();
     }
 }
