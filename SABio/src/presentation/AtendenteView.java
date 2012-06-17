@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sabio.SABioException;
 import sabio.SABioFactory;
@@ -864,6 +865,7 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria usuario no bd
         try {
             factory.getUsuario().create(usuario);
+
         } catch (SABioException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -871,14 +873,32 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria instrutor no bd
         try {
             factory.getInstrutor().create(instrutor);
+            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+            campo_nome_instrutor.setText("");
+            campo_rg_instrutor.setText("");
+            campo_cpf_instrutor.setText("");
+            campo_endereco_instrutor.setText("");
+            campo_registro_instrutor.setText("");
+            campo_carteira_trabalho_instrutor.setText("");
+            campo_carga_horaria_instrutor.setText("");
+            campo_senha_instrutor.setText("");
+            
         } catch (SABioException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Cadastro NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+            campo_nome_instrutor.setText("");
+            campo_rg_instrutor.setText("");
+            campo_cpf_instrutor.setText("");
+            campo_endereco_instrutor.setText("");
+            campo_registro_instrutor.setText("");
+            campo_carteira_trabalho_instrutor.setText("");
+            campo_carga_horaria_instrutor.setText("");
+            campo_senha_instrutor.setText("");
         }
 
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void cancela_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastro_instrutorActionPerformed
-        //System.exit(0);
+        
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
 
         try {
@@ -889,6 +909,16 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             inst.delete(campo_login_instrutor.getText());
+            
+            campo_nome_instrutor.setText("");
+            campo_rg_instrutor.setText("");
+            campo_cpf_instrutor.setText("");
+            campo_endereco_instrutor.setText("");
+            campo_registro_instrutor.setText("");
+            campo_carteira_trabalho_instrutor.setText("");
+            campo_carga_horaria_instrutor.setText("");
+            campo_senha_instrutor.setText("");
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -929,8 +959,27 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria cliente no bd
         try {
             factory.getCliente().create(cliente);
+            
+            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+            campo_nome_cliente.setText("");
+            campo_rg_cliente.setText("");
+            campo_cpf_cliente.setText("");
+            campo_atestado_cliente.setText("");
+            campo_mensalidades_aberto_cliente.setText("");
+            campo_telefone_cliente.setText("");
+            cliente_status = false;
+            campo_senha_cliente.setText("");
+
         } catch (SABioException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+            campo_nome_cliente.setText("");
+            campo_rg_cliente.setText("");
+            campo_cpf_cliente.setText("");
+            campo_atestado_cliente.setText("");
+            campo_mensalidades_aberto_cliente.setText("");
+            campo_telefone_cliente.setText("");
+            cliente_status = false;
+            campo_senha_cliente.setText("");
         }
     }//GEN-LAST:event_confirma_cadastrar_clienteActionPerformed
 
@@ -955,6 +1004,16 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             client.delete(campo_login_cliente.getText());
+            
+            campo_nome_cliente.setText("");
+            campo_rg_cliente.setText("");
+            campo_cpf_cliente.setText("");
+            campo_atestado_cliente.setText("");
+            campo_mensalidades_aberto_cliente.setText("");
+            campo_telefone_cliente.setText("");
+            cliente_status = false;
+            campo_senha_cliente.setText("");
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1002,8 +1061,19 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria cliente no bd
         try {
             factory.getAvaliacaoFisica().create(avaliacao2);
+            
+            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+            campo_id_af.setText("");
+            campo_login_cliente_af.setText("");
+            campo_login_instrutor_af.setText("");
+            campo_observacoes_af.setText("");
         } catch (SABioException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            
+            JOptionPane.showMessageDialog(null,"Cadastro NAO Realizado", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            campo_id_af.setText("");
+            campo_login_cliente_af.setText("");
+            campo_login_instrutor_af.setText("");
+            campo_observacoes_af.setText("");
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
@@ -1081,12 +1151,6 @@ public class AtendenteView extends javax.swing.JFrame {
 
             validate();
              
-            /*jTable1.setValueAt(avaliacao.getCliente().getUsuario().getLogin(),0,0);
-            jTable1.setValueAt(avaliacao.getInstrutor().getUsuario().getLogin(),0,1);
-            jTable1.setValueAt(String.valueOf(avaliacao.getID()),0,2);
-            jTable1.setValueAt(avaliacao.getDataRealizacao().toString(),0,3);
-            jTable1.setValueAt(avaliacao.getObservacoes(),0,4);*/
-
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
