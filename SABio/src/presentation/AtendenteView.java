@@ -858,7 +858,22 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void cancela_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastro_instrutorActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        IInstrutor inst = SABioFactory.getInstance().getInstrutor();
+        
+        try {
+            instrutor = inst.getInstrutorByLogin(campo_login_instrutor.getText());
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            inst.delete(campo_login_instrutor.getText());
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_cancela_cadastro_instrutorActionPerformed
 
     private void confirma_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastrar_clienteActionPerformed
@@ -933,7 +948,6 @@ public class AtendenteView extends javax.swing.JFrame {
         
         try {
             cliente = cli.getClienteByLogin(login_cliente);
-            System.out.println(cliente.getNomeCliente());
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -957,16 +971,19 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        ICliente cli = SABioFactory.getInstance().getCliente();
+        IInstrutor inst = SABioFactory.getInstance().getInstrutor();
         
         try {
-            cliente = cli.getClienteByLogin(campo_login_cliente.getText());
-            campo_nome_cliente.setText(cliente.getNomeCliente());
-            campo_rg_cliente.setText(cliente.getRG());
-            campo_cpf_cliente.setText(cliente.getCPF());
-            campo_atestado_cliente.setText(cliente.getAtestadoMedico());
-            campo_mensalidades_aberto_cliente.setText(cliente.getMensalidadesAbertas());
-            campo_telefone_cliente.setText(cliente.getTelefone());
+
+            instrutor = inst.getInstrutorByLogin(campo_login_instrutor.getText());
+            campo_nome_instrutor.setText(instrutor.getNome());
+            campo_rg_instrutor.setText(instrutor.getRG());
+            campo_cpf_instrutor.setText(instrutor.getCPF());
+            campo_endereco_instrutor.setText(instrutor.getEndereco());
+            campo_registro_instrutor.setText(instrutor.getRegistroProfissional());
+            campo_carteira_trabalho_instrutor.setText(instrutor.getNumeroCarteiraTrabalho());
+            campo_carga_horaria_instrutor.setText(String.valueOf(instrutor.getCargaHoraria()));
+            campo_senha_instrutor.setEnabled(false);
             
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
@@ -984,6 +1001,12 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_atestado_cliente.setText(cliente.getAtestadoMedico());
             campo_mensalidades_aberto_cliente.setText(cliente.getMensalidadesAbertas());
             campo_telefone_cliente.setText(cliente.getTelefone());
+            boolean stats = cliente.getStatus();
+            campo_senha_cliente.setEnabled(false);
+            if (stats){
+                campo_ativo_cliente.doClick();
+            }
+            else campo_inativo_cliente.doClick();
             
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);

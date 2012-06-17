@@ -8,12 +8,13 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
-import vo.ClienteVO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vo.InstrutorVO;
 import vo.ObjectVO;
 import vo.UsuarioVO;
 
-public class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
+public abstract class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
 
     public InstrutorJDBCDAO(Properties properties) throws DAOException {
         super(properties);
@@ -68,21 +69,19 @@ public class InstrutorJDBCDAO extends GenericJDBCDAO implements IInstrutorDAO {
             throw new DAOException(e);
         }
     }
-
     @Override
-    public void delete(ObjectVO vo) throws DAOException {
-        String sql = "DELETE " + this.getTableName()
-                + " WHERE LOGIN=? ";
+    public void delete(InstrutorVO vo) throws DAOException {
+        String sql = "DELETE FROM " + this.getTableName() + " WHERE LOGIN = '"
+                + vo.getUsuario().getLogin() + "'";
+      
+        Statement stmt;
         try {
-            InstrutorVO instrutor = (InstrutorVO) vo;
-            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-
-            stmt.setString(1, instrutor.getUsuario().getLogin());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new DAOException(e);
+            stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(InstrutorJDBCDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+      
     }
 
     @Override

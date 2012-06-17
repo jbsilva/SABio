@@ -4,6 +4,7 @@ import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.*;
 import java.util.Properties;
+import vo.ObjectVO;
 
 public class JDBCDAOFactory extends DAOFactory {
 
@@ -41,7 +42,13 @@ public class JDBCDAOFactory extends DAOFactory {
 
     @Override
         public IInstrutorDAO getInstrutorDAO() throws DAOException{
-            return new InstrutorJDBCDAO(this.properties);
+            return new InstrutorJDBCDAO(this.properties) {
+
+            @Override
+            public void delete(ObjectVO vo) throws DAOException {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
         }     
     
     @Override

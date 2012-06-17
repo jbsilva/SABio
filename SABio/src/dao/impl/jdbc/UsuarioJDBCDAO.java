@@ -96,7 +96,6 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
                 autenticado = result.equals(senha);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DAOException(e);
         }
         return autenticado;

@@ -1,15 +1,16 @@
 package sabio.impl;
 
-import java.util.List;
-
+import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IInstrutorDAO;
+import java.util.List;
 import sabio.SABioException;
 import sabio.spec.IInstrutor;
 import vo.InstrutorVO;
 
 public class Instrutor implements IInstrutor {
 
+    @Override
     public void delete(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try
@@ -17,11 +18,12 @@ public class Instrutor implements IInstrutor {
             IInstrutorDAO dao = factory.getInstrutorDAO();
             InstrutorVO instrutor = getInstrutorByLogin(login);
             dao.delete(instrutor);
-        } catch (Exception e) {
+        } catch (DAOException | SABioException e) {
             throw new SABioException(e);
         }
     }
 
+    @Override
     public void create(InstrutorVO instrutor) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -32,6 +34,7 @@ public class Instrutor implements IInstrutor {
         }
     }
 
+    @Override
     public void update(InstrutorVO instrutor) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -42,6 +45,7 @@ public class Instrutor implements IInstrutor {
         }
     }
 
+    @Override
     public List getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -52,6 +56,7 @@ public class Instrutor implements IInstrutor {
         }
     }
 
+    @Override
     public InstrutorVO getInstrutorByLogin(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
