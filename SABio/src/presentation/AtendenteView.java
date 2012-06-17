@@ -1,8 +1,10 @@
 package presentation;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -1131,13 +1133,15 @@ public class AtendenteView extends javax.swing.JFrame {
                 avaliacao = af.getAvaliacaoFisicaById(id);
                 
                 String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
+
+                // Seria melhor usar locale
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 
-                // NAO ESTA FUNCIONANDO AINDA -> Agora está ;)
                 String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
                 avaliacao.getInstrutor().getUsuario().getLogin(),
                 String.valueOf(avaliacao.getID()),
-                avaliacao.getDataRealizacao().getTime().toGMTString(),
+                sdf.format(avaliacao.getDataRealizacao().getTime()),
                 avaliacao.getObservacoes()}
             };
 
