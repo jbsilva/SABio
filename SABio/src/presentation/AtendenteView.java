@@ -1134,14 +1134,14 @@ public class AtendenteView extends javax.swing.JFrame {
                 
                 String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
 
-                // Seria melhor usar locale
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                // Mostra a data na linguagem selecionada no login
+                String data_realizacao = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM, Locale.getDefault()).format(avaliacao.getDataRealizacao().getTime());
                 
                 String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
                 avaliacao.getInstrutor().getUsuario().getLogin(),
                 String.valueOf(avaliacao.getID()),
-                sdf.format(avaliacao.getDataRealizacao().getTime()),
+                data_realizacao,
                 avaliacao.getObservacoes()}
             };
 
