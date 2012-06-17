@@ -271,6 +271,7 @@ public class LoginView extends javax.swing.JFrame {
         
         try {
             factory.getUsuario().create(user);
+            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_login.setText("");
             campo_senha.setText("");
         } catch (SABioException ex) {

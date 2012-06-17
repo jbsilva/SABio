@@ -727,7 +727,7 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1129,15 +1129,15 @@ public class AtendenteView extends javax.swing.JFrame {
         
         try {
                 avaliacao = af.getAvaliacaoFisicaById(id);
-
+                
                 String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
-            
+                
                 // NAO ESTA FUNCIONANDO AINDA -> Agora está ;)
                 String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
                 avaliacao.getInstrutor().getUsuario().getLogin(),
                 String.valueOf(avaliacao.getID()),
-                avaliacao.getDataRealizacao().toString(),
+                avaliacao.getDataRealizacao().getTime().toGMTString(),
                 avaliacao.getObservacoes()}
             };
 

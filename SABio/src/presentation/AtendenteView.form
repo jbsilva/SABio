@@ -1226,7 +1226,7 @@
                             <Column editable="true" title="Login Cliente" type="java.lang.String"/>
                             <Column editable="true" title="Login Instrutor" type="java.lang.String"/>
                             <Column editable="true" title="ID" type="java.lang.String"/>
-                            <Column editable="true" title="Data" type="java.lang.String"/>
+                            <Column editable="true" title="Data" type="java.lang.Object"/>
                             <Column editable="true" title="Observa&#xe7;&#xf5;es" type="java.lang.String"/>
                           </Table>
                         </Property>
