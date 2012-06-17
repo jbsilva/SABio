@@ -32,7 +32,13 @@ public class JDBCDAOFactory extends DAOFactory {
 
     @Override
 	public IClienteDAO getClienteDAO() throws DAOException{
-            return new ClienteJDBCDAO(this.properties);
+            return new ClienteJDBCDAO(this.properties) {
+
+            @Override
+            public void delete(ObjectVO vo) throws DAOException {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
         }
 
     @Override

@@ -8,12 +8,14 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vo.ClienteVO;
 import vo.ObjectVO;
 import vo.UsuarioVO;
 
 
-public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
+public abstract class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 
 	public ClienteJDBCDAO(Properties properties) throws DAOException {
 		super(properties);
@@ -72,19 +74,18 @@ public class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteDAO {
 	}
 
     @Override
-	public void delete(ObjectVO vo) throws DAOException {
-		String sql = "DELETE " + this.getTableName()
-				+ " WHERE LOGIN=? ";
-		try {
-                        ClienteVO cliente = (ClienteVO) vo;
-			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-			
-			stmt.setString(1, cliente.getNomeCliente());                      
-                        
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
+	public void delete(ClienteVO vo) throws DAOException {
+		String sql = "DELETE FROM " + this.getTableName() + " WHERE LOGIN = '"
+                + vo.getUsuario().getLogin() + "'";
+                
+                Statement stmt;
+                try {
+                    stmt = this.getConnection().createStatement();
+                    stmt.executeQuery(sql);
+                }catch (SQLException ex) {
+                    Logger.getLogger(ClienteJDBCDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+		
 	}
     
     @Override

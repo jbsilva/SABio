@@ -1,5 +1,6 @@
 package sabio.impl;
 
+import dao.DAOException;
 import java.util.List;
 
 import dao.DAOFactory;
@@ -10,13 +11,14 @@ import vo.ClienteVO;
 
 public class Cliente implements ICliente {
 
+    @Override
     public void delete(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             IClienteDAO dao = factory.getClienteDAO();
             ClienteVO user = getClienteByLogin(login);
             dao.delete(user);
-        } catch (Exception e) {
+        } catch (DAOException | SABioException e) {
             throw new SABioException(e);
         }
     }

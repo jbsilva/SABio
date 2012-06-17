@@ -8,4 +8,6 @@ import vo.ClienteVO;
 public interface IClienteDAO extends IGenericDAO {
 
 	ClienteVO SelectByLogin(String Login) throws DAOException;
+        
+        void delete(ClienteVO vo) throws DAOException;
 }

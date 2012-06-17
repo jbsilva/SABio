@@ -876,6 +876,8 @@ public class AtendenteView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cancela_cadastro_instrutorActionPerformed
 
+   
+    
     private void confirma_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastrar_clienteActionPerformed
         SABioFactory factory = SABioFactory.getInstance();
 
@@ -923,7 +925,24 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_inativo_clienteActionPerformed
 
     private void cancela_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastrar_clienteActionPerformed
-        System.exit(0);
+        
+        //System.exit(0);
+        ICliente client = SABioFactory.getInstance().getCliente();
+        
+        try {
+            cliente = client.getClienteByLogin(campo_login_cliente.getText());
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            client.delete(campo_login_cliente.getText());
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+                         
     }//GEN-LAST:event_cancela_cadastrar_clienteActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
