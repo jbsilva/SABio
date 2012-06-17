@@ -5,13 +5,9 @@ import dao.DAOFactory;
 import dao.spec.IAvaliacaoFisicaDAO;
 import dao.spec.IClienteDAO;
 import dao.spec.IInstrutorDAO;
+import java.sql.*;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Properties;
+import java.util.*;
 import vo.AvaliacaoFisicaVO;
 import vo.ClienteVO;
 import vo.InstrutorVO;
@@ -102,12 +98,38 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
     }
 
     @Override
+    public List<AvaliacaoFisicaVO> SelectAll() throws DAOException {
+        List<AvaliacaoFisicaVO> avaliacoes = new ArrayList<>();
+
+        ObjectVO vo = null;
+        AvaliacaoFisicaVO aval = (AvaliacaoFisicaVO) vo;
+
+        String sql = "SELECT * FROM " + this.getTableName();
+
+        try {
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            if (rs != null) {
+                while (rs.next()) {
+                    aval = this.createVO(rs);
+                    avaliacoes.add(aval);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+
+        return avaliacoes;
+    }
+
+    @Override
     public String getTableName() {
         return "AVALIACAO_FISICA";
     }
 
     @Override
-    protected ObjectVO createVO(ResultSet rs) throws DAOException {
+    protected AvaliacaoFisicaVO createVO(ResultSet rs) throws DAOException {
         try {
             String login_cliente = rs.getString("LOGIN_CLIENTE");
             String login_instrutor = rs.getString("LOGIN_INSTRUTOR");
@@ -117,14 +139,14 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
 
             Calendar cal = new GregorianCalendar();
             cal.setTime(dt);
-            
+
             IClienteDAO clienteDAO = DAOFactory.getInstance().getClienteDAO();
             ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login_cliente);
-            
+
             IInstrutorDAO instrutorDAO = DAOFactory.getInstance().getInstrutorDAO();
             InstrutorVO instrutor = (InstrutorVO) instrutorDAO.SelectByLogin(login_cliente);
-                    
-            
+
+
             return new AvaliacaoFisicaVO(cliente, instrutor, id,
                     cal, observacoes);
         } catch (SQLException e) {

@@ -52,11 +52,12 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
         }
     }
 
-    public List getAll() throws SABioException {
+    @Override
+    public List<AvaliacaoFisicaVO> getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
-            return dao.selectAll();
+            return dao.SelectAll();
         } catch (Exception e) {
             throw new SABioException(e);
         }

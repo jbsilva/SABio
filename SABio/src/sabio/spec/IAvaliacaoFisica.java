@@ -14,6 +14,5 @@ public interface IAvaliacaoFisica {
 
 	AvaliacaoFisicaVO getAvaliacaoFisicaById(int id) throws SABioException;
 
-	List getAll() throws SABioException;
-
+	List<AvaliacaoFisicaVO> getAll() throws SABioException;
 }
