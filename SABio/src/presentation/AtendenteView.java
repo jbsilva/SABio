@@ -2,17 +2,10 @@ package presentation;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.TreeSet;
-import sabio.SABioFactory;
-import vo.AtendenteVO;
-import vo.UsuarioVO;
-import vo.ClienteVO;
-import vo.InstrutorVO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sabio.SABioException;
-import sabio.impl.Cliente;
-import sabio.impl.Instrutor;
+import sabio.SABioFactory;
 import sabio.spec.ICliente;
 import sabio.spec.IInstrutor;
 import vo.*;
@@ -72,6 +65,7 @@ public class AtendenteView extends javax.swing.JFrame {
         confirma_cadastro_instrutor = new javax.swing.JButton();
         campo_carga_horaria_instrutor = new javax.swing.JTextField();
         campo_senha_instrutor = new javax.swing.JPasswordField();
+        Buscar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         campo_login_cliente_af = new javax.swing.JTextField();
@@ -79,10 +73,8 @@ public class AtendenteView extends javax.swing.JFrame {
         campo_login_instrutor_af = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        campo_data_realizacao_af = new javax.swing.JTextField();
         campo_id_af = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
@@ -92,14 +84,12 @@ public class AtendenteView extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         campo_login_cliente = new javax.swing.JTextField();
         campo_cpf_cliente = new javax.swing.JTextField();
         campo_mensalidades_aberto_cliente = new javax.swing.JTextField();
-        campo_data_nascimento_cliente = new javax.swing.JTextField();
         campo_telefone_cliente = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -112,6 +102,7 @@ public class AtendenteView extends javax.swing.JFrame {
         campo_senha_cliente = new javax.swing.JPasswordField();
         campo_ativo_cliente = new javax.swing.JRadioButton();
         campo_inativo_cliente = new javax.swing.JRadioButton();
+        BuscarCliente = new javax.swing.JButton();
         Cliente1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -200,13 +191,20 @@ public class AtendenteView extends javax.swing.JFrame {
         campo_senha_instrutor.setText(bundle.getString("AtendenteView.campo_senha_instrutor.text")); // NOI18N
         campo_senha_instrutor.setName(bundle.getString("AtendenteView.campo_senha_instrutor.name")); // NOI18N
 
+        Buscar.setText(bundle.getString("AtendenteView.Buscar.text")); // NOI18N
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17)
@@ -235,11 +233,14 @@ public class AtendenteView extends javax.swing.JFrame {
                                     .addComponent(campo_carteira_trabalho_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campo_senha_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(campo_endereco_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(201, 201, 201)
                         .addComponent(cancela_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
-                        .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(308, 308, 308)
+                        .addComponent(Buscar)))
                 .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -284,7 +285,9 @@ public class AtendenteView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancela_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78))
+                .addGap(18, 18, 18)
+                .addComponent(Buscar)
+                .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 153, Short.MAX_VALUE)
@@ -326,16 +329,11 @@ public class AtendenteView extends javax.swing.JFrame {
         jLabel31.setText(bundle.getString("AtendenteView.jLabel31.text")); // NOI18N
         jLabel31.setName(bundle.getString("AtendenteView.jLabel31.name")); // NOI18N
 
-        jLabel32.setText(bundle.getString("AtendenteView.jLabel32.text")); // NOI18N
-        jLabel32.setName(bundle.getString("AtendenteView.jLabel32.name")); // NOI18N
-
         jLabel34.setText(bundle.getString("AtendenteView.jLabel34.text")); // NOI18N
         jLabel34.setName(bundle.getString("AtendenteView.jLabel34.name")); // NOI18N
 
         jLabel35.setText(bundle.getString("AtendenteView.jLabel35.text")); // NOI18N
         jLabel35.setName(bundle.getString("AtendenteView.jLabel35.name")); // NOI18N
-
-        campo_data_realizacao_af.setName(bundle.getString("AtendenteView.campo_data_realizacao_af.name")); // NOI18N
 
         campo_id_af.setName(bundle.getString("AtendenteView.campo_id_af.name")); // NOI18N
 
@@ -378,14 +376,10 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(jLabel35)
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campo_data_realizacao_af, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campo_login_instrutor_af, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campo_login_instrutor_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(campo_observacoes_af, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -397,8 +391,6 @@ public class AtendenteView extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
-                    .addComponent(jLabel32)
-                    .addComponent(campo_data_realizacao_af, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -449,9 +441,6 @@ public class AtendenteView extends javax.swing.JFrame {
         jLabel22.setText(bundle.getString("AtendenteView.jLabel22.text")); // NOI18N
         jLabel22.setName(bundle.getString("AtendenteView.jLabel22.name")); // NOI18N
 
-        jLabel23.setText(bundle.getString("AtendenteView.jLabel23.text")); // NOI18N
-        jLabel23.setName(bundle.getString("AtendenteView.jLabel23.name")); // NOI18N
-
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setName(bundle.getString("AtendenteView.jSeparator3.name")); // NOI18N
 
@@ -466,8 +455,6 @@ public class AtendenteView extends javax.swing.JFrame {
         campo_cpf_cliente.setName(bundle.getString("AtendenteView.campo_cpf_cliente.name")); // NOI18N
 
         campo_mensalidades_aberto_cliente.setName(bundle.getString("AtendenteView.campo_mensalidades_aberto_cliente.name")); // NOI18N
-
-        campo_data_nascimento_cliente.setName(bundle.getString("AtendenteView.campo_data_nascimento_cliente.name")); // NOI18N
 
         campo_telefone_cliente.setName(bundle.getString("AtendenteView.campo_telefone_cliente.name")); // NOI18N
 
@@ -524,6 +511,13 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         });
 
+        BuscarCliente.setText(bundle.getString("AtendenteView.BuscarCliente.text")); // NOI18N
+        BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -557,27 +551,20 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel21)
                             .addComponent(jLabel20)
-                            .addComponent(jLabel22))
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campo_telefone_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campo_nome_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addComponent(campo_data_nascimento_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campo_inativo_cliente)
-                            .addComponent(campo_ativo_cliente)))
+                            .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campo_ativo_cliente)
+                            .addComponent(campo_inativo_cliente)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(confirma_cadastrar_cliente)))
+                        .addComponent(confirma_cadastrar_cliente)
+                        .addGap(74, 74, 74)
+                        .addComponent(BuscarCliente)))
                 .addContainerGap(148, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -630,20 +617,18 @@ public class AtendenteView extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(campo_data_nascimento_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campo_ativo_cliente)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campo_inativo_cliente)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(campo_ativo_cliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campo_inativo_cliente))
+                            .addComponent(jLabel4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cancela_cadastrar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirma_cadastrar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirma_cadastrar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarCliente))
                 .addGap(58, 58, 58))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -956,8 +941,44 @@ public class AtendenteView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        ICliente cli = SABioFactory.getInstance().getCliente();
+        
+        try {
+            cliente = cli.getClienteByLogin(campo_login_cliente.getText());
+            campo_nome_cliente.setText(cliente.getNomeCliente());
+            campo_rg_cliente.setText(cliente.getRG());
+            campo_cpf_cliente.setText(cliente.getCPF());
+            campo_atestado_cliente.setText(cliente.getAtestadoMedico());
+            campo_mensalidades_aberto_cliente.setText(cliente.getMensalidadesAbertas());
+            campo_telefone_cliente.setText(cliente.getTelefone());
+            
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteActionPerformed
+        ICliente cli = SABioFactory.getInstance().getCliente();
+        
+        try {
+            cliente = cli.getClienteByLogin(campo_login_cliente.getText());
+            campo_nome_cliente.setText(cliente.getNomeCliente());
+            campo_rg_cliente.setText(cliente.getRG());
+            campo_cpf_cliente.setText(cliente.getCPF());
+            campo_atestado_cliente.setText(cliente.getAtestadoMedico());
+            campo_mensalidades_aberto_cliente.setText(cliente.getMensalidadesAbertas());
+            campo_telefone_cliente.setText(cliente.getTelefone());
+            
+        } catch (SABioException ex) {
+            Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BuscarClienteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
     private javax.swing.JButton Buscar10;
+    private javax.swing.JButton BuscarCliente;
     private javax.swing.JPanel Cliente;
     private javax.swing.JPanel Cliente1;
     private javax.swing.JPanel Instrutor;
@@ -968,8 +989,6 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JTextField campo_carteira_trabalho_instrutor;
     private javax.swing.JTextField campo_cpf_cliente;
     private javax.swing.JTextField campo_cpf_instrutor;
-    private javax.swing.JTextField campo_data_nascimento_cliente;
-    private javax.swing.JTextField campo_data_realizacao_af;
     private javax.swing.JTextField campo_endereco_instrutor;
     private javax.swing.JTextField campo_id_af;
     private javax.swing.JRadioButton campo_inativo_cliente;
@@ -1008,14 +1027,12 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
