@@ -147,6 +147,12 @@ VALUES('cliente03', 3, 'tipo2', '2012-01-01', 2, 3, 'crucifixo');
 
 INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
 VALUES ('cliente01', 'instrutor01', 1, '2012-01-01', 'Tudo ok');
+INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
+VALUES ('cliente02', 'instrutor01', 2, '2011-01-01', 'Tudo ok');
+INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
+VALUES ('cliente02', 'instrutor02', 3, '2010-01-01', 'Tudo ok');
+INSERT INTO avaliacao_fisica (login_cliente, login_instrutor, id, data_realizacao, observacoes)
+VALUES ('cliente03', 'instrutor02', 4, '2009-01-01', 'observacao');
 
 
 INSERT INTO exercicio (id_ex, carga, numero_de_series, nome_ex, login_cliente)
