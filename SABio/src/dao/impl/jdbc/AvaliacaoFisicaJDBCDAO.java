@@ -79,22 +79,18 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
     @Override
     public AvaliacaoFisicaVO SelectById(int avaliacao_id) throws DAOException {
         ObjectVO vo = null;
-        String sql = "SELECT * FROM " + this.getTableName()
-                + " WHERE ID=? ";
+        String sql = "SELECT * FROM " + this.getTableName() + " WHERE ID = '"
+                + avaliacao_id + "'";
         try {
-            AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
-            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-
-            stmt.setInt(1, avaliacaofisica.getID());
-
-            ResultSet rs = stmt.executeQuery();
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
-                return (AvaliacaoFisicaVO) createVO(rs);
+                vo = this.createVO(rs);
             }
-        } catch (SQLException | DAOException e) {
+        } catch (SQLException e) {
             throw new DAOException(e);
         }
-        return null;
+        return (AvaliacaoFisicaVO) vo;
     }
 
     @Override
@@ -144,7 +140,7 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
             ClienteVO cliente = (ClienteVO) clienteDAO.SelectByLogin(login_cliente);
 
             IInstrutorDAO instrutorDAO = DAOFactory.getInstance().getInstrutorDAO();
-            InstrutorVO instrutor = (InstrutorVO) instrutorDAO.SelectByLogin(login_cliente);
+            InstrutorVO instrutor = (InstrutorVO) instrutorDAO.SelectByLogin(login_instrutor);
 
 
             return new AvaliacaoFisicaVO(cliente, instrutor, id,

@@ -20,6 +20,7 @@ public class AtendenteView extends javax.swing.JFrame {
     private boolean cliente_status = false;
     private ClienteVO cliente;
     private InstrutorVO instrutor;
+    private AvaliacaoFisicaVO avaliacao;
 
     public AtendenteView() {
 
@@ -265,7 +266,7 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(Buscar)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 389, Short.MAX_VALUE)
@@ -401,7 +402,7 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                         .addComponent(jLabel35)
                         .addGap(29, 29, 29)
                         .addComponent(campo_login_instrutor_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -456,7 +457,7 @@ public class AtendenteView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 37, Short.MAX_VALUE)
+                .addGap(0, 38, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -603,7 +604,7 @@ public class AtendenteView extends javax.swing.JFrame {
                         .addComponent(confirma_cadastrar_cliente)
                         .addGap(74, 74, 74)
                         .addComponent(BuscarCliente)))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(0, 389, Short.MAX_VALUE)
@@ -734,7 +735,7 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -799,7 +800,7 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(268, 268, 268)
                         .addComponent(Buscar10)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 153, Short.MAX_VALUE)
@@ -1012,11 +1013,11 @@ public class AtendenteView extends javax.swing.JFrame {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        AvaliacaoFisicaVO avaliacao = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
+        AvaliacaoFisicaVO avaliacao2 = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
 
         // Cria cliente no bd
         try {
-            factory.getAvaliacaoFisica().create(avaliacao);
+            factory.getAvaliacaoFisica().create(avaliacao2);
         } catch (SABioException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1071,17 +1072,18 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar1ActionPerformed
 
     private void af_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_af_idActionPerformed
+        
         int id = Integer.parseInt(String.valueOf(af_id.getSelectedItem()));
 
         IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-        AvaliacaoFisicaVO avaliacao;
+        
         try {
-            avaliacao = af.getAvaliacaoFisicaById(id);
+                avaliacao = af.getAvaliacaoFisicaById(id);
 
-            String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
+                String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
             
-            // NAO ESTA FUNCIONANDO AINDA
-            String tabela[][] = {
+                // NAO ESTA FUNCIONANDO AINDA -> Agora está ;)
+                String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
                 avaliacao.getInstrutor().getUsuario().getLogin(),
                 String.valueOf(avaliacao.getID()),
@@ -1098,9 +1100,17 @@ public class AtendenteView extends javax.swing.JFrame {
             });
 
             validate();
+             
+            /*jTable1.setValueAt(avaliacao.getCliente().getUsuario().getLogin(),0,0);
+            jTable1.setValueAt(avaliacao.getInstrutor().getUsuario().getLogin(),0,1);
+            jTable1.setValueAt(String.valueOf(avaliacao.getID()),0,2);
+            jTable1.setValueAt(avaliacao.getDataRealizacao().toString(),0,3);
+            jTable1.setValueAt(avaliacao.getObservacoes(),0,4);*/
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_af_idActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;

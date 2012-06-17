@@ -8,7 +8,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Cursor Default"/>
     </Property>
     <Property name="focusableWindowState" type="boolean" value="false"/>
     <Property name="name" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
@@ -159,7 +159,7 @@
                                   <Component id="Buscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="118" max="32767" attributes="0"/>
+                          <EmptySpace pref="215" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -467,7 +467,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -500,7 +500,7 @@
                                       <Component id="campo_id_af" min="-2" pref="108" max="-2" attributes="0"/>
                                       <Component id="campo_login_cliente_af" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="194" max="32767" attributes="0"/>
+                                  <EmptySpace pref="259" max="32767" attributes="0"/>
                                   <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="campo_login_instrutor_af" min="-2" pref="108" max="-2" attributes="0"/>
@@ -768,7 +768,7 @@
                                   <Component id="BuscarCliente" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="165" max="32767" attributes="0"/>
+                          <EmptySpace pref="245" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -1204,7 +1204,7 @@
                                   <Component id="Buscar10" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -1282,8 +1282,8 @@
                           <Table columnCount="5" rowCount="4">
                             <Column editable="true" title="Login Cliente" type="java.lang.String"/>
                             <Column editable="true" title="Login Instrutor" type="java.lang.String"/>
-                            <Column editable="true" title="ID" type="java.lang.Integer"/>
-                            <Column editable="true" title="Data" type="java.lang.Object"/>
+                            <Column editable="true" title="ID" type="java.lang.String"/>
+                            <Column editable="true" title="Data" type="java.lang.String"/>
                             <Column editable="true" title="Observa&#xe7;&#xf5;es" type="java.lang.String"/>
                           </Table>
                         </Property>
