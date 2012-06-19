@@ -284,7 +284,7 @@ public class LoginView extends javax.swing.JFrame {
         Locale locale = new Locale("en", "US");
         Locale.setDefault(locale);
         JOptionPane.showMessageDialog(null, "Language Changed", "Success!", JOptionPane.INFORMATION_MESSAGE);
-        bundle = ResourceBundle.getBundle("I18n/Bundle");
+        bundle = ResourceBundle.getBundle("presentation/Bundle");
   
         atualiza();
     }//GEN-LAST:event_jRadioButton3ActionPerformed
@@ -293,7 +293,7 @@ public class LoginView extends javax.swing.JFrame {
         Locale locale = new Locale("pt", "BR");
         Locale.setDefault(locale);
         JOptionPane.showMessageDialog(null, "Idioma Alterado", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        bundle = ResourceBundle.getBundle("I18n/Bundle");
+        bundle = ResourceBundle.getBundle("presentation/Bundle");
         atualiza();    
 }//GEN-LAST:event_jRadioButton1ActionPerformed
     public static void main(String args[]) {
