@@ -1,15 +1,16 @@
 package sabio.impl;
 
-import java.util.List;
-
+import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IAvaliacaoFisicaDAO;
+import java.util.List;
 import sabio.SABioException;
 import sabio.spec.IAvaliacaoFisica;
 import vo.AvaliacaoFisicaVO;
 
 public class AvaliacaoFisica implements IAvaliacaoFisica {
 
+    @Override
     public void delete(int avaliacao_id) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try
@@ -17,11 +18,12 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
             IAvaliacaoFisicaDAO dao = factory.getAvaliacaoFisicaDAO();
             AvaliacaoFisicaVO user = getAvaliacaoFisicaById(avaliacao_id);
             dao.delete(user);
-        } catch (Exception e) {
+        } catch (DAOException | SABioException e) {
             throw new SABioException(e);
         }
     }
 
+    @Override
     public void create(AvaliacaoFisicaVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -32,6 +34,7 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
         }
     }
 
+    @Override
     public void update(AvaliacaoFisicaVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -42,6 +45,7 @@ public class AvaliacaoFisica implements IAvaliacaoFisica {
         }
     }
 
+    @Override
     public AvaliacaoFisicaVO getAvaliacaoFisicaById(int avaliacao_id) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {

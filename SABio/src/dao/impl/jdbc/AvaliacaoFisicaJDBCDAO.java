@@ -8,12 +8,14 @@ import dao.spec.IInstrutorDAO;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vo.AvaliacaoFisicaVO;
 import vo.ClienteVO;
 import vo.InstrutorVO;
 import vo.ObjectVO;
 
-public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacaoFisicaDAO {
+public abstract class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacaoFisicaDAO {
 
     public AvaliacaoFisicaJDBCDAO(Properties properties) throws DAOException {
         super(properties);
@@ -58,23 +60,21 @@ public class AvaliacaoFisicaJDBCDAO extends GenericJDBCDAO implements IAvaliacao
             throw new DAOException(e);
         }
     }
-
+    
     @Override
-    public void delete(ObjectVO vo) throws DAOException {
-        String sql = "DELETE " + this.getTableName()
-                + " WHERE ID=? ";
-        try {
-            AvaliacaoFisicaVO avaliacaofisica = (AvaliacaoFisicaVO) vo;
-            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-
-
-            stmt.setInt(1, avaliacaofisica.getID());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new DAOException(e);
-        }
-    }
+	public void delete(AvaliacaoFisicaVO vo) throws DAOException {
+		String sql = "DELETE FROM " + this.getTableName() + " WHERE ID = '"
+                + vo.getID() + "'";
+                
+                Statement stmt;
+                try {
+                    stmt = this.getConnection().createStatement();
+                    stmt.executeQuery(sql);
+                }catch (SQLException ex) {
+                    Logger.getLogger(AvaliacaoFisicaJDBCDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+		
+	}
 
     @Override
     public AvaliacaoFisicaVO SelectById(int avaliacao_id) throws DAOException {

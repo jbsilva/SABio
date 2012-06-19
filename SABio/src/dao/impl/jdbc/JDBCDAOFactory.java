@@ -55,10 +55,17 @@ public class JDBCDAOFactory extends DAOFactory {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
         };
+
         }     
     
     @Override
         public IAvaliacaoFisicaDAO getAvaliacaoFisicaDAO() throws DAOException{
-            return new AvaliacaoFisicaJDBCDAO(this.properties);
+            return new AvaliacaoFisicaJDBCDAO(this.properties) {
+
+            @Override
+            public void delete(ObjectVO vo) throws DAOException {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
         }
 }

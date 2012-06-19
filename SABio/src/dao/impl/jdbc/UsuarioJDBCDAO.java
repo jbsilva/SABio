@@ -33,10 +33,12 @@ public class UsuarioJDBCDAO extends GenericJDBCDAO implements IUsuarioDAO {
     
     @Override
     public void update(ObjectVO vo) throws DAOException {
-        UsuarioVO user = (UsuarioVO) vo;
+        
         String sql = "UPDATE " + this.getTableName()
-                + "SENHA = ? WHERE LOGIN = ?";
+                + "SET SENHA = ?, WHERE LOGIN = ?";
         try {
+            
+            UsuarioVO user = (UsuarioVO) vo;
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
             
             stmt.setString(1, user.getSenha());

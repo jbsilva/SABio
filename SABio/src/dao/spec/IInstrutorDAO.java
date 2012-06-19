@@ -8,4 +8,6 @@ public interface IInstrutorDAO extends IGenericDAO {
     InstrutorVO SelectByLogin(String Login) throws DAOException;
     
     void delete(InstrutorVO vo) throws DAOException;
+    
+    
 }

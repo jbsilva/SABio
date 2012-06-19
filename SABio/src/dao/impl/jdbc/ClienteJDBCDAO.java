@@ -34,7 +34,7 @@ public abstract class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteD
                         stmt.setString(4, cliente.getRG());
                         Date dt = new Date(cliente.getDataIngresso().getTime().getTime());
 			stmt.setDate(5, dt);
-                        stmt.setString(6, cliente.getTelefone()); //NO BANCO ESTA COMO INT !!! 
+                        stmt.setString(6, cliente.getTelefone()); 
                         stmt.setString(7, cliente.getAtestadoMedico());
                         Date dtn = new Date(cliente.getDataNascimento().getTime().getTime());
 			stmt.setDate(8, dtn);
@@ -49,7 +49,7 @@ public abstract class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteD
     @Override
 	public void update(ObjectVO vo) throws DAOException {
 		String sql = "UPDATE " + this.getTableName()
-				+ " NOME=?, CPF=?, RG=?, DATA_INGRESSO=?, TELEFONE=?, ATESTADO_MEDICO=?, DATA_NASCIMENTO=?, MENSALIDADES_ABERTAS=?, STATUS=? WHERE LOGIN=? ";
+				+ " SET NOME=?, CPF=?, RG=?, DATA_INGRESSO=?, TELEFONE=?, ATESTADO_MEDICO=?, DATA_NASCIMENTO=?, MENSALIDADES_ABERTAS=?, STATUS=? WHERE LOGIN=? ";
 		try {
                         ClienteVO cliente = (ClienteVO) vo;
 			PreparedStatement stmt = this.getConnection().prepareStatement(sql);
@@ -59,7 +59,7 @@ public abstract class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteD
                         stmt.setString(3, cliente.getRG());
                         Date dt = new Date(cliente.getDataIngresso().getTime().getTime());
 			stmt.setDate(4, dt);
-                        stmt.setString(5, cliente.getTelefone()); //NO BANCO ESTA COMO INT !!! 
+                        stmt.setString(5, cliente.getTelefone());
                         stmt.setString(6, cliente.getAtestadoMedico());
                         Date dtn = new Date(cliente.getDataNascimento().getTime().getTime());
 			stmt.setDate(7, dtn);

@@ -8,4 +8,5 @@ public interface IAvaliacaoFisicaDAO extends IGenericDAO {
     
     AvaliacaoFisicaVO SelectById(int avaliacao_id) throws DAOException;
     List<AvaliacaoFisicaVO> SelectAll() throws DAOException;
+    void delete(AvaliacaoFisicaVO vo) throws DAOException;
 }
