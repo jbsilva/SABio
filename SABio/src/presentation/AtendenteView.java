@@ -27,6 +27,7 @@ public class AtendenteView extends javax.swing.JFrame {
     private InstrutorVO instrutor;
     private AvaliacaoFisicaVO avaliacao;
     private List<ClienteVO> clientes;
+    private boolean CheckCpf;
 
     public AtendenteView() {
 
@@ -72,6 +73,30 @@ public class AtendenteView extends javax.swing.JFrame {
         atendenteview = null;
     }
 
+     public boolean CheckCpf(String string){
+        
+        boolean check = true;
+        int [] cpf = new int[10];  
+        
+        if (string.length() > 11 || (string.length()<11)){
+                check = false;
+        }
+        else{
+            
+            for(int i = 0;i<10;i++){               
+                Character charac = string.charAt(i);
+                if( !Character.isDigit(charac) ){
+                    check = false;
+                }else{
+                    cpf[i] = Integer.parseInt(string.substring(i,i+1));
+                }               
+           
+            }
+        }
+        return check;
+        
+     }
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -952,6 +977,7 @@ public class AtendenteView extends javax.swing.JFrame {
         String numero_carteira_trabalho = campo_carteira_trabalho_instrutor.getText();
         int carga_horaria = Integer.parseInt(campo_carga_horaria_instrutor.getText());
 
+        if (CheckCpf(cpf)==true){
         UsuarioVO usuario = new UsuarioVO(login, senha);
 
         Calendar data_contratacao = Calendar.getInstance();
@@ -992,7 +1018,8 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
         }
-
+       }
+       else{ JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);   } 
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void cancela_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastro_instrutorActionPerformed
@@ -1037,6 +1064,7 @@ public class AtendenteView extends javax.swing.JFrame {
         String telefone = campo_telefone_cliente.getText();
         Boolean status = cliente_status;
 
+        if (CheckCpf(cpf)==true){
         UsuarioVO usuario = new UsuarioVO(login, senha);
 
         Calendar data_nascimento = Calendar.getInstance();
@@ -1046,7 +1074,6 @@ public class AtendenteView extends javax.swing.JFrame {
                 atestado_medico, data_ingresso, mensalidades_abertas,
                 data_nascimento, status);
 
-
         // Cria usuario no bd
         try {
             factory.getUsuario().create(usuario);
@@ -1054,7 +1081,9 @@ public class AtendenteView extends javax.swing.JFrame {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
         // Cria cliente no bd
+       
         try {
             factory.getCliente().create(cliente);
 
@@ -1071,6 +1100,8 @@ public class AtendenteView extends javax.swing.JFrame {
             ICliente devedor = SABioFactory.getInstance().getCliente();
 
             clientes = devedor.getAll();
+        
+        
 
         } catch (SABioException ex) {
             JOptionPane.showMessageDialog(null, "Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
@@ -1082,6 +1113,10 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_telefone_cliente.setText("");
             cliente_status = false;
             campo_senha_cliente.setText("");
+        }
+       }
+        else{ JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);
+            
         }
     }//GEN-LAST:event_confirma_cadastrar_clienteActionPerformed
 
