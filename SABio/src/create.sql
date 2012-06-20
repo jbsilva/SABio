@@ -105,10 +105,19 @@ INSERT INTO usuario (login, senha) VALUES ('atendente03', 'yzabcd');
 INSERT INTO usuario (login, senha) VALUES ('cliente01', '012345');
 INSERT INTO usuario (login, senha) VALUES ('cliente02', 'abcdef');
 INSERT INTO usuario (login, senha) VALUES ('cliente03', '654321');
+INSERT INTO usuario (login, senha) VALUES ('cliente04', '654321');
+INSERT INTO usuario (login, senha) VALUES ('cliente05', '654321');
+INSERT INTO usuario (login, senha) VALUES ('cliente06', '654321');
 INSERT INTO usuario (login, senha) VALUES ('instrutor01', 'ghijkl');
 INSERT INTO usuario (login, senha) VALUES ('instrutor02', '123456');
 INSERT INTO usuario (login, senha) VALUES ('instrutor03', 'mnopqr');
 INSERT INTO usuario (login, senha) VALUES ('instrutor04', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor05', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor06', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor07', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor08', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor09', '678910');
+INSERT INTO usuario (login, senha) VALUES ('instrutor10', '678910');
 
 
 INSERT INTO instrutor (login, nome, cpf, rg, endereco, carga_horaria,numero_carteira_trabalho, registro_profissional, data_contratacao)
@@ -135,7 +144,12 @@ INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_med
 VALUES ('cliente02', 'tulio', '29642217589', '433279470', '2008-07-28', '34156000', 'em dia', '1989-05-10', 'fevereiro, março', True);
 INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
 VALUES ('cliente03', 'pedro', '71224314875', '307298450', '2008-07-28', '34210000', 'em dia', '1989-05-10', '', False);
-
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+VALUES ('cliente04', 'julinho', '37521321911', '429434121', '2008-07-28', '39210605', 'em dia', '1990-05-10', 'janeiro', True);
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+VALUES ('cliente05', 'joao', '25342217589', '433279470', '2008-07-28', '34156000', 'em dia', '1989-05-10', 'fevereiro, março', True);
+INSERT INTO cliente (login, nome, cpf, rg, data_ingresso, telefone, atestado_medico, data_nascimento, mensalidades_abertas, status)
+VALUES ('cliente06', 'PT', '71514314875', '307298450', '2008-07-28', '34210000', 'em dia', '1989-05-10', '', False);
 
 INSERT INTO treino (login, treino_id, tipo_treino, data_inicio, nivel, numero_dias, nome_treino)
 VALUES('cliente01', 1, 'supino', '2012-01-01', 2, 3, 'supino inclinado');
