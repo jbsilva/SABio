@@ -23,6 +23,7 @@ public class Cliente implements ICliente {
         }
     }
 
+    @Override
     public void create(ClienteVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -33,6 +34,7 @@ public class Cliente implements ICliente {
         }
     }
 
+    @Override
     public void update(ClienteVO vo) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
@@ -43,16 +45,19 @@ public class Cliente implements ICliente {
         }
     }
 
-    public List getAll() throws SABioException {
+    
+    @Override
+    public List<ClienteVO> getAll() throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {
             IClienteDAO dao = factory.getClienteDAO();
-            return dao.selectAll();
+            return dao.SelectAll();
         } catch (Exception e) {
             throw new SABioException(e);
         }
     }
 
+    @Override
     public ClienteVO getClienteByLogin(String login) throws SABioException {
         DAOFactory factory = DAOFactory.getInstance();
         try {

@@ -14,16 +14,19 @@ import sabio.SABioFactory;
 import sabio.spec.IAvaliacaoFisica;
 import sabio.spec.ICliente;
 import sabio.spec.IInstrutor;
-import vo.*;
+import vo.AvaliacaoFisicaVO;
+import vo.ClienteVO;
+import vo.InstrutorVO;
+import vo.UsuarioVO;
 
 public class AtendenteView extends javax.swing.JFrame {
 
     private static AtendenteView atendenteview;
-    private List<AtendenteVO> atendentes;
     private boolean cliente_status = false;
     private ClienteVO cliente;
     private InstrutorVO instrutor;
     private AvaliacaoFisicaVO avaliacao;
+    private List<ClienteVO> clientes;
 
     public AtendenteView() {
 
@@ -45,9 +48,16 @@ public class AtendenteView extends javax.swing.JFrame {
 
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
 
+            ICliente devedor = SABioFactory.getInstance().getCliente();
+
+            clientes = devedor.getAll();
+           
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
 
     }
 
@@ -119,6 +129,11 @@ public class AtendenteView extends javax.swing.JFrame {
         campo_inativo_cliente = new javax.swing.JRadioButton();
         BuscarCliente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         campo_login_cliente_af = new javax.swing.JTextField();
@@ -278,7 +293,7 @@ public class AtendenteView extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(confirma_cadastro_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 389, Short.MAX_VALUE)
@@ -320,7 +335,7 @@ public class AtendenteView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(campo_endereco_instrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -488,9 +503,9 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addComponent(campo_senha_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campo_ativo_cliente)
                     .addComponent(campo_inativo_cliente))
-                .addContainerGap())
+                .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cancela_cadastrar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -534,7 +549,7 @@ public class AtendenteView extends javax.swing.JFrame {
                                     .addComponent(campo_mensalidades_aberto_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel19)))
                             .addComponent(jLabel24))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addGap(30, 30, 30)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -591,6 +606,77 @@ public class AtendenteView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(bundle.getString("AtendenteView.Cliente.TabConstraints.tabTitle"), Cliente); // NOI18N
 
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+        jTable2.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("AtendenteView.jTable2.columnModel.title0")); // NOI18N
+        jTable2.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("AtendenteView.jTable2.columnModel.title1")); // NOI18N
+        jTable2.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("AtendenteView.jTable2.columnModel.title2")); // NOI18N
+        jTable2.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("AtendenteView.jTable2.columnModel.title3")); // NOI18N
+
+        jButton4.setText(bundle.getString("AtendenteView.jButton4.text")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jButton4)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab(bundle.getString("AtendenteView.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
+
         jPanel1.setName(bundle.getString("AtendenteView.jPanel1.name")); // NOI18N
 
         jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -646,32 +732,33 @@ public class AtendenteView extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel30)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campo_login_instrutor_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(campo_observacoes_af, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel30)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(campo_id_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campo_login_cliente_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                                .addComponent(jLabel35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campo_login_instrutor_af, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(215, 215, 215))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(campo_observacoes_af, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton11, jButton12, jButton3});
@@ -698,7 +785,7 @@ public class AtendenteView extends javax.swing.JFrame {
                     .addComponent(jButton12)
                     .addComponent(jButton11)
                     .addComponent(jButton3))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton11, jButton12, jButton3});
@@ -783,20 +870,17 @@ public class AtendenteView extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(832, 832, 832)
+                .addComponent(Buscar10))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(832, 832, 832)
-                        .addComponent(Buscar10))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(af_id, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(af_id, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -811,7 +895,7 @@ public class AtendenteView extends javax.swing.JFrame {
                 .addComponent(jButton13)
                 .addGap(18, 18, 18)
                 .addComponent(Buscar10)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Cliente1Layout = new javax.swing.GroupLayout(Cliente1);
@@ -819,13 +903,13 @@ public class AtendenteView extends javax.swing.JFrame {
         Cliente1Layout.setHorizontalGroup(
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Cliente1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         Cliente1Layout.setVerticalGroup(
             Cliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Cliente1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -835,10 +919,10 @@ public class AtendenteView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -887,7 +971,7 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria instrutor no bd
         try {
             factory.getInstrutor().create(instrutor);
-            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -896,9 +980,9 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText("");
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
-            
+
         } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null,"Cadastro NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cadastro NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -912,7 +996,7 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void cancela_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastro_instrutorActionPerformed
-        
+
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
 
         try {
@@ -923,7 +1007,7 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             inst.delete(campo_login_instrutor.getText());
-            
+
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -932,7 +1016,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText("");
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
-            
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -973,8 +1057,8 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria cliente no bd
         try {
             factory.getCliente().create(cliente);
-            
-            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -985,7 +1069,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_senha_cliente.setText("");
 
         } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null,"Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -1017,7 +1101,7 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             client.delete(campo_login_cliente.getText());
-            
+
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -1026,7 +1110,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_telefone_cliente.setText("");
             cliente_status = false;
             campo_senha_cliente.setText("");
-            
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1069,13 +1153,13 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             factory.getAvaliacaoFisica().update(avaliacao2);
-            
-            JOptionPane.showMessageDialog(null,"Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-            
+
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
 
             List<AvaliacaoFisicaVO> avaliacoes;
@@ -1088,10 +1172,10 @@ public class AtendenteView extends javax.swing.JFrame {
             }
 
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-            
+
         } catch (SABioException ex) {
-            
-            JOptionPane.showMessageDialog(null,"Alteracao NAO Realizada", "ERRO!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "ERRO!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
@@ -1130,13 +1214,13 @@ public class AtendenteView extends javax.swing.JFrame {
         // Cria cliente no bd
         try {
             factory.getAvaliacaoFisica().create(avaliacao2);
-            
-            JOptionPane.showMessageDialog(null,"Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-            
+
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
 
             List<AvaliacaoFisicaVO> avaliacoes;
@@ -1149,10 +1233,10 @@ public class AtendenteView extends javax.swing.JFrame {
             }
 
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-            
+
         } catch (SABioException ex) {
-            
-            JOptionPane.showMessageDialog(null,"Cadastro NAO Realizado", "ERRO!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Cadastro NAO Realizado", "ERRO!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
@@ -1205,25 +1289,25 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarClienteActionPerformed
 
     private void af_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_af_idActionPerformed
-        
+
         int id = Integer.parseInt(String.valueOf(af_id.getSelectedItem()));
 
         IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-        
-        try {
-                avaliacao = af.getAvaliacaoFisicaById(id);
-                
-                String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
 
-                // Mostra a data na linguagem selecionada no login
-                String data_realizacao = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM, Locale.getDefault()).format(avaliacao.getDataRealizacao().getTime());
-                
-                String tabela[][] = {
+        try {
+            avaliacao = af.getAvaliacaoFisicaById(id);
+
+            String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
+
+            // Mostra a data na linguagem selecionada no login
+            String data_realizacao = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM, Locale.getDefault()).format(avaliacao.getDataRealizacao().getTime());
+
+            String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
-                avaliacao.getInstrutor().getUsuario().getLogin(),
-                String.valueOf(avaliacao.getID()),
-                data_realizacao,
-                avaliacao.getObservacoes()}
+                    avaliacao.getInstrutor().getUsuario().getLogin(),
+                    String.valueOf(avaliacao.getID()),
+                    data_realizacao,
+                    avaliacao.getObservacoes()}
             };
 
             jTable1.setModel(new DefaultTableModel(tabela, colunas) {
@@ -1235,16 +1319,16 @@ public class AtendenteView extends javax.swing.JFrame {
             });
 
             validate();
-             
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_af_idActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
- 
+
         SABioFactory factory = SABioFactory.getInstance();
 
         String login = campo_login_instrutor.getText();
@@ -1266,9 +1350,9 @@ public class AtendenteView extends javax.swing.JFrame {
                 numero_carteira_trabalho, carga_horaria);
 
         try {
-            
+
             factory.getInstrutor().update(instrutorU);
-            JOptionPane.showMessageDialog(null,"Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -1277,9 +1361,9 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText("");
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
-            
+
         } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null,"Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -1293,7 +1377,7 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                SABioFactory factory = SABioFactory.getInstance();
+        SABioFactory factory = SABioFactory.getInstance();
 
         String login = campo_login_cliente.getText();
         String senha = String.copyValueOf(campo_senha_cliente.getPassword());
@@ -1316,8 +1400,8 @@ public class AtendenteView extends javax.swing.JFrame {
 
         try {
             factory.getCliente().update(clienteU);
-            
-            JOptionPane.showMessageDialog(null,"Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -1328,7 +1412,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_senha_cliente.setText("");
 
         } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null,"Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -1341,25 +1425,25 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         IAvaliacaoFisica avfis = SABioFactory.getInstance().getAvaliacaoFisica();
         int cod = Integer.parseInt(String.valueOf(campo_id_af.getText()));
-        
+
         try {
             avaliacao = avfis.getAvaliacaoFisicaById(cod);
-            
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             avfis.delete(cod);
-            
+
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-            
+
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
 
             List<AvaliacaoFisicaVO> avaliacoes;
@@ -1372,14 +1456,38 @@ public class AtendenteView extends javax.swing.JFrame {
             }
 
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-            
-             
+
+
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+
+            String[] colunas = {"Login Cliente", "CPF", "RG", "Mensalidades em Aberto"};
+ 
+            for (int i = 0; i < clientes.size(); i++){                
+                String tabela[][] = {
+                    {   clientes.get(i).getUsuario().getLogin(),
+                        clientes.get(i).getCPF(),
+                        clientes.get(i).getRG(),
+                        clientes.get(i).getMensalidadesAbertas(),}
+                };
+
+                jTable2.setModel(new DefaultTableModel(tabela, colunas) {
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int mColIndex) {
+                        return false;
+                    }
+                });
+
+                validate();
+            }
+    }//GEN-LAST:event_jButton4ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Buscar10;
@@ -1422,6 +1530,7 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1446,14 +1555,18 @@ public class AtendenteView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

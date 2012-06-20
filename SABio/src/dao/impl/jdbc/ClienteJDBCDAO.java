@@ -4,10 +4,9 @@ import dao.DAOException;
 import dao.DAOFactory;
 import dao.spec.IClienteDAO;
 import dao.spec.IUsuarioDAO;
+import java.sql.Date;
 import java.sql.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vo.ClienteVO;
@@ -104,14 +103,80 @@ public abstract class ClienteJDBCDAO extends GenericJDBCDAO implements IClienteD
         }
         return (ClienteVO) vo;
 	}
+    @Override
+    public List<ClienteVO> SelectAll() throws DAOException {
+        List<ClienteVO> clientes = new ArrayList<>();
 
+        ObjectVO vo = null;
+        ClienteVO devedor = (ClienteVO) vo;
+
+        String sql = "SELECT * FROM " + this.getTableName();
+
+        try {
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            if (rs != null) {
+                while (rs.next()) {
+                    devedor = this.createVO(rs);
+                    clientes.add(devedor);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+
+        return clientes;
+    }
+    /*
+    public String[][] SelectAll(String condicao) throws DAOException {
+        
+        String sql = 
+            "SELECT * FROM " + this.getTableName() +
+            (condicao.equals("") ? "" : " WHERE  MENSALIDADES_ABERTAS =!" + condicao); 
+        
+
+        
+        List<String[]> possui = new ArrayList<String[]>();
+        int numLinhas = 0;
+        
+        try {
+            Statement stmt = this.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs != null) {
+                while(rs.next()) {
+                   
+                    List<String> devedores = new ArrayList<String>();
+                    
+                    devedores.add(rs.getString("LOGIN"));
+                    devedores.add(rs.getString("CPF"));
+                    devedores.add(rs.getString("RG"));
+                    devedores.add(rs.getString("MENSALIDADES_ABERTAS"));
+                    
+                    
+                    possui.add(devedores.toArray(new String[4]));
+                    numLinhas++;
+                }
+            }
+        } catch (SQLException e) {
+            StackTraceElement[] stack = e.getStackTrace();
+            if (stack.length > 0) {
+                System.err.println("Message: " + e.getMessage());
+                System.err.println("Command: " + sql);
+                System.err.println("Exception: " + e);
+            }
+        }
+        
+        return possui.toArray(new String[numLinhas][5]);
+    }*/
+        
     @Override
 	public String getTableName() {
 		return "CLIENTE";
 	}
 
     @Override
-	protected ObjectVO createVO(ResultSet rs) throws DAOException {
+	protected ClienteVO createVO(ResultSet rs) throws DAOException {
 		try {
 			String login = rs.getString("LOGIN");
 			String nome = rs.getString("NOME");

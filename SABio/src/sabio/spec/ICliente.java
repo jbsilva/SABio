@@ -15,5 +15,5 @@ public interface ICliente {
 
 	ClienteVO getClienteByLogin(String Login) throws SABioException;
 
-	List getAll() throws SABioException;
+	List<ClienteVO> getAll() throws SABioException;
 }
