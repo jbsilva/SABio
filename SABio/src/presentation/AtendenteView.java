@@ -1067,6 +1067,10 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_telefone_cliente.setText("");
             cliente_status = false;
             campo_senha_cliente.setText("");
+            
+            ICliente devedor = SABioFactory.getInstance().getCliente();
+
+            clientes = devedor.getAll();
 
         } catch (SABioException ex) {
             JOptionPane.showMessageDialog(null, "Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
@@ -1410,6 +1414,10 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_telefone_cliente.setText("");
             cliente_status = false;
             campo_senha_cliente.setText("");
+            
+            ICliente devedor = SABioFactory.getInstance().getCliente();
+
+            clientes = devedor.getAll();
 
         } catch (SABioException ex) {
             JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
@@ -1465,17 +1473,23 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-
-            String[] colunas = {"Login Cliente", "CPF", "RG", "Mensalidades em Aberto"};
- 
-            for (int i = 0; i < clientes.size(); i++){                
-                String tabela[][] = {
-                    {   clientes.get(i).getUsuario().getLogin(),
-                        clientes.get(i).getCPF(),
-                        clientes.get(i).getRG(),
-                        clientes.get(i).getMensalidadesAbertas(),}
-                };
+        String[] colunas = {"Login", "CPF", "RG", "Devendo"};
+        String[][]tabela = new String[clientes.size()][4];
+        int i=0;
+        int j=0;
+        
+                while(i<clientes.size()){
+                if(!"".equals(clientes.get(i).getMensalidadesAbertas())) 
+                {
+                        tabela[j][0] = clientes.get(i).getUsuario().getLogin();
+                        tabela[j][1] = clientes.get(i).getCPF();
+                        tabela[j][2] = clientes.get(i).getRG();
+                        tabela[j][3] = clientes.get(i).getMensalidadesAbertas();
+                        i++;
+                        j++;
+                }
+                else i++;
+                }
 
                 jTable2.setModel(new DefaultTableModel(tabela, colunas) {
 
@@ -1486,7 +1500,7 @@ public class AtendenteView extends javax.swing.JFrame {
                 });
 
                 validate();
-            }
+            
     }//GEN-LAST:event_jButton4ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
