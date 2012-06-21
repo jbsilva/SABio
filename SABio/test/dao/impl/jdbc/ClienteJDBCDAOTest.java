@@ -65,29 +65,4 @@ public class ClienteJDBCDAOTest {
        
     }
 
-    /**
-     * Test of update method, of class ClienteJDBCDAO.
-     */
-   // @Test
-   /* public void testUpdate() throws Exception {
-        System.out.println("update");
-        ObjectVO vo = null;
-        ClienteJDBCDAO instance = null;
-        instance.update(vo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of delete method, of class ClienteJDBCDAO.
-     */
-    /*@Test
-    public void testDelete() throws Exception {
-        System.out.println("delete");
-        ClienteVO vo = null;
-        ClienteJDBCDAO instance = null;
-        instance.delete(vo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
 }
