@@ -27,22 +27,46 @@ public class AtendenteViewTest {
     @Test
     public void testCheckCpf() {
         System.out.println("CheckCpf");
-        String string = "";
+        String cpf = "";
         AtendenteView instance = new AtendenteView();
         boolean expResult = false;
-        boolean result = instance.CheckCpf(string);
+        boolean result = instance.CheckCpf(cpf);
         assertEquals(expResult, result);
         
-        string = "12345678901";
+        cpf = "38852068899";
         expResult = true;
-        result = instance.CheckCpf(string);
+        result = instance.CheckCpf(cpf);
         assertEquals(expResult, result);
         
-        string = "983632";
+        cpf = "40899035809";
+        expResult = true;
+        result = instance.CheckCpf(cpf);
+        assertEquals(expResult, result);
+        
+        cpf = "40899035809";
+        expResult = true;
+        result = instance.CheckCpf(cpf);
+        assertEquals(expResult, result);
+        
+        cpf = "39377222893";
+        expResult = true;
+        result = instance.CheckCpf(cpf);
+        assertEquals(expResult, result);
+        
+        cpf = "123345678";
         expResult = false;
-        result = instance.CheckCpf(string);
+        result = instance.CheckCpf(cpf);
         assertEquals(expResult, result);
         
+        cpf = "12345678901";
+        expResult = false;
+        result = instance.CheckCpf(cpf);
+        assertEquals(expResult, result);
+        
+        cpf = "123456789012";
+        expResult = false;
+        result = instance.CheckCpf(cpf);
+        assertEquals(expResult, result);
         
     }
 }

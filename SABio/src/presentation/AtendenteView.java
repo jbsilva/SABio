@@ -20,7 +20,7 @@ import vo.InstrutorVO;
 import vo.UsuarioVO;
 
 public class AtendenteView extends javax.swing.JFrame {
-
+    
     private static AtendenteView atendenteview;
     private boolean cliente_status = false;
     private ClienteVO cliente;
@@ -28,76 +28,99 @@ public class AtendenteView extends javax.swing.JFrame {
     private AvaliacaoFisicaVO avaliacao;
     private List<ClienteVO> clientes;
     private boolean CheckCpf;
-
+    
     public AtendenteView() {
-
+        
         super("Atendente");
         initComponents();
         this.setVisible(true);
-
+        
         try {
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-
+            
             List<AvaliacaoFisicaVO> avaliacoes;
             List<Integer> ids = new ArrayList();
-
+            
             avaliacoes = af.getAll();
-
+            
             for (int i = 0; i < avaliacoes.size(); i++) {
                 ids.add(avaliacoes.get(i).getID());
             }
-
+            
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-
+            
             ICliente devedor = SABioFactory.getInstance().getCliente();
-
+            
             clientes = devedor.getAll();
-           
-
+            
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-
+        
+        
+        
     }
-
+    
     public static AtendenteView getInstance() {
         if (atendenteview == null) {
             atendenteview = new AtendenteView();
         }
         return atendenteview;
     }
-
+    
     public static void destroyInstance() {
         atendenteview = null;
     }
+    
+    public boolean CheckCpf(String cpf_str) {
+        
+        if (!cpf_str.matches("\\d{11}")) {
+            return false;
+        }
+        
+        int[] cpf = new int[11];
+        for (int i = 0; i < 11; i++) {
+            cpf[i] = Integer.parseInt(cpf_str.substring(i, i + 1));
+        }        
 
-     public boolean CheckCpf(String string){
+        int dig1, dig2;
         
-        boolean check = true;
-        int [] cpf = new int[10];  
-        
-        if (string.length() > 11 || (string.length()<11)){
-                check = false;
+        // 1o digito verificador
+        int soma1 = 0;
+        for (int i = 0; i < 9; i++) {            
+            soma1 += cpf[i] * (10 - i);            
         }
-        else{
-            
-            for(int i = 0;i<10;i++){               
-                Character charac = string.charAt(i);
-                if( !Character.isDigit(charac) ){
-                    check = false;
-                }else{
-                    cpf[i] = Integer.parseInt(string.substring(i,i+1));
-                }               
-           
-            }
-        }
-        return check;
         
-     }
+        int resto = soma1 % 11;
         
-    @SuppressWarnings("unchecked")
+        if (resto < 2)
+            dig1 = 0;
+        else
+            dig1 = 11 - resto;
+        
+        if (dig1 != cpf[9])            
+            return false;
+
+        // 2o digito verificador
+        int soma2 = 0;
+        for (int i = 0; i < 10; i++) {            
+            soma2 += cpf[i] * (11-i);            
+        }        
+        resto = soma2 % 11;
+        
+        if (resto < 2)
+            dig2 = 0;
+        else
+            dig2 = 11 - resto;
+
+        if (dig2 != cpf[10])          
+            return false;
+        
+        return true;
+    }
+
+@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -964,9 +987,9 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar10ActionPerformed
 
     private void confirma_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastro_instrutorActionPerformed
-
+        
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         String login = campo_login_instrutor.getText();
         String senha = String.copyValueOf(campo_senha_instrutor.getPassword());
         String nome = campo_nome_instrutor.getText();
@@ -976,65 +999,66 @@ public class AtendenteView extends javax.swing.JFrame {
         String registro_profissional = campo_registro_instrutor.getText();
         String numero_carteira_trabalho = campo_carteira_trabalho_instrutor.getText();
         int carga_horaria = Integer.parseInt(campo_carga_horaria_instrutor.getText());
+        
+        if (CheckCpf(cpf) == true) {
+            UsuarioVO usuario = new UsuarioVO(login, senha);
+            
+            Calendar data_contratacao = Calendar.getInstance();
+            
+            InstrutorVO instrutor = new InstrutorVO(usuario, nome, cpf,
+                    data_contratacao, rg, endereco, registro_profissional,
+                    numero_carteira_trabalho, carga_horaria);
 
-        if (CheckCpf(cpf)==true){
-        UsuarioVO usuario = new UsuarioVO(login, senha);
+            // Cria usuario no bd
+            try {
+                factory.getUsuario().create(usuario);
+                
+            } catch (SABioException ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        Calendar data_contratacao = Calendar.getInstance();
-
-        InstrutorVO instrutor = new InstrutorVO(usuario, nome, cpf,
-                data_contratacao, rg, endereco, registro_profissional,
-                numero_carteira_trabalho, carga_horaria);
-
-        // Cria usuario no bd
-        try {
-            factory.getUsuario().create(usuario);
-
-        } catch (SABioException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            // Cria instrutor no bd
+            try {
+                factory.getInstrutor().create(instrutor);
+                JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+                campo_nome_instrutor.setText("");
+                campo_rg_instrutor.setText("");
+                campo_cpf_instrutor.setText("");
+                campo_endereco_instrutor.setText("");
+                campo_registro_instrutor.setText("");
+                campo_carteira_trabalho_instrutor.setText("");
+                campo_carga_horaria_instrutor.setText("");
+                campo_senha_instrutor.setText("");
+                
+            } catch (SABioException ex) {
+                JOptionPane.showMessageDialog(null, "Cadastro NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+                campo_nome_instrutor.setText("");
+                campo_rg_instrutor.setText("");
+                campo_cpf_instrutor.setText("");
+                campo_endereco_instrutor.setText("");
+                campo_registro_instrutor.setText("");
+                campo_carteira_trabalho_instrutor.setText("");
+                campo_carga_horaria_instrutor.setText("");
+                campo_senha_instrutor.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
-
-        // Cria instrutor no bd
-        try {
-            factory.getInstrutor().create(instrutor);
-            JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
-            campo_nome_instrutor.setText("");
-            campo_rg_instrutor.setText("");
-            campo_cpf_instrutor.setText("");
-            campo_endereco_instrutor.setText("");
-            campo_registro_instrutor.setText("");
-            campo_carteira_trabalho_instrutor.setText("");
-            campo_carga_horaria_instrutor.setText("");
-            campo_senha_instrutor.setText("");
-
-        } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null, "Cadastro NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
-            campo_nome_instrutor.setText("");
-            campo_rg_instrutor.setText("");
-            campo_cpf_instrutor.setText("");
-            campo_endereco_instrutor.setText("");
-            campo_registro_instrutor.setText("");
-            campo_carteira_trabalho_instrutor.setText("");
-            campo_carga_horaria_instrutor.setText("");
-            campo_senha_instrutor.setText("");
-        }
-       }
-       else{ JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);   } 
     }//GEN-LAST:event_confirma_cadastro_instrutorActionPerformed
 
     private void cancela_cadastro_instrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastro_instrutorActionPerformed
-
+        
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
-
+        
         try {
             instrutor = inst.getInstrutorByLogin(campo_login_instrutor.getText());
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
             inst.delete(campo_login_instrutor.getText());
-
+            
             campo_nome_instrutor.setText("");
             campo_rg_instrutor.setText("");
             campo_cpf_instrutor.setText("");
@@ -1043,17 +1067,17 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText("");
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
+        
+        
     }//GEN-LAST:event_cancela_cadastro_instrutorActionPerformed
 
     private void confirma_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirma_cadastrar_clienteActionPerformed
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         String login = campo_login_cliente.getText();
         String senha = String.copyValueOf(campo_senha_cliente.getPassword());
         String nome = campo_nome_cliente.getText();
@@ -1063,59 +1087,59 @@ public class AtendenteView extends javax.swing.JFrame {
         String mensalidades_abertas = campo_mensalidades_aberto_cliente.getText();
         String telefone = campo_telefone_cliente.getText();
         Boolean status = cliente_status;
-
-        if (CheckCpf(cpf)==true){
-        UsuarioVO usuario = new UsuarioVO(login, senha);
-
-        Calendar data_nascimento = Calendar.getInstance();
-        Calendar data_ingresso = Calendar.getInstance();
-
-        ClienteVO cliente = new ClienteVO(usuario, nome, cpf, rg, telefone,
-                atestado_medico, data_ingresso, mensalidades_abertas,
-                data_nascimento, status);
-
-        // Cria usuario no bd
-        try {
-            factory.getUsuario().create(usuario);
-        } catch (SABioException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         
-        // Cria cliente no bd
-       
-        try {
-            factory.getCliente().create(cliente);
-
-            JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
-            campo_nome_cliente.setText("");
-            campo_rg_cliente.setText("");
-            campo_cpf_cliente.setText("");
-            campo_atestado_cliente.setText("");
-            campo_mensalidades_aberto_cliente.setText("");
-            campo_telefone_cliente.setText("");
-            cliente_status = false;
-            campo_senha_cliente.setText("");
+        if (CheckCpf(cpf) == true) {
+            UsuarioVO usuario = new UsuarioVO(login, senha);
             
-            ICliente devedor = SABioFactory.getInstance().getCliente();
+            Calendar data_nascimento = Calendar.getInstance();
+            Calendar data_ingresso = Calendar.getInstance();
+            
+            ClienteVO cliente = new ClienteVO(usuario, nome, cpf, rg, telefone,
+                    atestado_medico, data_ingresso, mensalidades_abertas,
+                    data_nascimento, status);
 
-            clientes = devedor.getAll();
-        
-        
+            // Cria usuario no bd
+            try {
+                factory.getUsuario().create(usuario);
+            } catch (SABioException ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        } catch (SABioException ex) {
-            JOptionPane.showMessageDialog(null, "Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
-            campo_nome_cliente.setText("");
-            campo_rg_cliente.setText("");
-            campo_cpf_cliente.setText("");
-            campo_atestado_cliente.setText("");
-            campo_mensalidades_aberto_cliente.setText("");
-            campo_telefone_cliente.setText("");
-            cliente_status = false;
-            campo_senha_cliente.setText("");
-        }
-       }
-        else{ JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);
+
+            // Cria cliente no bd
+
+            try {
+                factory.getCliente().create(cliente);
+                
+                JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
+                campo_nome_cliente.setText("");
+                campo_rg_cliente.setText("");
+                campo_cpf_cliente.setText("");
+                campo_atestado_cliente.setText("");
+                campo_mensalidades_aberto_cliente.setText("");
+                campo_telefone_cliente.setText("");
+                cliente_status = false;
+                campo_senha_cliente.setText("");
+                
+                ICliente devedor = SABioFactory.getInstance().getCliente();
+                
+                clientes = devedor.getAll();
+                
+                
+                
+            } catch (SABioException ex) {
+                JOptionPane.showMessageDialog(null, "Cadastro  NAO Realizado", "Erro!", JOptionPane.WARNING_MESSAGE);
+                campo_nome_cliente.setText("");
+                campo_rg_cliente.setText("");
+                campo_cpf_cliente.setText("");
+                campo_atestado_cliente.setText("");
+                campo_mensalidades_aberto_cliente.setText("");
+                campo_telefone_cliente.setText("");
+                cliente_status = false;
+                campo_senha_cliente.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "Erro!", JOptionPane.WARNING_MESSAGE);
             
         }
     }//GEN-LAST:event_confirma_cadastrar_clienteActionPerformed
@@ -1129,18 +1153,18 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_inativo_clienteActionPerformed
 
     private void cancela_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancela_cadastrar_clienteActionPerformed
-
+        
         ICliente client = SABioFactory.getInstance().getCliente();
-
+        
         try {
             cliente = client.getClienteByLogin(campo_login_cliente.getText());
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
             client.delete(campo_login_cliente.getText());
-
+            
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
             campo_cpf_cliente.setText("");
@@ -1149,13 +1173,13 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_telefone_cliente.setText("");
             cliente_status = false;
             campo_senha_cliente.setText("");
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-
+        
+        
+        
     }//GEN-LAST:event_cancela_cadastrar_clienteActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -1164,56 +1188,56 @@ public class AtendenteView extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         int id = Integer.parseInt(campo_id_af.getText());
         String login_cliente = campo_login_cliente_af.getText();
         String login_instrutor = campo_login_instrutor_af.getText();
         String observacao = campo_observacoes_af.getText();
-
+        
         Calendar data_realizacao = Calendar.getInstance();
-
+        
         ICliente cli = SABioFactory.getInstance().getCliente();
-
+        
         try {
             cliente = cli.getClienteByLogin(login_cliente);
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
-
+        
         try {
             instrutor = inst.getInstrutorByLogin(login_instrutor);
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         AvaliacaoFisicaVO avaliacao2 = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
-
+        
         try {
             factory.getAvaliacaoFisica().update(avaliacao2);
-
+            
             JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-
+            
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-
+            
             List<AvaliacaoFisicaVO> avaliacoes;
             List<Integer> ids = new ArrayList();
-
+            
             avaliacoes = af.getAll();
-
+            
             for (int i = 0; i < avaliacoes.size(); i++) {
                 ids.add(avaliacoes.get(i).getID());
             }
-
+            
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-
+            
         } catch (SABioException ex) {
-
+            
             JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "ERRO!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
@@ -1224,57 +1248,57 @@ public class AtendenteView extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         int id = Integer.parseInt(campo_id_af.getText());
         String login_cliente = campo_login_cliente_af.getText();
         String login_instrutor = campo_login_instrutor_af.getText();
         String observacao = campo_observacoes_af.getText();
-
+        
         Calendar data_realizacao = Calendar.getInstance();
-
+        
         ICliente cli = SABioFactory.getInstance().getCliente();
-
+        
         try {
             cliente = cli.getClienteByLogin(login_cliente);
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
-
+        
         try {
             instrutor = inst.getInstrutorByLogin(login_instrutor);
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         AvaliacaoFisicaVO avaliacao2 = new AvaliacaoFisicaVO(cliente, instrutor, id, data_realizacao, observacao);
 
         // Cria cliente no bd
         try {
             factory.getAvaliacaoFisica().create(avaliacao2);
-
+            
             JOptionPane.showMessageDialog(null, "Cadastro Realizado", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-
+            
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-
+            
             List<AvaliacaoFisicaVO> avaliacoes;
             List<Integer> ids = new ArrayList();
-
+            
             avaliacoes = af.getAll();
-
+            
             for (int i = 0; i < avaliacoes.size(); i++) {
                 ids.add(avaliacoes.get(i).getID());
             }
-
+            
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-
+            
         } catch (SABioException ex) {
-
+            
             JOptionPane.showMessageDialog(null, "Cadastro NAO Realizado", "ERRO!", JOptionPane.WARNING_MESSAGE);
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
@@ -1285,9 +1309,9 @@ public class AtendenteView extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         IInstrutor inst = SABioFactory.getInstance().getInstrutor();
-
+        
         try {
-
+            
             instrutor = inst.getInstrutorByLogin(campo_login_instrutor.getText());
             campo_nome_instrutor.setText(instrutor.getNome());
             campo_rg_instrutor.setText(instrutor.getRG());
@@ -1297,7 +1321,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText(instrutor.getNumeroCarteiraTrabalho());
             campo_carga_horaria_instrutor.setText(String.valueOf(instrutor.getCargaHoraria()));
             campo_senha_instrutor.setEnabled(false);
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1305,7 +1329,7 @@ public class AtendenteView extends javax.swing.JFrame {
 
     private void BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteActionPerformed
         ICliente cli = SABioFactory.getInstance().getCliente();
-
+        
         try {
             cliente = cli.getClienteByLogin(campo_login_cliente.getText());
             campo_nome_cliente.setText(cliente.getNomeCliente());
@@ -1321,26 +1345,26 @@ public class AtendenteView extends javax.swing.JFrame {
             } else {
                 campo_inativo_cliente.doClick();
             }
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BuscarClienteActionPerformed
 
     private void af_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_af_idActionPerformed
-
+        
         int id = Integer.parseInt(String.valueOf(af_id.getSelectedItem()));
-
+        
         IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-
+        
         try {
             avaliacao = af.getAvaliacaoFisicaById(id);
-
+            
             String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
 
             // Mostra a data na linguagem selecionada no login
             String data_realizacao = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM, Locale.getDefault()).format(avaliacao.getDataRealizacao().getTime());
-
+            
             String tabela[][] = {
                 {avaliacao.getCliente().getUsuario().getLogin(),
                     avaliacao.getInstrutor().getUsuario().getLogin(),
@@ -1348,28 +1372,28 @@ public class AtendenteView extends javax.swing.JFrame {
                     data_realizacao,
                     avaliacao.getObservacoes()}
             };
-
+            
             jTable1.setModel(new DefaultTableModel(tabela, colunas) {
-
+                
                 @Override
                 public boolean isCellEditable(int rowIndex, int mColIndex) {
                     return false;
                 }
             });
-
+            
             validate();
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }//GEN-LAST:event_af_idActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         String login = campo_login_instrutor.getText();
         String senha = String.copyValueOf(campo_senha_instrutor.getPassword());
         String nome = campo_nome_instrutor.getText();
@@ -1379,17 +1403,17 @@ public class AtendenteView extends javax.swing.JFrame {
         String registro_profissional = campo_registro_instrutor.getText();
         String numero_carteira_trabalho = campo_carteira_trabalho_instrutor.getText();
         int carga_horaria = Integer.parseInt(campo_carga_horaria_instrutor.getText());
-
+        
         UsuarioVO usuario = new UsuarioVO(login, senha);
-
+        
         Calendar data_contratacao = Calendar.getInstance();
-
+        
         InstrutorVO instrutorU = new InstrutorVO(usuario, nome, cpf,
                 data_contratacao, rg, endereco, registro_profissional,
                 numero_carteira_trabalho, carga_horaria);
-
+        
         try {
-
+            
             factory.getInstrutor().update(instrutorU);
             JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
@@ -1400,7 +1424,7 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carteira_trabalho_instrutor.setText("");
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
-
+            
         } catch (SABioException ex) {
             JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_instrutor.setText("");
@@ -1412,12 +1436,12 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_carga_horaria_instrutor.setText("");
             campo_senha_instrutor.setText("");
         }
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         SABioFactory factory = SABioFactory.getInstance();
-
+        
         String login = campo_login_cliente.getText();
         String senha = String.copyValueOf(campo_senha_cliente.getPassword());
         String nome = campo_nome_cliente.getText();
@@ -1427,19 +1451,19 @@ public class AtendenteView extends javax.swing.JFrame {
         String mensalidades_abertas = campo_mensalidades_aberto_cliente.getText();
         String telefone = campo_telefone_cliente.getText();
         Boolean status = cliente_status;
-
+        
         UsuarioVO usuario = new UsuarioVO(login, senha);
-
+        
         Calendar data_nascimento = Calendar.getInstance();
         Calendar data_ingresso = Calendar.getInstance();
-
+        
         ClienteVO clienteU = new ClienteVO(usuario, nome, cpf, rg, telefone,
                 atestado_medico, data_ingresso, mensalidades_abertas,
                 data_nascimento, status);
-
+        
         try {
             factory.getCliente().update(clienteU);
-
+            
             JOptionPane.showMessageDialog(null, "Alteracao Realizada", "Sucesso!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
             campo_rg_cliente.setText("");
@@ -1451,9 +1475,9 @@ public class AtendenteView extends javax.swing.JFrame {
             campo_senha_cliente.setText("");
             
             ICliente devedor = SABioFactory.getInstance().getCliente();
-
+            
             clientes = devedor.getAll();
-
+            
         } catch (SABioException ex) {
             JOptionPane.showMessageDialog(null, "Alteracao NAO Realizada", "Erro!", JOptionPane.WARNING_MESSAGE);
             campo_nome_cliente.setText("");
@@ -1468,74 +1492,74 @@ public class AtendenteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        
         IAvaliacaoFisica avfis = SABioFactory.getInstance().getAvaliacaoFisica();
         int cod = Integer.parseInt(String.valueOf(campo_id_af.getText()));
-
+        
         try {
             avaliacao = avfis.getAvaliacaoFisicaById(cod);
-
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
             avfis.delete(cod);
-
+            
             campo_id_af.setText("");
             campo_login_cliente_af.setText("");
             campo_login_instrutor_af.setText("");
             campo_observacoes_af.setText("");
-
+            
             IAvaliacaoFisica af = SABioFactory.getInstance().getAvaliacaoFisica();
-
+            
             List<AvaliacaoFisicaVO> avaliacoes;
             List<Integer> ids = new ArrayList();
-
+            
             avaliacoes = af.getAll();
-
+            
             for (int i = 0; i < avaliacoes.size(); i++) {
                 ids.add(avaliacoes.get(i).getID());
             }
-
+            
             af_id.setModel(new javax.swing.DefaultComboBoxModel(ids.toArray()));
-
-
+            
+            
         } catch (SABioException ex) {
             Logger.getLogger(AtendenteView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String[] colunas = {"Login", "CPF", "RG", "Devendo"};
-        String[][]tabela = new String[clientes.size()][4];
-        int i=0;
-        int j=0;
+        String[][] tabela = new String[clientes.size()][4];
+        int i = 0;
+        int j = 0;
         
-                while(i<clientes.size()){
-                if(!"".equals(clientes.get(i).getMensalidadesAbertas())) 
-                {
-                        tabela[j][0] = clientes.get(i).getUsuario().getLogin();
-                        tabela[j][1] = clientes.get(i).getCPF();
-                        tabela[j][2] = clientes.get(i).getRG();
-                        tabela[j][3] = clientes.get(i).getMensalidadesAbertas();
-                        i++;
-                        j++;
-                }
-                else i++;
-                }
-
-                jTable2.setModel(new DefaultTableModel(tabela, colunas) {
-
-                    @Override
-                    public boolean isCellEditable(int rowIndex, int mColIndex) {
-                        return false;
-                    }
-                });
-
-                validate();
+        while (i < clientes.size()) {
+            if (!"".equals(clientes.get(i).getMensalidadesAbertas())) {
+                tabela[j][0] = clientes.get(i).getUsuario().getLogin();
+                tabela[j][1] = clientes.get(i).getCPF();
+                tabela[j][2] = clientes.get(i).getRG();
+                tabela[j][3] = clientes.get(i).getMensalidadesAbertas();
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+        
+        jTable2.setModel(new DefaultTableModel(tabela, colunas) {
             
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+        });
+        
+        validate();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
