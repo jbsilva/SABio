@@ -56,8 +56,8 @@ public class AvaliacaoFisicaJDBCDAOTest {
         String mensalidades_abertas = "Agosto";
         String telefone = "3451567";
         Calendar data_nascimento = Calendar.getInstance();
-        String atestado_medico = "Bunda";
-        String observacoes = "LALALALALALA";
+        String atestado_medico = "em dia";
+        String observacoes = "nenhuma";
         
         boolean status = false;
         boolean result = false;

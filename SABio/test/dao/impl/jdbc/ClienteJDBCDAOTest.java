@@ -44,7 +44,7 @@ public class ClienteJDBCDAOTest {
         String telefone = "3451567";
         Calendar data_nascimento = Calendar.getInstance();
         boolean status = false;
-        String atestado_medico = "Bunda";
+        String atestado_medico = "em dia";
         
         boolean result = false;
         boolean expResult = true;
