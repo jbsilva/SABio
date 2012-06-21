@@ -4,23 +4,16 @@
  */
 package dao.impl.jdbc;
 
-import java.sql.ResultSet;
 import java.util.Calendar;
 import org.junit.*;
 import static org.junit.Assert.*;
 import sabio.SABioFactory;
 import sabio.spec.IInstrutor;
 import vo.InstrutorVO;
-import vo.ObjectVO;
-import vo.InstrutorVO;
 import vo.UsuarioVO;
 
-/**
- *
- * @author Gabes
- */
 public class InstrutorJDBCDAOTest {
-
+   
     public InstrutorJDBCDAOTest() {
     }
 
@@ -32,33 +25,33 @@ public class InstrutorJDBCDAOTest {
     public static void tearDownClass() throws Exception {
     }
 
+
     @Before
     public void setUp() {
     }
+    
 
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of insert method, of class InstrutorJDBCDAO.
-     */
     @Test
     public void testInsert() throws Exception {
         System.out.println("insert");
+        
         SABioFactory factory = SABioFactory.getInstance();
         IInstrutor Iinst = SABioFactory.getInstance().getInstrutor();
-        String login = "cli01433";
+        String login = "cli01243233";
         String senha = "123";
         boolean result = false;
         boolean expResult = true;
-        String nome = "";
-        String cpf = "";
-        String rg = "";
+        String nome = "23232";
+        String cpf = "121";
+        String rg = "1212";
         Calendar data_contratacao = Calendar.getInstance();
-        String endereco = "";
-        String registro_profissional = "";
-        String numero_carteira_trabalho = "";
+        String endereco = "23";
+        String registro_profissional = "232";
+        String numero_carteira_trabalho = "12";
         int carga_horaria = 1;
 
 
@@ -84,3 +77,4 @@ public class InstrutorJDBCDAOTest {
         assertEquals(expResult, result);
     }
 }
+
