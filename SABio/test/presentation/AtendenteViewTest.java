@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.*;
-import static org.junit.Assert.*;
 
-/**
- *
- * @author Gabes
- */
 public class AtendenteViewTest {
     
     public AtendenteViewTest() {

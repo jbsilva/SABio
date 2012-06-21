@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao.impl.jdbc;
 
 import java.util.Calendar;
@@ -37,8 +33,7 @@ public class InstrutorJDBCDAOTest {
 
     @Test
     public void testInsert() throws Exception {
-        System.out.println("insert");
-        
+                
         SABioFactory factory = SABioFactory.getInstance();
         IInstrutor Iinst = SABioFactory.getInstance().getInstrutor();
         String login = "cli01243233";
@@ -53,7 +48,7 @@ public class InstrutorJDBCDAOTest {
         String registro_profissional = "232";
         String numero_carteira_trabalho = "12";
         int carga_horaria = 1;
-
+        
 
         UsuarioVO user = new UsuarioVO(login, senha);
         InstrutorVO inst = new InstrutorVO(user,

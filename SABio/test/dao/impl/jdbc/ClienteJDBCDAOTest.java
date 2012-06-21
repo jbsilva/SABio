@@ -1,24 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao.impl.jdbc;
 
-import java.sql.ResultSet;
 import java.util.Calendar;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 import org.junit.*;
-import static org.junit.Assert.*;
 import sabio.SABioFactory;
 import sabio.spec.ICliente;
 import vo.ClienteVO;
-import vo.ObjectVO;
 import vo.UsuarioVO;
 
-/**
- *
- * @author Andre
- */
 public class ClienteJDBCDAOTest {
     
     public ClienteJDBCDAOTest() {
@@ -40,12 +29,9 @@ public class ClienteJDBCDAOTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of insert method, of class ClienteJDBCDAO.
-     */
     @Test
     public void testInsert() throws Exception {
-        System.out.println("insert");
+        
         SABioFactory factory = SABioFactory.getInstance();
         ICliente Icliente = SABioFactory.getInstance().getCliente();
         String login = "Andre1235";

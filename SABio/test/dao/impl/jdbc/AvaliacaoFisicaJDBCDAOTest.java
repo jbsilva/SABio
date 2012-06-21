@@ -1,22 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao.impl.jdbc;
 
-import java.sql.ResultSet;
-import java.util.List;
+import java.util.Calendar;
 import org.junit.*;
 import static org.junit.Assert.*;
+import sabio.SABioFactory;
+import sabio.spec.IAvaliacaoFisica;
+import sabio.spec.ICliente;
+import sabio.spec.IInstrutor;
 import vo.AvaliacaoFisicaVO;
-import vo.ObjectVO;
+import vo.ClienteVO;
+import vo.InstrutorVO;
+import vo.UsuarioVO;
 
-/**
- *
- * @author Andre
- */
 public class AvaliacaoFisicaJDBCDAOTest {
-    
+
     public AvaliacaoFisicaJDBCDAOTest() {
     }
 
@@ -27,116 +24,71 @@ public class AvaliacaoFisicaJDBCDAOTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of insert method, of class AvaliacaoFisicaJDBCDAO.
-     */
     @Test
     public void testInsert() throws Exception {
-        System.out.println("insert");
-        ObjectVO vo = null;
-        AvaliacaoFisicaJDBCDAO instance = null;
-        instance.insert(vo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of update method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testUpdate() throws Exception {
-        System.out.println("update");
-        ObjectVO vo = null;
-        AvaliacaoFisicaJDBCDAO instance = null;
-        instance.update(vo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        SABioFactory factory = SABioFactory.getInstance();
+        IInstrutor Iinst = SABioFactory.getInstance().getInstrutor();
+        ICliente Icliente = SABioFactory.getInstance().getCliente();
+        IAvaliacaoFisica Iaf = SABioFactory.getInstance().getAvaliacaoFisica();
+        
+        String login = "cli1123";
+        String senha = "123";
+        String nome = "23232";
+        String cpf = "121";
+        String rg = "1212";
+        Calendar data_contratacao = Calendar.getInstance();
+        String endereco = "23";
+        String registro_profissional = "232";
+        String numero_carteira_trabalho = "12";
+        int carga_horaria = 1;
+        int id = 123;
+        Calendar data_ingresso = Calendar.getInstance();
+        String mensalidades_abertas = "Agosto";
+        String telefone = "3451567";
+        Calendar data_nascimento = Calendar.getInstance();
+        String atestado_medico = "Bunda";
+        String observacoes = "LALALALALALA";
+        
+        boolean status = false;
+        boolean result = false;
+        boolean expResult = true;
 
-    /**
-     * Test of delete method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testDelete() throws Exception {
-        System.out.println("delete");
-        AvaliacaoFisicaVO vo = null;
-        AvaliacaoFisicaJDBCDAO instance = null;
-        instance.delete(vo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        UsuarioVO user = new UsuarioVO(login, senha);
+        InstrutorVO instrutor = new InstrutorVO(user,
+                nome,
+                cpf,
+                data_contratacao,
+                rg,
+                endereco,
+                registro_profissional,
+                numero_carteira_trabalho,
+                carga_horaria);
+        
+        ClienteVO cliente = new ClienteVO(user, nome, cpf, rg, telefone,
+                atestado_medico, data_ingresso, mensalidades_abertas, data_nascimento,
+                status);
+        AvaliacaoFisicaVO af = new AvaliacaoFisicaVO(cliente, instrutor, id, data_ingresso, observacoes);
+        
+        factory.getUsuario().create(user);
+        factory.getInstrutor().create(instrutor);
+        factory.getCliente().create(cliente);
+        factory.getAvaliacaoFisica().create(af);
+        AvaliacaoFisicaVO af2 = Iaf.getAvaliacaoFisicaById(id);
 
-    /**
-     * Test of SelectById method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testSelectById() throws Exception {
-        System.out.println("SelectById");
-        int avaliacao_id = 0;
-        AvaliacaoFisicaJDBCDAO instance = null;
-        AvaliacaoFisicaVO expResult = null;
-        AvaliacaoFisicaVO result = instance.SelectById(avaliacao_id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of SelectAll method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testSelectAll() throws Exception {
-        System.out.println("SelectAll");
-        AvaliacaoFisicaJDBCDAO instance = null;
-        List expResult = null;
-        List result = instance.SelectAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTableName method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testGetTableName() {
-        System.out.println("getTableName");
-        AvaliacaoFisicaJDBCDAO instance = null;
-        String expResult = "";
-        String result = instance.getTableName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of createVO method, of class AvaliacaoFisicaJDBCDAO.
-     */
-    @Test
-    public void testCreateVO() throws Exception {
-        System.out.println("createVO");
-        ResultSet rs = null;
-        AvaliacaoFisicaJDBCDAO instance = null;
-        AvaliacaoFisicaVO expResult = null;
-        AvaliacaoFisicaVO result = instance.createVO(rs);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    public class AvaliacaoFisicaJDBCDAOImpl extends AvaliacaoFisicaJDBCDAO {
-
-        public AvaliacaoFisicaJDBCDAOImpl() throws Exception {
-            super(null);
+        if (af2.getCliente().getUsuario().getLogin().equals(af.getCliente().getUsuario().getLogin()) && af2.getInstrutor().getUsuario().getLogin().equals(af.getInstrutor().getUsuario().getLogin())) {
+            result = true;
         }
+
+        assertEquals(expResult, result);
     }
 }
