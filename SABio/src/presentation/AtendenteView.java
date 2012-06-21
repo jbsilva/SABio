@@ -1360,8 +1360,13 @@ public class AtendenteView extends javax.swing.JFrame {
         try {
             avaliacao = af.getAvaliacaoFisicaById(id);
             
-            String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
 
+            
+            String[] colunas = {"Login Cliente", "Login Instrutor", "Id", "Data", "Observacoes"};
+            
+            
+            String[] colunas2 = {"Client Login", "Instructor Login", "Id", "Date", "Comments"};
+            
             // Mostra a data na linguagem selecionada no login
             String data_realizacao = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM, Locale.getDefault()).format(avaliacao.getDataRealizacao().getTime());
             
@@ -1373,14 +1378,31 @@ public class AtendenteView extends javax.swing.JFrame {
                     avaliacao.getObservacoes()}
             };
             
-            jTable1.setModel(new DefaultTableModel(tabela, colunas) {
+            Locale locale = Locale.getDefault();
+            
+            if (locale.getLanguage().equals("pt"))
+            {
+                jTable1.setModel(new DefaultTableModel(tabela, colunas) {
                 
                 @Override
                 public boolean isCellEditable(int rowIndex, int mColIndex) {
                     return false;
                 }
+                        
             });
+                
+            }   
             
+            else
+                jTable1.setModel(new DefaultTableModel(tabela, colunas2) {
+                
+                @Override
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    return false;
+                }
+                        
+            });
+                
             validate();
             
         } catch (SABioException ex) {
@@ -1533,6 +1555,7 @@ public class AtendenteView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String[] colunas = {"Login", "CPF", "RG", "Devendo"};
+        String[] colunas2 = {"Login", "CPF", "RG", "Owying"};
         String[][] tabela = new String[clientes.size()][4];
         int i = 0;
         int j = 0;
@@ -1550,15 +1573,32 @@ public class AtendenteView extends javax.swing.JFrame {
             }
         }
         
-        jTable2.setModel(new DefaultTableModel(tabela, colunas) {
+           Locale locale = Locale.getDefault();
             
-            @Override
-            public boolean isCellEditable(int rowIndex, int mColIndex) {
-                return false;
-            }
-        });
-        
-        validate();
+            if (locale.getLanguage().equals("pt"))
+            {
+                jTable2.setModel(new DefaultTableModel(tabela, colunas) {
+                
+                @Override
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    return false;
+                }
+                        
+            });
+                
+            }   
+            
+            else
+                jTable2.setModel(new DefaultTableModel(tabela, colunas2) {
+                
+                @Override
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    return false;
+                }
+                        
+            });
+                
+            validate();
         
     }//GEN-LAST:event_jButton4ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
