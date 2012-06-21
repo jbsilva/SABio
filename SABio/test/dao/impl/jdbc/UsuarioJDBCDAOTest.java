@@ -4,12 +4,10 @@
  */
 package dao.impl.jdbc;
 
-import java.sql.ResultSet;
+import static org.junit.Assert.assertEquals;
 import org.junit.*;
-import static org.junit.Assert.*;
 import sabio.SABioFactory;
 import sabio.spec.IUsuario;
-import vo.ObjectVO;
 import vo.UsuarioVO;
 
 public class UsuarioJDBCDAOTest {
@@ -33,9 +31,6 @@ public class UsuarioJDBCDAOTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of insert method, of class UsuarioJDBCDAO.
-     */
     @Test
     public void testInsert() throws Exception {
         System.out.println("insert");
@@ -64,6 +59,5 @@ public class UsuarioJDBCDAOTest {
         
         assertEquals(expResult, result);
         
-        // TODO review the generated test code and remove the default call to fail.
     }
 }
